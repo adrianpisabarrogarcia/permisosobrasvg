@@ -20,3 +20,4 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::view('/', "login");
+Route::view('/portal', "portal");
