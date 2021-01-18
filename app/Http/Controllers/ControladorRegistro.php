@@ -24,8 +24,21 @@ class ControladorRegistro extends Controller
      */
     public function store(Request $request)
     {
-        //utilizar este metodo para guardar la info recibida por parámetro
-
+        //utilizar este método para guardar la info recibida por parámetro
+        DB::table('usuarios')->insert([
+            'nombre' => $request->get('nombre'),
+            'apellido' => $request->get('apellidos'),
+            'dni' => $request->get('dni'),
+            'fecha_nac' => $request->get('fecha_nac'),
+            'lugar_nac' => $request->get('lugar_nac'),
+            'email' => $request->get('email'),
+            'telefono' => $request->get('telefono'),
+            'calle' => $request->get('calle'),
+            'codigo_postal' => $request->get('codigopostal'),
+            'municipio' => $request->get('municipio'),
+            'provincia' => $request->get('provincia'),
+            'password' => $request->get('password')
+        ]);
     }
 
     /**
