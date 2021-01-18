@@ -18,24 +18,6 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Usuarios
                         </a>
-
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Tablas
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-
-                                <a class="nav-link " href="#">
-                                    Empleados
-                                </a>
-                                <a class="nav-link " href="#">
-                                    Usuarios normales
-                                </a>
-
-                            </nav>
-                        </div>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">

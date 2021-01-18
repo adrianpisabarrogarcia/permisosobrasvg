@@ -1,7 +1,13 @@
 @yield("nav")
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <button class="btn btn-link btn-sm order-1 order-lg-0 ml-4 " id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
-            <a class="navbar-brand ml-5 w-100 pl-5" href="portal.blade.php">Vitoria-Gasteiz <br> (Permisos y Obras)</a>
+    <button class="btn btn-link btn-sm order-1 order-lg-0 ml-5personalized " id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+    <span class="navbar-brand ml-5 w-100 pl-5">
+        <a class="w-25" href="portal.blade.php">
+        <img src="/img/logo.png" class="ml-5 w-8 h-100">
+    </a>
+    </span>
+
+
 
             <!-- Navbar Search
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
