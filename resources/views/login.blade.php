@@ -4,8 +4,7 @@
     <title>Hola mundo!</title>
 </header>
 <body>
-Hola mUndo! v2
-The content of the document......
+<h1>hola</h1>
 <?php
 
 ?>
