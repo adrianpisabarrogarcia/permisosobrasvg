@@ -4,7 +4,8 @@
     @section('contenidologin')
         <div class="align-self-center login">
             <h2 class="fw-bold mb-5">Registro</h2>
-            <form>
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
                 <div class="mb-2 row">
                     <div class="col-6">
                         <label for="nombre" class="form-label text-primary fw-bold mb-0">Nombre</label>
@@ -57,11 +58,11 @@
                 </div>
                 <div class="mb-2">
                     <label for="contra" class="form-label text-primary fw-bold mb-0">Contraseña</label>
-                    <input type="text" class="form-control border-0 p-0" name="password" id="contra" required>
+                    <input type="password" class="form-control border-0 p-0" name="password" id="contra" required>
                 </div>
                 <div class="mb-5">
                     <label for="repcontra" class="form-label text-primary fw-bold mb-0">Confirma Contraseña</label>
-                    <input type="text" class="form-control border-0 p-0" id="repcontra" required>
+                    <input type="password" class="form-control border-0 p-0" id="repcontra" required>
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Registrarse</button>
             </form>

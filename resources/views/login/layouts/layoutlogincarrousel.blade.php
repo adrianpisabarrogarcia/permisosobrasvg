@@ -26,10 +26,11 @@
             </div>
         </div>
     </section>
-    <script src="/bootstrap/js/popper.min.js"></script>
-    <script src="/bootstrap/js/bootstrap.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="/bootstrap-5.0/js/popper.min.js"></script>
+    <script src="/bootstrap-5.0/js/bootstrap.js"></script>
     <script src="/js/login.js"></script>
 
 </body>
