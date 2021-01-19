@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Mail; //Importante incluir la clase Mail, que será la encargada del envío
 use DB;
 
 class ControladorRegistro extends Controller
@@ -40,6 +41,8 @@ class ControladorRegistro extends Controller
             'provincia' => $request->get('provincia'),
             'password' => $request->get('password')
         ]);
+
+        $this->contact($request);
     }
 
     /**
@@ -75,4 +78,22 @@ class ControladorRegistro extends Controller
     {
         //
     }
+
+    public function contact(Request $request){
+        $subject = "Bienvenido/a ". $request['nombre'];
+        $for = $request['email'];
+        Mail::send('emails.register',$request->all(), function($msj) use($subject,$for){
+            $msj->from("developersweapp@gmail.com","Permisos y Obras (Vitoria-Gasteiz)");
+            $msj->subject($subject);
+            $msj->to($for);
+        });
+        return redirect()->back();
+    }
 }
+
+
+
+
+
+
+
