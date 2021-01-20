@@ -1,10 +1,10 @@
-@if(Session::get("rol")==1)
+{{--@if(Session::get("rol")==1)
     @include("tecnico.menuTecnico")
- @endif
+@endif
 
 @if(Session::get("rol")==2)
-   @include("coordinador.menuCoordinador")
-        @endif
+    @include("coordinador.menuCoordinador")
+@endif--}}
 
 <!--Prueba para que funcione la pagina-->
 <div id="layoutSidenav" >
@@ -13,7 +13,7 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading bg-secondary pt-3">Solicitudes</div>
-                    <a class="nav-link" href="portal.blade.php">
+                    <a class="nav-link" href="asignarSolicitudes">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Asignar Solicitudes
                     </a>
