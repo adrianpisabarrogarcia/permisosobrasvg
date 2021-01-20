@@ -1,13 +1,10 @@
-{{-- @if(Session::get("rol")==1 }}
-    <!--
-    Hacer layout para separar lo menus de tecnico y coordinador.-> include("MenuTecnico") por ejemplo
+@if(Session::get("rol")==1)
+    @include("tecnico.menuTecnico")
+ @endif
 
-
-{{ @endif--}}
-
-{{--@if(Session::get("rol")==2)}}
- -->
-        {{@endif--}}
+@if(Session::get("rol")==2)
+   @include("coordinador.menuCoordinador")
+        @endif
 
 <!--Prueba para que funcione la pagina-->
 <div id="layoutSidenav" >

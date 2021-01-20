@@ -90,4 +90,8 @@ input:checked + .slider:before {
   outline-color: #addb6b !important;
 }
 
+.jumbotron a {
+  font-size: 1.3em !important;
+}
+
 /*# sourceMappingURL=principal.css.map */
