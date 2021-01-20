@@ -72,4 +72,8 @@ input:checked + .slider:before {
 
 /*# sourceMappingURL=principal.css.map */
 
+.jumbotron a {
+  font-size: 1.3em !important;
+}
+
 /*# sourceMappingURL=principal.css.map */

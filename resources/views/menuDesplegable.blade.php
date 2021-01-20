@@ -1,10 +1,11 @@
-{{--@if(Session::get("rol")==1)
+{{--
+@if(Session::get("rol")==1)
     @include("tecnico.menuTecnico")
-@endif
+ @endif
 
 @if(Session::get("rol")==2)
-    @include("coordinador.menuCoordinador")
-@endif--}}
+   @include("coordinador.menuCoordinador")
+@endif --}}
 
 <!--Prueba para que funcione la pagina-->
 <div id="layoutSidenav" >

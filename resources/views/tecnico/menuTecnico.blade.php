@@ -19,10 +19,7 @@
                     </a>
                 </div>
             </div>
-            <div class="sb-sidenav-footer">
-                <div class="small">Logged in as:</div>
-                {{Session::get("nombre")}}
-            </div>
+            @include("footerMenu")
         </nav>
     </div>
-</div>
+
