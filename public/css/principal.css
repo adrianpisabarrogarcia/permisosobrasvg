@@ -6,10 +6,6 @@
   width: 5%;
 }
 
-.h-40 {
-  height: 40%;
-}
-
 .ml-5personalized {
   margin-left: 5%;
 }
@@ -74,20 +70,6 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-#layoutSidenav_nav .nav-link {
-  color: #6c757d !important;
-}
-
-#layoutSidenav_nav .nav-link:hover {
-  color: #A9E159 !important;
-}
-
-.border-pistacho {
-  border-color: #d9edbb !important;
-}
-
-.jumbotron button:focus {
-  outline-color: #addb6b !important;
-}
+/*# sourceMappingURL=principal.css.map */
 
 /*# sourceMappingURL=principal.css.map */
