@@ -78,18 +78,8 @@
             </div>
         </div>
     </main>
-    <footer class="py-4 bg-dark mt-auto">
-        <div class="container-fluid">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Ayuntamiento de Vitoria-Gasteiz 2021</div>
-                <div >
-                    <!-- <a href="#" class="text-secondary">Privacy Policy</a>
-                    &middot; -->
-                    <a href="https://github.com/adrianpisabarrogarcia/permisosobrasvg" target="_blank" class="text-secondary">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- hecho con vue con un webcomponent -->
+    <footer-on-vue id="footer"></footer-on-vue>
 </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
@@ -101,5 +91,6 @@
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
 <script src="assets/demo/datatables-demo.js"></script>
+<script src="./js/app.js"></script>
 </body>
 </html>

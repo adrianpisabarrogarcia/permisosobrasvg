@@ -30,3 +30,5 @@ Route::get('/registro','ControladorLogin@registro')->name('registro.index');
 Route::post('/','ControladorLogin@show')->name('login.auth');
 Route::post('/registro','ControladorRegistro@store')->name('register');
 
+
+
