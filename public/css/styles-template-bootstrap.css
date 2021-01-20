@@ -10057,7 +10057,7 @@ body {
 }
 .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
   content: "";
-  display: block;
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -10085,7 +10085,7 @@ body {
     margin-left: -225px;
   }
   .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
-    display: none;
+    display: none !important;
   }
 }
 .sb-nav-fixed .sb-topnav {

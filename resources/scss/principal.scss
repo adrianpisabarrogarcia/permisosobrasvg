@@ -1,3 +1,5 @@
+$enable-shadows: true !default;
+$green: #addb6b !important;
 @import "../../public/bootstrap-4.0.0/scss/functions.scss";
 @import "../../public/bootstrap-4.0.0/scss/variables";
 @import "../../public/bootstrap-4.0.0/scss/mixins.scss";
@@ -8,6 +10,10 @@
 .w-5{
     width: 5%;
 }
+.h-40{
+    height: 40%;
+}
+
 .ml-5personalized{
     margin-left: 5%;
 }
@@ -71,3 +77,21 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+#layoutSidenav_nav .nav-link{
+    color: #6c757d !important;
+}
+#layoutSidenav_nav .nav-link:hover{
+    color: #A9E159 !important;
+}
+.border-pistacho{
+    border-color: #d9edbb !important; ;
+}
+.jumbotron button:focus {
+    outline-color: #addb6b !important;
+}
+
+
+
+
+
+

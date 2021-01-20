@@ -23,16 +23,45 @@
 
 <!--MAIN-->
 
-<div id="layoutSidenav_content" class="bg-degradado">
-    <div class="jumbotron jumbotron-fluid pb-0 pt-4 bg-transparent mx-5 border-bottom border-light">
-        <div class="container-fluid">
-            <img src="img/logo-negro.png" class="w-25 h-75">
-            <p class="lead ml-5">Obras y reformas Vitoria-Gasteiz.</p>
+<div id="layoutSidenav_content" class="bg-light">
+    <div class="jumbotron jumbotron-fluid w-100 m-0 p-0 bg-transparent border-bottom border-secondary d-flex align-items-center h-auto">
+        <div class="container-fluid row justify-content-between py-5 w-100">
+            <div class="h-auto py-5 col-12 col-lg-6 d-flex flex-column align-items-center">
+                <img src="img/logo-negro.png" class=" w-75  h-75 mr-5">
+                <p class="lead w-50 m-0 ml-5">Obras y reformas Vitoria-Gasteiz.</p>
+            </div>
+            <div class="col-12 col-lg-6 h-auto row mt-3 ml-4 ml-lg-0 pl-5 float-end align-items-end justify-content-around">
+                <a href="contacto" class="h-25 bg-pistacho col-5 col-lg-5 py-4 mr-5 ml-sm-0 border-5 rounded  text-dark d-flex align-items-center justify-content-center btn-outline-secondary">Solicitar Obra</a>
+                <button class="h-25 bg-pistacho col-5 col-lg-5 py-4 mr-5 border-2 rounded border-transparent text-dark d-flex align-items-center justify-content-center">Contacto </button>
+                <p class="w-100" ><a href="" class="text-pistacho float-right">Más información</a></p>
+            </div>
         </div>
-        <p class="float-right mr-5 " ><a href="" class="text-dark hover">Más información</a></p>
+
     </div>
     <main>
-        <div class="container-fluid bg-transparent">
+        <div class="container-fluid bg-transparent h-auto">
+            <div class="container-fluid row d-flex justify-content-center align-items-end mh-100">
+                @if(isset($listaPublicaciones)/*$listaPublicaciones>0*/)
+                    @foreach($listaPublicaciones as $publicacion )
+                        <div class="col-xl-5 mx-5">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-bar mr-1"></i>
+                                     Contacto
+                                </div>
+                                <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <h1 class="">Todavía no hay solicitudes de obras publicadas</h1>
+                @endif
+            </div>
+        </div>
+
+
+
+        <!--<div class="container-fluid bg-transparent">
 
             <div class="container-fluid">
                 <div class="row justify-content-around">
@@ -77,22 +106,24 @@
                 </div>
             </div>
         </div>
+        -->
     </main>
-    <footer class="py-4 bg-dark mt-auto">
+    <footer class="py-4 bg-secondary mt-auto">
         <div class="container-fluid">
             <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Ayuntamiento de Vitoria-Gasteiz 2021</div>
+                <div class="text-light">Copyright &copy; Ayuntamiento de Vitoria-Gasteiz 2021</div>
                 <div >
                     <!-- <a href="#" class="text-secondary">Privacy Policy</a>
                     &middot; -->
-                    <a href="https://github.com/adrianpisabarrogarcia/permisosobrasvg" target="_blank" class="text-secondary">GitHub</a>
+                    <a href="https://github.com/adrianpisabarrogarcia/permisosobrasvg" target="_blank" class="text-light pr-5">GitHub</a>
                 </div>
             </div>
         </div>
     </footer>
 </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="/js/Librerias/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<script src="/js/principal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="/js/script-template-bootstrap.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -101,5 +132,6 @@
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
 <script src="assets/demo/datatables-demo.js"></script>
+
 </body>
 </html>

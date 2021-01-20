@@ -1,3 +1,21 @@
-/*# sourceMappingURL=claro.css.map */
+.text-pistacho {
+  color: #6c757d !important;
+}
+
+.text-pistacho:hover {
+  color: #A9E159 !important;
+}
+
+.bg-pistacho {
+  background: #b6e673 !important;
+}
+
+.border-pistacho {
+  border: #d9edbb !important;
+}
+
+.border-transparent {
+  border-color: transparent !important;
+}
 
 /*# sourceMappingURL=claro.css.map */
