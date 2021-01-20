@@ -31,8 +31,8 @@
                 <p class="lead w-50 m-0 ml-5">Obras y reformas Vitoria-Gasteiz.</p>
             </div>
             <div class="col-12 col-lg-6 h-auto row mt-3 ml-4 ml-lg-0 pl-5 float-end align-items-end justify-content-around">
-                <a href="contacto" class="h-25 bg-pistacho col-5 col-lg-5 py-4 mr-5 ml-sm-0 border-5 rounded  text-dark d-flex align-items-center justify-content-center btn-outline-secondary">Solicitar Obra</a>
-                <button class="h-25 bg-pistacho col-5 col-lg-5 py-4 mr-5 border-2 rounded border-transparent text-dark d-flex align-items-center justify-content-center">Contacto </button>
+                <a href="solicitarObra" class="h-25 bg-pistacho col-5 col-lg-5 py-4 mr-5 ml-sm-0 border-5 rounded  text-dark d-flex align-items-center justify-content-center btn-outline-dark text-decoration-none">Solicitar Obra</a>
+                <a href="contacto" class="h-25 bg-pistacho col-5 col-lg-5 py-4 mr-5 border-2 rounded border-transparent text-dark d-flex align-items-center justify-content-center btn-outline-dark text-decoration-none">Contacto</a>
                 <p class="w-100" ><a href="" class="text-pistacho float-right">Más información</a></p>
             </div>
         </div>
@@ -40,7 +40,7 @@
     </div>
     <main>
         <div class="container-fluid bg-transparent h-auto">
-            <div class="container-fluid row d-flex justify-content-center align-items-end mh-100">
+            <div class="container-fluid row d-flex justify-content-center align-items-end py-5">
                 @if(isset($listaPublicaciones)/*$listaPublicaciones>0*/)
                     @foreach($listaPublicaciones as $publicacion )
                         <div class="col-xl-5 mx-5">
@@ -54,7 +54,7 @@
                         </div>
                     @endforeach
                 @else
-                    <h1 class="">Todavía no hay solicitudes de obras publicadas</h1>
+                    <h2 class="font-weight-light">Todavía no hay solicitudes de obras publicadas</h2>
                 @endif
             </div>
         </div>

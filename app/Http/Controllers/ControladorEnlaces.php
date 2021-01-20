@@ -16,28 +16,32 @@ class ControladorEnlaces extends Controller
     {
         //
     }
-
+    //Enlaces generales
     public function solicitarObra(){
-        return view("coordinador.solicitarObra");
+        return view("solicitarObra");
     }
     public function contacto(){
         return view("contacto");
     }
-    public function asignarSolicitudes(){
-        return view("asignarSolicitudes");
-    }
-    public function comprobarSolicitudes(){
-        return view("comprobarSolicitudes");
-    }
-    public function verGraficos(){
-        return view("graficos");
-    }
-    public function consultarEmpleados(){
-        return view("tablaEmpleados");
-    }
     public function consultarUsuarios(){
         return view("tablaUsuarios");
     }
+    //Enlaces para las funciones del coordinador.
+    public function asignarSolicitudes(){
+        return view("coordinador.asignarSolicitudes");
+    }
+    public function comprobarSolicitudes(){
+        return view("coordinador.comprobarSolicitudes");
+    }
+    public function verGraficos(){
+        return view("coordinador.graficos");
+    }
+    public function consultarEmpleados(){
+        return view("coordinador.tablaEmpleados");
+    }
+
+    //Enlaces para las funciones del tecnico.
+
 
 
     /**
