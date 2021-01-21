@@ -83,7 +83,7 @@ input:checked + .slider:before {
 }
 
 .border-pistacho {
-  border-color: #d9edbb !important;
+  border: 1px solid #A9E159;
 }
 
 .jumbotron button:focus {
@@ -92,6 +92,32 @@ input:checked + .slider:before {
 
 .jumbotron a {
   font-size: 1.3em !important;
+}
+
+.bg-pistacho > span {
+  font-size: 1.1em !important;
+  margin: 0 10px;
+}
+
+@media (max-width: 1400px) {
+  .w-8 {
+    width: 12%;
+  }
+}
+@media (max-width: 1000px) {
+  .w-8 {
+    width: 15%;
+  }
+}
+@media (max-width: 800px) {
+  .w-8 {
+    width: 25%;
+  }
+}
+@media (max-width: 600px) {
+  .w-8 {
+    width: 40%;
+  }
 }
 
 /*# sourceMappingURL=principal.css.map */

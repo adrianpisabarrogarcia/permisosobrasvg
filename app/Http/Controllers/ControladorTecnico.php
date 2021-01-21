@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ControladorEnlaces extends Controller
+class ControladorTecnico extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,25 +16,10 @@ class ControladorEnlaces extends Controller
     {
         //
     }
-    //Enlaces generales
-    public function solicitarObra(){
-        return view("solicitarObra");
+
+    public function solicitudesPendientes(){
+        return view("tecnico.solicitudesPendientes");
     }
-
-    public function contacto(){
-        return view("contacto");
-    }
-
-    public function comprobarSolicitudes(){
-        return view("comprobarSolicitudes");
-    }
-
-    public function consultarUsuarios(){
-        return view("tablaUsuarios");
-    }
-
-
-
 
     /**
      * Store a newly created resource in storage.

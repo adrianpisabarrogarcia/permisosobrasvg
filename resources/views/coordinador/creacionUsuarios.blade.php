@@ -2,7 +2,6 @@
 
 @section("logo")
     <a href="portal"><img src="img/logo.png" class="w-8 "></a>
-
 @endsection
 
 @section("archivosCSS")
@@ -11,5 +10,6 @@
 @endsection
 
 @section("content")
-    <h1>Tablas</h1>
+    {{\Illu}}
+
 @endsection

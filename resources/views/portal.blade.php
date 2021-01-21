@@ -1,19 +1,13 @@
-@include("head")
+@extends("layouts.estructuraPagina")
 
+@section("archivosCSS")
     <link href="/css/principal.css" rel="stylesheet" />
     <link href="/css/Principal/claro.css" rel="stylesheet" class="theme"/>
-</head>
-
-
-<body class="sb-nav-fixed sb-sidenav-toggled">
-
-@include("navbar")
-<!--MENU DESPLEGABLE-->
-@include("menuDesplegable")
+@endsection
 
 <!--MAIN-->
+@section("content")
 
-<div id="layoutSidenav_content" class="bg-light">
     <div class="jumbotron jumbotron-fluid w-100 m-0 p-0 bg-transparent border-bottom border-secondary d-flex align-items-center h-auto">
         <div class="container-fluid row justify-content-between py-5 w-100">
             <div class="h-auto py-5 col-12 col-lg-6 d-flex flex-column align-items-center">
@@ -34,13 +28,13 @@
                 @if(isset($listaPublicaciones)/*$listaPublicaciones>0*/)
                     @foreach($listaPublicaciones as $publicacion )
                         <div class="col-xl-5 mx-5">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fas fa-chart-bar mr-1"></i>
-                                     Contacto
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-bar mr-1"></i>
+                                         Contacto
+                                    </div>
+                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
                                 </div>
-                                <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                            </div>
                         </div>
                     @endforeach
                 @else
@@ -48,70 +42,9 @@
                 @endif
             </div>
         </div>
-
-
-
-        <!--<div class="container-fluid bg-transparent">
-
-            <div class="container-fluid">
-                <div class="row justify-content-around">
-                    <div class="col-xl-4">
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-chart-area mr-1"></i>
-                                Solicitar Obra
-                            </div>
-                            <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4">
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-chart-bar mr-1"></i>
-                                Estado de obras
-                            </div>
-                            <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-around">
-                    <div class="col-xl-4">
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-chart-area mr-1"></i>
-                                Más Información
-                            </div>
-                            <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4">
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-chart-bar mr-1"></i>
-                                Contacto
-                            </div>
-                            <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        -->
     </main>
-    <footer class="py-4 bg-secondary mt-auto">
-        <div class="container-fluid">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-light">Copyright &copy; Ayuntamiento de Vitoria-Gasteiz 2021</div>
-                <div >
-                    <!-- <a href="#" class="text-secondary">Privacy Policy</a>
-                    &middot; -->
-                    <a href="https://github.com/adrianpisabarrogarcia/permisosobrasvg" target="_blank" class="text-light pr-5">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-</div>
-</div>
+
+@endsection
 <script src="/js/Librerias/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
 <script src="/js/principal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

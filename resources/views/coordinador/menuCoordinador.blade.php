@@ -17,20 +17,24 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Gráficos
                     </a>
+                    <a class="nav-link " href="graficos">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Tablas
+                    </a>
 
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                         <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                        Tablas
+                        Usuarios
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
 
                             <a class="nav-link " href="tablaEmpleados">
-                                Empleados
+                                Técnicos
                             </a>
                             <a class="nav-link " href="tablausUsuarios">
-                                Usuarios
+                                Coordinadores
                             </a>
 
                         </nav>

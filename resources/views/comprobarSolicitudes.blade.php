@@ -9,7 +9,6 @@
     <link href="/css/principal.css" rel="stylesheet" />
     <link href="/css/Principal/claro.css" rel="stylesheet" class="theme"/>
 @endsection
-
 @section("content")
-    <h1>Tablas</h1>
+    <h1>Comprobar Solicitudes</h1>
 @endsection

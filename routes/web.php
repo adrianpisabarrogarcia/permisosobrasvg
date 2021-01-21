@@ -20,14 +20,26 @@ use Illuminate\Support\Facades\Route;
  */
 
 //PORTAL
+//Rutas generales
 Route::view('/portal', "portal")->name('portal.index');
 Route::get("/solicitarObra", "ControladorEnlaces@solicitarObra")->name("solicitarObra");
 Route::get("/contacto","ControladorEnlaces@contacto")->name("contacto");
-Route::get("/asignarSolicitudes","ControladorEnlaces@asignarSolicitudes")->name("asignarSolicitudes");
-Route::get("/ComprobarSolicitudes","ControladorEnlaces@comprobarSolicitudes")->name("comprobarSolicitudes");
-Route::get("/graficos","ControladorEnlaces@verGraficos")->name("graficos");
-Route::get("/tablaEmpleados","ControladorEnlaces@consultarEmpleados")->name("tablaEmpleados");
-Route::get("/tablaUsuarios", "ControladorEnlaces@consultarUsuarios")->name("tablaUsuarios");
+
+//Rutas para coordinadores
+Route::get("/asignarSolicitudes","ControladorCoordinador@asignarSolicitudes")->name("asignarSolicitudes");
+Route::get("/graficos","ControladorCoordinador@verGraficos")->name("graficos");
+Route::get("creacionUsuarios","ControladorCoordinador@crearUsuarios")->name("creacionUsuarios");
+
+//Rutas para tecnicos
+Route::get("/solicitudesPendientes","ControladorTecnico@SolicitudesPendientes")->name("solicitudesPendientes");
+
+//Rutas para coordinadores y tecnicos
+Route::get("/informacionUsuarios","ControladorEnlaces@consultarUsuarios")->name("tablas");
+Route::get("/comprobarSolicitudes","ControladorEnlaces@comprobarSolicitudes")->name("comprobarSolicitudes");
+
+
+
+
 
 //LOGIN
 //Llamamos al controlador ControladorLogin y a los diferentes metodos para mostrar las vistas

@@ -2,7 +2,8 @@
 
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-secondary">
     <button class="btn btn-link btn-sm order-1 order-lg-0 ml-5personalized text-light border-1 border-light btn-outline-secondary" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
-    <span class="navbar-brand ml-5 w-100 pl-5">
+    <span class="navbar-brand ml-5 w-100 pl-lg-5">
+        @yield("logo")
 
     </span>
 
