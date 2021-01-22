@@ -22,8 +22,9 @@ use Illuminate\Support\Facades\Route;
 //PORTAL
 //Rutas generales
 Route::view('/portal', "portal")->name('portal.index');
-Route::get("/solicitarObra", "ControladorEnlaces@solicitarObra")->name("solicitarObra");
+Route::get("/solicitarObra", "ControladorSolicitudes@show")->name("solicitarObra");
 Route::get("/contacto","ControladorEnlaces@contacto")->name("contacto");
+
 
 //Rutas para coordinadores
 Route::get("/asignarSolicitudes","ControladorCoordinador@asignarSolicitudes")->name("asignarSolicitudes");

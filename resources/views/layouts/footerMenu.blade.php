@@ -1,4 +1,4 @@
-<div class="sb-sidenav-footer d-flex flex-column align-items-center">
-    <div class="small">Logged in as:</div>
-        {{Session::get("nombre")}}
+<div class="sb-sidenav-footer  bg-dark d-flex flex-column align-items-center">
+    <div class="small text-light">Logged in as:</div>
+        <span class="text-light">{{Session::get("nombre")}}</span>
 </div>

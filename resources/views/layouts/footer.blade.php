@@ -1,4 +1,4 @@
-<footer class="py-4 bg-secondary mt-auto">
+<footer class="py-4 bg-dark mt-auto">
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between small">
             <div class="text-light">Copyright &copy; Ayuntamiento de Vitoria-Gasteiz 2021</div>
