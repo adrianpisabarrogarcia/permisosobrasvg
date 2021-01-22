@@ -43,7 +43,7 @@
                                 Crear usuario
                             </a>
                             <a class="nav-link " href="creacionUsuarios?accion=borrar">
-                                Borrar usuario
+                                Listado  usuarios
                             </a>
 
                         </nav>

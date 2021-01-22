@@ -103,11 +103,17 @@ input:checked + .slider:before {
     .w-8{
         width: 12%;
     }
+    .w-50{
+        width: 70% !important; ;
+    }
 
 }
 @media (max-width: 1000px) {
     .w-8{
         width: 15%;
+    }
+    .w-50{
+        width: 60% !important;
     }
 
 }
@@ -115,13 +121,27 @@ input:checked + .slider:before {
     .w-8{
         width: 25%;
     }
+    .jumbotron a{
+        font-size: 1em !important;
+    }
 
 }
 @media (max-width: 600px) {
     .w-8{
         width: 40%;
     }
+    .w-50{
+        width: 70% !important;
+    }
 
+}
+@media (max-width: 500px) {
+    .w-8{
+        width: 60%;
+    }
+    .jumbotron a{
+        font-size: 0.6em !important;
+    }
 }
 
 
