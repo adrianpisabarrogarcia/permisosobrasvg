@@ -11,7 +11,7 @@
     <div class="jumbotron jumbotron-fluid w-100 m-0 p-0 bg-transparent border-bottom border-secondary d-flex align-items-center h-auto">
         <div class="container-fluid row justify-content-between py-5 w-100">
             <div class="h-auto py-5 col-12 col-lg-6 d-flex flex-column align-items-center">
-                <img src="img/logo-negro.png" class=" w-50  h-75 mr-5">
+                <img src="img/logo-negro.png" class=" w-50 mr-5">
                 <p class="lead w-50 m-0 ml-5">Obras y reformas Vitoria-Gasteiz.</p>
             </div>
             <div class="col-12 col-lg-6 h-auto row mt-3 ml-4 ml-lg-0 pl-5 float-end align-items-center justify-content-around">

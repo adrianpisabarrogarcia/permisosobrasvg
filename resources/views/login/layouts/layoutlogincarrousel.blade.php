@@ -20,7 +20,7 @@
                         <h1 class="text-center text-white mt-5">Gestión de licencias de obras</h1>
                     </div>
                     <div class="carousel-item">
-                        <img src="/img/login/logocarrousel.png" class="d-block mx-auto w-100" alt="..." height="300">
+                        <img style="width: 65% !important;" src="/img/login/logocarrousel.png" class="d-block mx-auto w-100" alt="...">
                     </div>
                 </div>
             </div>

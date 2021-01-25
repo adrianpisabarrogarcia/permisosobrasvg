@@ -64,6 +64,11 @@
                     <label for="repcontra" class="form-label text-primary fw-bold mb-0">Confirma Contraseña</label>
                     <input type="password" class="form-control border-0 p-0" id="repcontra" required>
                 </div>
+                @isset($errores)
+                    <div class="alert alert-danger text-center" role="alert">
+                    {!! $errores !!}
+                    </div>
+                @endisset
                 <button type="submit" class="btn btn-primary w-100">Registrarse</button>
             </form>
             <div class="text-center px-lg-5 pb-lg-2 p-2 w-100">
