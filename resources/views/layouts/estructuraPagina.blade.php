@@ -18,11 +18,11 @@
 
 <body class="sb-nav-fixed sb-sidenav-toggled">
 
-@include("navbar")
+@include("principal.layouts.navbar")
 <!--MENU DESPLEGABLE-->
 <div id="layoutSidenav" >
     <div id="layoutSidenav_nav">
-        @extends("layouts.menuDesplegable")
+        @extends("principal.layouts.menuDesplegable")
     </div>
     <!--CONTENIDO-->
     <div id="layoutSidenav_content" class="bg-light">
@@ -30,18 +30,21 @@
         @include("layouts.footer")
     </div>
 </div>
-
+<!--
 <script src="/js/Librerias/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
 <script src="/js/principal.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="/js/script-template-bootstrap.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 <script src="assets/demo/chart-area-demo.js"></script>
 <script src="assets/demo/chart-bar-demo.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-<script src="assets/demo/datatables-demo.js"></script>
-<script src="./js/app.js"></script>
+<script src="assets/demo/datatables-demo.js"></script>-->
+<script src="/js/Librerias/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="/js/script-template-bootstrap.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/principal.js"></script>
+
 
 @yield("scripts")
 

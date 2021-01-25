@@ -21,14 +21,14 @@ use Illuminate\Support\Facades\Route;
 
 //PORTAL
 //Rutas generales
-Route::view('/portal', "portal")->name('portal.index');
+Route::get('/portal', "ControladorPortal@index")->name('portal.index');
+Route::post('/portal','ControladorPortal@logout')->name('portal.logout');
 Route::get("/solicitarObra", "ControladorSolicitudes@show")->name("solicitarObra");
 Route::get("/contacto","ControladorEnlaces@contacto")->name("contacto");
 
-
 //Rutas para coordinadores
 Route::get("/asignarSolicitudes","ControladorCoordinador@asignarSolicitudes")->name("asignarSolicitudes");
-Route::get("/graficos","ControladorCoordinador@verGraficos")->name("graficos");
+Route::get("/graficos","ControladorCoordinador@verGraficos")->name("portal.graficos");
 Route::get("creacionUsuarios","ControladorCoordinador@crearUsuarios")->name("creacionUsuarios");
 
 //Rutas para tecnicos

@@ -30,11 +30,16 @@
                         <div id="datos usuario  " class="ml-5 col-6 p-0 ">
                             <h4 class="mb-4">Datos</h4><br>
                             <div class="mt-5">
-                                <label for="nombre" class="mr-5 mb-4"><h5 >Tipo de obra</h5></label>
-                                <label for="tipoReforma" class="mr-2">Reforma</label> <input type="radio" name="tipo" value="reforma" id="tipoReforma" class="mr-5">
-                                <label for="tipoConstruccion" class="mr-2">Nueva construcción</label> <input type="radio" name="tipo" value="reforma" id="tipoConstruccion"><br>
                                 <label class="mr-5"><h5>Tipo de edificio</h5></label>
-                                <select class="border-secondary rounded bg-light mb-5" id="selector" required>
+                                <select class="border-secondary rounded bg-light mb-5 table-bordered" id="selector" required>
+                                    <option selected="true" disabled>Tipo de obra</option>
+                                    @foreach($tipoObras as $obra)
+                                        <option value="{{$obra->id}}">{{$obra->tipo}}</option>
+                                    @endforeach
+                                </select><br>
+
+                                <label class="mr-5"><h5>Tipo de edificio</h5></label>
+                                <select class="border-secondary rounded bg-light mb-5 table-bordered shadow-none" id="selector" required>
                                     <option  selected="true" value="edificacion" disabled>Tipo de edificación</option>
                                     {{var_dump($tipoEdificios)}}
                                     @foreach($tipoEdificios as $edificio)

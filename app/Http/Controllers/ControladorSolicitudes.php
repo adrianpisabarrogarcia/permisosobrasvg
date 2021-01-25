@@ -42,8 +42,17 @@ class ControladorSolicitudes extends Controller
         $usuario= DB::select("select * from usuarios where dni= ? ",[$dni]);
 
         $tipoEdificio= DB::select("select * from tipo_edificio");
+        //$tipoEdificio=DB::table("tipo_edificio");
+        $tipoObra= DB::select("select * from tipo_edificio");
+        //$tipoObra=DB::table("tipo_obra");
 
-        return view("solicitarObra")->with("usuario",$usuario,"tipoEdificios",$tipoEdificio);
+
+        return view("solicitarObra")->with(
+            [
+                "usuario"=>$usuario,
+                "tipoEdificios"=>$tipoEdificio,
+                "tipoObras"=>$tipoObra
+                ]);
     }
 
     /**

@@ -80,4 +80,12 @@ class ControladorEnlaces extends Controller
     {
         //
     }
+
+    public function graficos()
+    {
+        if (!Session::exists('usuario')){
+            return redirect()->route('login.home');
+        }
+        return view('principal.mapaygraficos.graficos');
+    }
 }

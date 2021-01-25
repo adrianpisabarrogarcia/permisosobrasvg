@@ -1,151 +1,134 @@
-$enable-shadows: true !default;
-@import "../../public/bootstrap-4.0.0/scss/functions.scss";
-@import "../../public/bootstrap-4.0.0/scss/variables";
-@import "../../public/bootstrap-4.0.0/scss/mixins.scss";
+$primary: #009C8C;
 
+@import "../../public/bootstrap-5.0/scss/functions";
+@import "../../public/bootstrap-5.0/scss/variables";
+@import "../../public/bootstrap-5.0/scss/mixins";
+@import "../../public/bootstrap-5.0/scss/utilities";
+@import "../../public/bootstrap-5.0/scss/root";
+@import "../../public/bootstrap-5.0/scss/reboot";
+@import "../../public/bootstrap-5.0/scss/grid";
+@import "../../public/bootstrap-5.0/scss/forms";
+@import "../../public/bootstrap-5.0/scss/buttons";
+@import "../../public/bootstrap-5.0/scss/alert";
+@import "../../public/bootstrap-5.0/scss/utilities/api";
 
-
-
-.w-8{
-    width: 8%;
-}
-.w-5{
-    width: 5%;
-}
-.h-40{
-    height: 40%;
-}
-
-.ml-5personalized{
-    margin-left: 5%;
+a{
+    text-decoration: none !important;
 }
 
- .switch {
-     position: relative;
-     display: inline-block;
-     width: 56px;
-     height: 28px;
- }
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+.ml-16personalized{
+    margin-left: 16px;
 }
 
-.slider {
-    position: absolute;
+//Boton menu desplegable
+.btn-link{
+    outline-width: 0!important;
+    box-shadow: none !important;
+}
+
+.btn-link:hover{
+    color: #e9ecef !important;
+}
+
+@import "funciones";
+//Boton modo oscuro y claro
+.switch{
+    @include botonusua(#15838b,relative,flex,none);
+    border: none;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
+    outline-width: 0 !important;
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 20px;
-    width: 20px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-input:checked + .slider {
-    background-color: #2196F3;
-}
-
-input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-    border-radius: 34px;
-}
-
-.slider.round:before {
-    border-radius: 50%;
-}
-#layoutSidenav_nav .nav-link{
-    color: #6c757d !important;
-}
-#layoutSidenav_nav .nav-link:hover{
-    color: #A9E159 !important;
-}
-.border-pistacho{
-    border: 1px solid #A9E159;
-}
-.jumbotron button:focus {
-    outline-color: #addb6b !important;
-}
-.jumbotron a{
-    font-size: 1.3em !important;
-}
-.bg-pistacho> span{
-    font-size: 1.1em !important;
-    margin: 0 10px;
-}
-
-@media (max-width: 1400px) {
-    .w-8{
-        width: 12%;
-    }
-    .w-50{
-        width: 70% !important; ;
+    &::after{
+        @include botonusua(#F1F1F1,absolute,block,0px 0px 2px 2px rgba(0,0,0,.2));
+        content: "";
+        width: 30px;
+        height: 30px;
+        top: 1px;
+        left: .1em;
+        right: unset;
+        border-radius: 100px;
+        transition: .3s ease all;
     }
 
-}
-@media (max-width: 1000px) {
-    .w-8{
-        width: 15%;
-    }
-    .w-50{
-        width: 60% !important;
-    }
-
-}
-@media (max-width: 800px) {
-    .w-8{
-        width: 25%;
-    }
-    .jumbotron a{
-        font-size: 1em !important;
+    &.active{
+        background: orange;
+        &::after{
+            right: .1em;
+            left: unset;
+        }
     }
 
-}
-@media (max-width: 600px) {
-    .w-8{
-        width: 40%;
-    }
-    .w-50{
-        width: 70% !important;
-    }
-
-}
-@media (max-width: 500px) {
-    .w-8{
-        width: 60%;
-    }
-    .jumbotron a{
-        font-size: 0.6em !important;
+    span{
+        width: 30px;
+        height: 32px;
+        line-height: 30px;
+        display: block;
+        background: none;
+        color: #fff;
     }
 }
 
+body.dark{
+    background-color: #282828 !important;
+    @include modoscla(white,null);
+    color: white !important;
 
+    .sb-sidenav{
+        background-color: #282828 !important;
+    }
 
+    .enlace{
+        @include modoscla(white,null);
+    }
 
+    .enlace:hover,.text-primary{
+        @include modoscla(#15838b,null);
+    }
 
+    .enlace.active{
+        @include modoscla(white,underline);
+    }
+
+    .bg-primary{
+        background-color: #15838b !important;
+    }
+
+    a.enlaceprin{
+        background: #15838b !important;
+    }
+
+    .dropdown-item:active{
+        background-color: white !important;
+        color: black;
+    }
+}
+
+.dropdown-item:active{
+    background-color: white !important;
+    color: black;
+}
+
+.nav-link:hover,.enlace:hover{
+    @include modoscla($primary,null);
+}
+
+.enlace.active{
+    @include modoscla(black,underline);
+}
+
+.menusuario{
+    @include modoscla(white,null);
+}
+
+.menusuario:hover{
+    @include modoscla(black,null);
+}
+
+a.enlaceprin{
+    background: $primary !important;
+}
+
+.paginacion{
+    overflow: auto !important;
+}
 
