@@ -37794,7 +37794,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("footer", { staticClass: "py-4 bg-dark mt-auto" }, [
+  return _c("footer", { staticClass: "py-4 bg-primary mt-auto" }, [
     _c("div", { staticClass: "container-fluid" }, [
       _c(
         "div",
@@ -37802,7 +37802,7 @@ var render = function() {
           staticClass: "d-flex align-items-center justify-content-between small"
         },
         [
-          _c("div", { staticClass: "text-muted" }, [
+          _c("div", { staticClass: "text-white" }, [
             _vm._v(
               "Copyright © Ayuntamiento de Vitoria-Gasteiz -  " +
                 _vm._s(_vm.anno)
@@ -37836,7 +37836,7 @@ var render = function() {
             _c(
               "a",
               {
-                staticClass: "text-secondary",
+                staticClass: "text-white",
                 attrs: {
                   href:
                     "https://github.com/adrianpisabarrogarcia/permisosobrasvg",

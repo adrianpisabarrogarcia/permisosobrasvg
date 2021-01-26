@@ -7663,6 +7663,10 @@ a {
   color: #e9ecef !important;
 }
 
+.btn-margin {
+  margin-left: 6% !important;
+}
+
 .switch {
   background: #15838b;
   border-radius: 100px;

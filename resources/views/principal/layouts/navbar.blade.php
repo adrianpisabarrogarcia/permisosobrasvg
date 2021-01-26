@@ -1,8 +1,7 @@
 @yield("nav")
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-primary">
-    <button class="btn btn-link btn-sm order-1 order-lg-0 ml-16personalized text-light border-1 border-light" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+    <button class="btn btn-link btn-sm order-1 order-lg-0 ml-16personalized text-light border-1 border-light btn-margin" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
     <span class="navbar-brand ml-5 w-100 pl-lg-5">
-
     </span>
 
     <!-- Navbar Search
