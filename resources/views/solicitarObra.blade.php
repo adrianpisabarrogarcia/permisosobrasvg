@@ -13,15 +13,11 @@
 
 @section("content")
     <div>
-        <div class="container flex-column align-items-center justify-content-center mt-5">
-            <h1 class="font-weight-light my-5 text-center">Solicitar Obras</h1>
-        </div>
 
         <div class=" mt-5 w-75 container-fluid ">
             <div class="card mb-4 ">
-                <div class="card-header bg-pistacho border-pistacho border-1">
-                    Solicitar obra o reforma
-
+                <div class="card-header bg-primary border-1">
+                    <h1 class="font-weight-light my-1 text-center text-white">Solicitar Obras</h1>
                 </div>
                 <div class="card-body">
 

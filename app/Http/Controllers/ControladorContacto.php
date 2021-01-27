@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Session;
 
-class ControladorCoordinador extends Controller
+class ControladorContacto extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,21 +15,7 @@ class ControladorCoordinador extends Controller
      */
     public function index()
     {
-        //
     }
-
-    public function asignarSolicitudes(){
-        return view("coordinador.asignarSolicitudes");
-    }
-
-    public function verGraficos(){
-        return view("coordinador.graficos");
-    }
-
-    public  function crearUsuarios(){
-        return view("coordinador.creacionUsuarios");
-    }
-
 
     /**
      * Store a newly created resource in storage.
@@ -47,9 +34,19 @@ class ControladorCoordinador extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $dni = Session::get('usuario');
+        $datos = DB::select('select * from usuarios where dni = ?',[$dni]);
+
+
+        $nombre = $datos[0]->nombre . ' ' . $datos[0]->apellido;
+        $email = $datos[0]->email;
+
+
+        return view("contacto")->with(['nombre'=>$nombre,'email'=>$email]);
+
+
     }
 
     /**

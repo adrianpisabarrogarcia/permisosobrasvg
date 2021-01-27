@@ -22,7 +22,7 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-bar text-primary"></i></div>
                         Estadísticas
                     </a>
-                    <a class="nav-link enlace" href="#">
+                    <a class="nav-link enlace" href="{{ route('listarUsuarios') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-users text-primary"></i></div>
                         Empleados y Usuarios
                     </a>

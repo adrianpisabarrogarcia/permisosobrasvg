@@ -107,10 +107,11 @@ class ControladorRegistro extends Controller
     }
 
     public function contact(Request $request){
-        $subject = "Bienvenido/a ". $request['nombre'];
-        $for = $request['email'];
+        $subject = "Bienvenido/a ". $request['nombre']; //asunto
+        $for = $request['email']; //a quien se lo voy a enviar
+                      //vista          //le paso los datos del request
         Mail::send('emails.register',$request->all(), function($msj) use($subject,$for){
-            $msj->from("developersweapp@gmail.com","Permisos y Obras (Vitoria-Gasteiz)");
+            $msj->from("developersweapp@gmail.com","Permisos y Obras (Vitoria-Gasteiz)"); //de quien
             $msj->subject($subject);
             $msj->to($for);
         });

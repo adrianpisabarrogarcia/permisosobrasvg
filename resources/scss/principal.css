@@ -7667,6 +7667,10 @@ a {
   margin-left: 6% !important;
 }
 
+.fr-wrapper .show-placeholder {
+  z-index: -999 !important;
+}
+
 .switch {
   background: #15838b;
   border-radius: 100px;

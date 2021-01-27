@@ -33,6 +33,11 @@ a{
     margin-left: 6% !important;
 }
 
+
+.fr-wrapper .show-placeholder{
+    z-index: -999 !important;
+}
+
 @import "funciones";
 //Boton modo oscuro y claro
 .switch{

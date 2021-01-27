@@ -24,18 +24,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/portal', "ControladorPortal@index")->name('portal.index');
 Route::post('/portal','ControladorPortal@logout')->name('portal.logout');
 Route::get("/solicitarobra", "ControladorSolicitudes@show")->name("solicitarObra");
-Route::get("/contacto","ControladorEnlaces@contacto")->name("contacto");
+Route::get("/contacto","ControladorContacto@show")->name("contacto");
+
 
 //Rutas para coordinadores
 Route::get("/asignarSolicitudes","ControladorCoordinador@asignarSolicitudes")->name("asignarSolicitudes");
 Route::get("/graficos","ControladorCoordinador@verGraficos")->name("portal.graficos");
-Route::get("creacionUsuarios","ControladorCoordinador@crearUsuarios")->name("creacionUsuarios");
+Route::get("/creacionusuarios","ControladorCoordinador@crearUsuarios")->name("creacionUsuarios");
+Route::get("/listadousuarios","ControladorUsuarios@show")->name("listarUsuarios");
+
+
 
 //Rutas para tecnicos
 Route::get("/solicitudesPendientes","ControladorTecnico@SolicitudesPendientes")->name("solicitudesPendientes");
 
 //Rutas para coordinadores y tecnicos
-Route::get("/informacionUsuarios","ControladorEnlaces@consultarUsuarios")->name("tablas");
 Route::get("/comprobarSolicitudes","ControladorEnlaces@comprobarSolicitudes")->name("comprobarSolicitudes");
 
 
