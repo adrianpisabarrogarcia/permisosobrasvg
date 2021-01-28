@@ -38,14 +38,11 @@ class ControladorUsuarios extends Controller
     public function show()
     {
         $datosUsuarios = DB::select('select * from usuarios');
-        $datosEmpleados = DB::select('select * from empleados');
 
 
 
         return view("tablaUsuarios")->with([
-            "datosUsuarios" => $datosUsuarios,
-            "datosEmpleados" => $datosEmpleados
-        ]);
+            "datosUsuarios" => $datosUsuarios]);
     }
 
     /**
@@ -68,6 +65,6 @@ class ControladorUsuarios extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('usuarios')->where('id_usu', '=', $id)->delete();
     }
 }

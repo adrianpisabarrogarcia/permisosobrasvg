@@ -85,6 +85,11 @@
             documentReady: true,
             heightMin: 300,
             heightMax: 300,
+            events: {
+                'image.beforeUpload': function (images) {
+                    images = false;
+                },
+            },
             "key": "INSERT-YOUR-FROALA-KEY-HERE",
             "events": {},
             "toolbarButtons": {

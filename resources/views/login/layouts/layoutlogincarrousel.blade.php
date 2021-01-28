@@ -16,11 +16,11 @@
             <div id="carouselExampleControls" class="carousel slide d-flex justify-content-center align-items-center h-100" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="/img/login/logoayunt.png" class="d-block mx-auto" alt="...">
+                        <img src="/img/login/logoayunt.png" class="d-block mx-auto" alt="..." >
                         <h1 class="text-center text-white mt-5">Gestión de licencias de obras</h1>
                     </div>
                     <div class="carousel-item">
-                        <img style="width: 65% !important;" src="/img/login/logocarrousel.png" class="d-block mx-auto w-100" alt="...">
+                        <img style="width: 55% !important" src="/img/login/logocarrousel.png" class="d-block mx-auto w-100" alt="...">
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
     <script src="/bootstrap-5.0/js/popper.min.js"></script>
     <script src="/bootstrap-5.0/js/bootstrap.js"></script>
     <script src="/js/login.js"></script>
-
+@yield('scripts')
 </body>
 </html>
 

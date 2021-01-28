@@ -32,7 +32,7 @@ Route::get("/asignarSolicitudes","ControladorCoordinador@asignarSolicitudes")->n
 Route::get("/graficos","ControladorCoordinador@verGraficos")->name("portal.graficos");
 Route::get("/creacionusuarios","ControladorCoordinador@crearUsuarios")->name("creacionUsuarios");
 Route::get("/listadousuarios","ControladorUsuarios@show")->name("listarUsuarios");
-
+Route::get('/listadousuarios/{id}','ControladorUsuarios@destroy')->name("borrarUsuario");
 
 
 //Rutas para tecnicos

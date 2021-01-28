@@ -55,7 +55,8 @@ class ControladorRegistro extends Controller
                 'codigo_postal' => $request->get('codigopostal'),
                 'municipio' => $request->get('municipio'),
                 'provincia' => $request->get('provincia'),
-                'password' => Hash::make($request->get('password'))
+                'password' => Hash::make($request->get('password')),
+                'rol' => '3'
             ]);
 
             $this->contact($request);

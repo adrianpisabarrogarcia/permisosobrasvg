@@ -37798,7 +37798,13 @@ var render = function() {
     "footer",
     {
       staticClass: "py-4 bg-primary mt-auto",
-      staticStyle: { position: "sticky", bottom: "0", "z-index": "999999" }
+      staticStyle: {
+        position: "fixed",
+        bottom: "0",
+        right: "0",
+        left: "0",
+        "z-index": "999999"
+      }
     },
     [
       _c("div", { staticClass: "container-fluid" }, [

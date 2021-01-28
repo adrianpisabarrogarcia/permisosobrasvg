@@ -1,5 +1,5 @@
 <template>
-    <footer class="py-4 bg-primary mt-auto" style="position: -webkit-sticky;position: sticky;bottom: 0; z-index: 999999">
+    <footer class="py-4 bg-primary mt-auto" style="position: -webkit-sticky;position: fixed; bottom: 0; right: 0; left: 0; z-index: 999999">
         <div class="container-fluid">
             <div class="d-flex align-items-center justify-content-between small">
                 <div class="text-white">Copyright &copy; Ayuntamiento de Vitoria-Gasteiz -  {{ anno }}</div>
