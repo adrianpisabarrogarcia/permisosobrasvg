@@ -11,5 +11,5 @@
 @endsection
 
 @section("content")
-    <h1>Graficos</h1>
+    <h1>Gráficos</h1>
 @endsection

@@ -10,6 +10,6 @@
 @endsection
 
 @section("content")
-    {{\Illu}}
+    <h1>Crear usuarios</h1>
 
 @endsection
