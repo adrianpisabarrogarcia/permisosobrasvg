@@ -1,4 +1,4 @@
-@extends("layouts.estructuraPagina")
+@extends("principal.layouts.estructuraPagina")
 
 @section("logo")
     <a href="portal"><img src="img/logo.png" class="w-8 "></a>

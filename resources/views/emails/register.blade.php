@@ -19,6 +19,5 @@ Nos hemos permitido enviarte los <b>datos de tu sesión</b> en nuestro portal:
     <li>C.P.: {{$codigopostal}}</li>
     <li>Email: {{$email}}</li>
     <li>Teléfono: {{$telefono}}</li>
-    <li>Contraseña: *******</li>
 </ul>
 

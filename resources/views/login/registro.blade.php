@@ -23,7 +23,7 @@
                 <div class="mb-2 row">
                     <div class="col-6">
                         <label for="fecha_nac" class="form-label text-primary fw-bold mb-0">Fecha de Nacimiento</label>
-                        <input type="date" class="form-control border-0 p-0" name="fecha_nac" id="fecha_nac" required max="2020-1-23">
+                        <input type="date" class="form-control border-0 p-0" name="fecha_nac" id="fecha_nac" required>
                     </div>
                     <div class="col-6">
                         <label for="lugar_nac" class="form-label text-primary fw-bold mb-0">Lugar de Nacimiento</label>

@@ -7840,11 +7840,7 @@ a {
 }
 
 .btn-margin {
-  margin-left: 6% !important;
-}
-
-.fr-wrapper .show-placeholder {
-  z-index: -999 !important;
+  margin-left: 5%;
 }
 
 .switch {
@@ -7867,11 +7863,15 @@ a {
   content: "";
   width: 30px;
   height: 30px;
-  top: 1px;
+  top: 2%;
   left: 0.1em;
   right: unset;
   border-radius: 100px;
   transition: 0.3s ease all;
+}
+
+.switch .fa-sun, .switch .fa-moon {
+  margin-top: 7 !important;
 }
 
 .switch.active {
@@ -7919,18 +7919,89 @@ body.dark .bg-primary {
   background-color: #15838b !important;
 }
 
+body.dark .dropdown-item:active {
+  background: none !important;
+}
+
+body.dark .dropdown-item:active a {
+  color: black !important;
+}
+
 body.dark a.enlaceprin {
   background: #15838b !important;
 }
 
-body.dark .dropdown-item:active {
-  background-color: white !important;
-  color: black;
+body.dark .paginacion .page-link {
+  color: #15838b !important;
+  background-color: #282828;
+}
+
+body.dark .paginacion .page-item.active .page-link {
+  background-color: #15838b !important;
+  color: white !important;
+  border-color: white !important;
+}
+
+body.dark .solicitudes {
+  background-color: #15838b !important;
+}
+
+body.dark .solicitudes span, body.dark .solicitudes .fecha {
+  color: white !important;
+}
+
+body.dark .card-footer, body.dark .datosusu {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+body.dark .comentario {
+  color: white !important;
+}
+
+body.dark .botoncoment {
+  background-color: #15838b !important;
+}
+
+body.dark .botoncoment:active {
+  background-color: #15838b !important;
+  outline-width: 0 !important;
+  box-shadow: none !important;
+}
+
+body.dark .dropright {
+  background-color: transparent !important;
+  border: 1px solid #009C8C !important;
+}
+
+body.dark .dropright a {
+  color: #009C8C !important;
+}
+
+body.dark .dropright a:hover, body.dark .dropright a:active, body.dark .dropright a:focus {
+  background-color: transparent !important;
+  color: white !important;
+}
+
+body.dark .listmenu {
+  background-color: transparent !important;
+  border: 1px solid #009C8C !important;
+}
+
+body.dark .listmenu a {
+  color: #009C8C !important;
+}
+
+body.dark .listmenu a:hover {
+  color: white !important;
+}
+
+body.dark .col-sm-3.col-md-2:hover {
+  color: white !important;
 }
 
 .dropdown-item:active {
-  background-color: white !important;
-  color: black;
+  background: none !important;
+  color: black !important;
 }
 
 .nav-link:hover, .enlace:hover {
@@ -7954,10 +8025,84 @@ a.enlaceprin {
   background: #009C8C !important;
 }
 
-.paginacion {
-  overflow: auto !important;
+.paginacion .page-link {
+  color: #009C8C !important;
+  outline-width: 0 !important;
+  box-shadow: none !important;
 }
 
+.paginacion .page-item.active .page-link {
+  background-color: #009C8C !important;
+  color: white !important;
+  border-color: #009C8C !important;
+}
+
+.card-footer {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+.solicitudes a:hover {
+  background-color: black;
+}
+
+.datosusu {
+  background-color: white !important;
+}
+
+#map {
+  height: 200px;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background-color: #ccebe8 !important;
+  border-color: #ccebe8 !important;
+  color: #005e54 !important;
+}
+
+p {
+  margin-bottom: 0 !important;
+}
+
+.anacomenta {
+  outline-width: 0 !important;
+  box-shadow: none !important;
+}
+
+.anacomenta:focus {
+  border-color: lightgray !important;
+}
+
+.botoncoment:active {
+  background-color: #009C8C !important;
+  outline-width: 0 !important;
+  box-shadow: none !important;
+}
+
+.filtrar {
+  border-radius: 0.3em !important;
+}
+
+.filtrado {
+  margin-bottom: 95px !important;
+}
+
+.listmenu {
+  top: -60px !important;
+}
+
+.nav-link.p-0:hover {
+  color: black !important;
+}
+
+#layoutSidenav_content {
+  justify-content: flex-start !important;
+}
+
+@media (max-width: 393px) {
+  .h-25.text-white {
+    width: 100% !important;
+  }
+}
 /*# sourceMappingURL=principal.css.map */
 
 /*# sourceMappingURL=principal.css.map */

@@ -37797,7 +37797,7 @@ var render = function() {
   return _c(
     "footer",
     {
-      staticClass: "py-4 bg-primary mt-auto",
+      staticClass: "py-4 bg-primary mt-auto d-none d-md-block",
       staticStyle: {
         position: "fixed",
         bottom: "0",

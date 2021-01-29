@@ -7,11 +7,11 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Vitoria-Gasteiz - Permisos y Obras</title>
-    <link href="/css/styles-template-bootstrap.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css"> <!-- css de las tablas -->
-    <link href="/css/principal.css" rel="stylesheet" />
+    <link href="/css/styles-template-bootstrap.css" rel="stylesheet"/>
+    <link href="/css/principal.css" rel="stylesheet"/>
     @yield("archivosCSS")
 
 </head>
@@ -24,12 +24,12 @@
 <!--MENU DESPLEGABLE-->
 <div id="layoutSidenav" >
     <div id="layoutSidenav_nav">
-        @extends("principal.layouts.menuDesplegable")
+        @include("principal.layouts.menuDesplegable")
     </div>
     <!--CONTENIDO-->
     <div id="layoutSidenav_content">
         @yield("content")
-        @include("layouts.footer")
+        @include("principal.layouts.footer")
     </div>
 </div>
 <!--
@@ -49,8 +49,6 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script src="/js/principal.js"></script>
 <script src="/js/script-template-bootstrap.js"></script>
-
-
 
 
 @yield("scripts")

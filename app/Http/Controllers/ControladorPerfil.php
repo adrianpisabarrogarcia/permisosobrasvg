@@ -1,13 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-
-class ControladorSolicitudes extends Controller
+class ControladorPerfil extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +12,7 @@ class ControladorSolicitudes extends Controller
      */
     public function index()
     {
-        //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -27,9 +21,8 @@ class ControladorSolicitudes extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
-
     /**
      * Display the specified resource.
      *
@@ -39,22 +32,9 @@ class ControladorSolicitudes extends Controller
     public function show()
     {
         $dni= Session::get("usuario");
-        $usuario= DB::select("select * from usuarios where dni= ? ",[$dni]);
-
-        $tipoEdificio= DB::select("select * from tipo_edificio");
-        //$tipoEdificio=DB::table("tipo_edificio");
-        $tipoObra= DB::select("select * from tipo_edificio");
-        //$tipoObra=DB::table("tipo_obra");
-
-
-        return view("solicitarObra")->with(
-            [
-                "usuario"=>$usuario,
-                "tipoEdificios"=>$tipoEdificio,
-                "tipoObras"=>$tipoObra
-                ]);
+        $usuario= DB::select("select * from usuarios where dni= ?", [$dni]);
+        return view("perfil")->with("usuario",$usuario);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -66,7 +46,6 @@ class ControladorSolicitudes extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

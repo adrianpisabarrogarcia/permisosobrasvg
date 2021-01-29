@@ -1,37 +1,52 @@
-///<reference path="../../node_modules/@types/jquery/index.d.ts" />
 $(document).ready(function () {
-    $("#selector").change(function () {
-    });
-});
-function mostrarDatosFormulario() {
-    var boton = $("#enviar");
-    boton.on("click", function (e) {
-        e.preventDefault();
-        var select = $("#selector");
-        if (select.val() == "tipo de obra") {
-            //error
-        }
-        else {
-            comprobarFormulario(select);
-        }
-    });
-}
-function comprobarFormulario(selector) {
-    if (select.val() == "Reforma") {
-        $ajax({
-            url: "",
-            type: "POST",
+    var fecha = new Date();
+    var datos = "";
+    var lat;
+    var lng;
+    var cp;
+    /***
+     * @author WeApp
+     */
+    (function () {
+        var placesAutocomplete = places({
+            appId: 'plEHFE8OXN3L',
+            apiKey: 'a6eb12d44e181f3c3c3d02bd7cf7b2fd',
+            container: document.querySelector('#address'),
         });
-        var calle = "";
-        var provincia = "";
-        var pais = "";
-        var portal = $("#portal").val();
-        var piso = $("#piso").val();
-        var escalera = $("#escalera").val();
-        var direccion = calle + "," + provincia + "," + pais;
-    }
-    else if (select.val() == "Nueva Construcción") {
-    }
-    select.on('change', function () {
-    });
-}
+        placesAutocomplete.on('change', function (e) {
+            datos = e.suggestion.name;
+            console.log(e.suggestion);
+            lat = e.suggestion.latlng.lat;
+            lng = e.suggestion.latlng.lng;
+            cp = e.suggestion.postcode;
+        });
+        $("#enviar").on("click", function (e) {
+            var dato = $("#address").val();
+            var eje = ",";
+            var contador = 0;
+            for (var i = 0; i < dato.length; i++) {
+                if (dato.charAt(i) === eje)
+                    contador++;
+            }
+            dato = dato.substring(0, dato.indexOf(","));
+            if (dato !== datos || contador < 3) {
+                alert("Error");
+                e.preventDefault();
+            }
+            else {
+                $("#lat").val(lat);
+                $("#lng").val(lng);
+                $("#codigopostal").val(cp);
+                var date = new Date();
+                var ano = date.getFullYear();
+                var mes = date.getMonth() + 1;
+                var dia = date.getUTCDate();
+                var hora = date.getHours();
+                var minutos = date.getMinutes();
+                var segundos = date.getSeconds();
+                var fecha_1 = ano + "-" + mes + "-" + dia + " " + hora + ":" + minutos + ":" + segundos;
+                $("#fecha").val(fecha_1);
+            }
+        });
+    })();
+});

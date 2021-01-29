@@ -1,4 +1,4 @@
-@extends("layouts.estructuraPagina")
+@extends("principal.layouts.estructuraPagina")
 
 @section("archivosCSS")
     <link href="/css/principal.css" rel="stylesheet" />
@@ -25,17 +25,20 @@
                     </div>
                 </div>
                 <div class=" h-25 w-75 m-auto pb-5 ">
-                    <form action="" method="post" class="d-flex flex-column border-4">
+                    <form action="" method="post" class="d-flex flex-column border-4 w-100">
                         @csrf
-                        <label for="name"><h3 class="font-weight-normal text-dark">Nombre</h3></label>
-                        <input type="text" id="name" name="name" required class="w-100 border-1" value="{{ $nombre }}" disabled ><br>
-                        <label for="email" ><h3 class="font-weight-normal text-dark">Correo electrónico</h3></label>
-                        <input type="email" name="email" id="email" required class="w-100 border-1" value="{{ $email }}"disabled><br>
-                        <label for="mensaje" ><h3 class="font-weight-normal text-dark">Mensaje</h3></label>
-                        <div style="width: 60% !important;">
+                        <div class="w-100 d-flex flex-column align-items-center ml-5">
+                            <label for="name"><h3 class="font-weight-normal text-dark">Nombre</h3></label>
+                            <input type="text" id="name" name="name" required class="w-100 border-1 text-center" value="{{ $nombre }}" disabled ><br>
+                            <label for="email" ><h3 class="font-weight-normal text-dark">Correo electrónico</h3></label>
+                            <input type="email" name="email" id="email" required class="w-100 border-1 text-center" value="{{ $email }}"disabled><br>
+                            <label for="mensaje" ><h3 class="font-weight-normal text-dark">Mensaje</h3></label>
+                        </div>
+
+                        <div style="width: 50% !important;">
                             <textarea id="froala-editor" name="mensaje"></textarea>
                         </div>
-                        <button class="rounded bg-primary table-bordered border-secondary p-2 mt-3 text-white">Enviar mensaje</button>
+                        <button class="rounded bg-primary table-bordered border-secondary  w-100 p-2 mt-3 ml-5 text-white">Enviar mensaje</button>
                     </form>
                 </div>
             </div>

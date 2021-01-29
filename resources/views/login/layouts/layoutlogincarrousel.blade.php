@@ -20,7 +20,7 @@
                         <h1 class="text-center text-white mt-5">Gestión de licencias de obras</h1>
                     </div>
                     <div class="carousel-item">
-                        <img style="width: 55% !important" src="/img/login/logocarrousel.png" class="d-block mx-auto w-100" alt="...">
+                        <img style="width: 55% !important" src="/img/login/logocarrousel.png" class="d-block mx-auto" alt="...">
                     </div>
                 </div>
             </div>
@@ -31,8 +31,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="/bootstrap-5.0/js/popper.min.js"></script>
     <script src="/bootstrap-5.0/js/bootstrap.js"></script>
-    <script src="/js/login.js"></script>
-@yield('scripts')
+    @yield('scripts')
 </body>
 </html>
 

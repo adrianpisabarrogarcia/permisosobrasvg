@@ -30,12 +30,7 @@ a{
     color: #e9ecef !important;
 }
 .btn-margin{
-    margin-left: 6% !important;
-}
-
-
-.fr-wrapper .show-placeholder{
-    z-index: -999 !important;
+    margin-left: 5%;
 }
 
 @import "funciones";
@@ -51,11 +46,14 @@ a{
         content: "";
         width: 30px;
         height: 30px;
-        top: 1px;
+        top: 2%;
         left: .1em;
         right: unset;
         border-radius: 100px;
         transition: .3s ease all;
+    }
+    .fa-sun, .fa-moon{
+        margin-top:7 !important;
     }
 
     &.active{
@@ -101,19 +99,86 @@ body.dark{
         background-color: #15838b !important;
     }
 
+    .dropdown-item:active{
+        background: none !important;
+        a{
+            color: black !important;
+        }
+    }
+
     a.enlaceprin{
         background: #15838b !important;
     }
 
-    .dropdown-item:active{
-        background-color: white !important;
-        color: black;
+    .paginacion{
+        .page-link{
+            color: #15838b !important;
+            background-color: #282828;
+        }
+
+        .page-item.active .page-link{
+            background-color: #15838b !important;
+            color: white !important;
+            border-color: white !important;
+        }
+    }
+
+    .solicitudes{
+        background-color: #15838b !important;
+        span,.fecha{
+            color: white !important;
+        }
+    }
+
+    .card-footer,.datosusu{
+        background-color: rgba(255,255,255,0.6) !important;
+    }
+
+    .comentario{
+        color: white !important;
+    }
+
+    .botoncoment{
+        background-color: #15838b !important;
+    }
+
+    .botoncoment:active{
+        background-color: #15838b !important;
+        outline-width: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .dropright{
+        background-color: transparent !important;
+        border: 1px solid $primary !important;
+        a{
+            color: $primary !important;
+        }
+        a:hover,a:active,a:focus{
+            background-color: transparent !important;
+            color: white !important;
+        }
+    }
+
+    .listmenu{
+        background-color: transparent !important;
+        border: 1px solid $primary !important;
+        a{
+            color: $primary !important;
+        }
+        a:hover{
+            color: white !important;
+        }
+    }
+
+    .col-sm-3.col-md-2:hover{
+        color: white !important;
     }
 }
 
 .dropdown-item:active{
-    background-color: white !important;
-    color: black;
+    background: none !important;
+    color: black !important;
 }
 
 .nav-link:hover,.enlace:hover{
@@ -137,6 +202,85 @@ a.enlaceprin{
 }
 
 .paginacion{
-    overflow: auto !important;
+    .page-link{
+        color: $primary !important;
+        outline-width: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .page-item.active .page-link{
+        background-color: $primary !important;
+        color: white !important;
+        border-color: $primary !important;
+    }
+}
+
+.card-footer{
+    background-color: rgba(0,0,0,0.05) !important;
+}
+
+.solicitudes{
+    a:hover{
+        background-color: black;
+    }
+}
+
+.datosusu{
+    background-color: white !important;
+}
+
+#map{
+    height: 200px;
+}
+
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{
+    background-color: #ccebe8 !important;
+    border-color: #ccebe8 !important;
+    color: #005e54 !important;
+}
+
+p{
+    margin-bottom: 0 !important;
+}
+
+.anacomenta{
+    outline-width: 0 !important;
+    box-shadow: none !important;
+}
+
+.anacomenta:focus{
+    border-color: lightgray !important;
+}
+
+.botoncoment:active{
+    background-color: $primary !important;
+    outline-width: 0 !important;
+    box-shadow: none !important;
+}
+
+.filtrar{
+    border-radius: .3em !important;
+}
+
+.filtrado{
+    margin-bottom: 95px !important;
+}
+
+.listmenu{
+    top: -60px !important;
+}
+
+.nav-link.p-0:hover{
+    color: black !important;
+}
+
+#layoutSidenav_content{
+    justify-content: flex-start !important;
+}
+
+@media (max-width: 393px) {
+    .h-25.text-white{
+        width: 100% !important;
+    }
 }
 

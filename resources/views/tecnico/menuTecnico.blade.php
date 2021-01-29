@@ -19,7 +19,7 @@
                     </a>
                 </div>
             </div>
-            @include("layouts.footerMenu")
+            @include("principal.layouts.footerMenu")
         </nav>
     </div>
 

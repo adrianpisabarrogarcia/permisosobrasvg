@@ -61,11 +61,7 @@ class ControladorRegistro extends Controller
 
             $this->contact($request);
 
-            Session::put('usuario',$request->get('dni'));
-            Session::put('rol','3');
-            Session::put('nombre',$request->get('nombre'));
-
-            return redirect()->route('portal.index');
+            return redirect()->route('login.home');
         }
         return view("login.registro", ['errores' => $errores]);
 

@@ -1,46 +1,18 @@
-<div id="layoutSidenav">
-    <div id="layoutSidenav_nav" >
-        <nav class="sb-sidenav accordion sb-sidenav-dark rounded-top" id="sidenavAccordion">
-            <div class="sb-sidenav-menu">
-                <div class="nav">
-                    <div class="sb-sidenav-menu-heading bg-dark pt-3">Solicitudes</div>
-                    <a class="nav-link" href="asignarSolicitudes">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        Asignar Solicitudes
-                    </a>
-                    <a class="nav-link" href="comprobarSolicitudes">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        Comprobar Solicitudes
-                    </a>
-                    <div class="sb-sidenav-menu-heading bg-dark pt-3">Datos</div>
-                    <a class="nav-link " href="graficos">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        Gráficos
-                    </a>
-                    <a class="nav-link " href="graficos">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        Tablas
-                    </a>
-
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                        Usuarios
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-
-                            <a class="nav-link " href="tablaEmpleados">
-                                Técnicos
-                            </a>
-                            <a class="nav-link " href="tablausUsuarios">
-                                Coordinadores
-                            </a>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            @include("../footerMenu")
-        </nav>
-    </div>
+<div class="sb-sidenav-menu-heading bg-primary text-light pt-3">Solicitudes</div>
+<a class="nav-link enlace" href="../portal.blade.php">
+    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt text-primary"></i></div>
+    Asignar Solicitudes
+</a>
+<a class="nav-link enlace" href="../portal.blade.php">
+    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt text-primary"></i></div>
+    Comprobar Solicitudes
+</a>
+<div class="sb-sidenav-menu-heading bg-primary text-light pt-3">Datos</div>
+<a class="nav-link enlace" href="{{ route('portal.graficos') }}">
+    <div class="sb-nav-link-icon"><i class="fas fa-chart-bar text-primary"></i></div>
+    Estadísticas
+</a>
+<a class="nav-link enlace" href="#">
+    <div class="sb-nav-link-icon"><i class="fas fa-users text-primary"></i></div>
+    Empleados y Usuarios
+</a>
