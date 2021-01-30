@@ -1,14 +1,12 @@
-@extends("principal.layouts.estructuraPagina")
-
-@section("archivosCSS")
+<?php $__env->startSection("archivosCSS"); ?>
     <link href="/css/principal.css" rel="stylesheet" />
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section("logo")
+<?php $__env->startSection("logo"); ?>
     <a href="portal"><img src="img/logo.png" class="w-8 "></a>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section("content")
+<?php $__env->startSection("content"); ?>
         <div class="mt-5 container">
             <div class="row mt-5">
                 <div class="col-12">
@@ -18,15 +16,15 @@
                         <span class="text-dark text-center">En caso de tener alguna duda sobre el funcionamiento de nuestra web o de la metodología de la empresa contacta con nosotros.</span>
                         <span class="text-dark text-center">Rellena el formulario que se muestra a continuación:</span>
                         <div class="formulario col-11 col-md-8 border border-primary mt-4 p-3 text-center">
-                            <form action="{{ route('enviarContacto') }}" method="post">
-                                @csrf
+                            <form action="<?php echo e(route('enviarContacto')); ?>" method="post">
+                                <?php echo csrf_field(); ?>
                                 <label for="name"><h5 class="mb-0 text-dark">Nombre</h5></label>
                                 <br />
-                                <input type="text" id="name" name="name" required value="{{ $nombre }}" class="text-center card-footer border-0 contacto p-1 col-11 col-md-8" readonly>
+                                <input type="text" id="name" name="name" required value="<?php echo e($nombre); ?>" class="text-center card-footer border-0 contacto p-1 col-11 col-md-8" readonly>
                                 <br />
                                 <label for="email"><h5 class="text-dark mt-3 mb-0">Correo electrónico</h5></label>
                                 <br />
-                                <input type="email" name="email" id="email" required value="{{ $email }}" class="text-center card-footer border-0 contacto p-1 col-11 col-md-8" readonly>
+                                <input type="email" name="email" id="email" required value="<?php echo e($email); ?>" class="text-center card-footer border-0 contacto p-1 col-11 col-md-8" readonly>
                                 <br />
                                 <label for="mensaje"><h5 class="text-dark mt-3 mb-0">Mensaje</h5></label>
                                 <br />
@@ -44,4 +42,6 @@
                 </div>
             </div>
         </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make("principal.layouts.estructuraPagina", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/vagrant/code/permisosobrasvg/resources/views/principal/usuarios/contacto.blade.php ENDPATH**/ ?>

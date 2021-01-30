@@ -61,7 +61,7 @@
                     <input type="password" class="form-control border-0 p-0" name="password" id="contra" minlength="8" pattern="^[A-Za-z0-9]+$" placeholder="8 carácteres. Sólo puede tener minúsculas, mayúculas y números."required>
                 </div>
                 @isset($errores)
-                    <div class="mb-2">
+                    <div class="mb-3">
                         <label for="repcontra" class="form-label text-primary fw-bold mb-0">Confirma Contraseña</label>
                         <input type="password" class="form-control border-0 p-0" id="repcontra" required pattern="^[A-Za-z0-9]+$">
                     </div>

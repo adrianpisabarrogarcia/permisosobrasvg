@@ -22,7 +22,7 @@
 
 <?php echo $__env->make("principal.layouts.navbar", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <!--MENU DESPLEGABLE-->
-<div id="layoutSidenav" >
+<div id="layoutSidenav">
     <div id="layoutSidenav_nav">
         <?php echo $__env->make("principal.layouts.menuDesplegable", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </div>

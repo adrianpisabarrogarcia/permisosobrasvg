@@ -22,7 +22,7 @@
 
 @include("principal.layouts.navbar")
 <!--MENU DESPLEGABLE-->
-<div id="layoutSidenav" >
+<div id="layoutSidenav">
     <div id="layoutSidenav_nav">
         @include("principal.layouts.menuDesplegable")
     </div>

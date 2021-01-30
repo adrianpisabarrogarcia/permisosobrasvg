@@ -25,8 +25,8 @@
                 @break
                 @default
                 <div class="col-12 col-lg-6 h-auto row mt-3 ml-4 ml-lg-0 pl-5 float-end align-items-center justify-content-around">
-                    <a href="solicitarobra" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 mr-5 ml-sm-0 border-5 rounded d-flex align-items-center text-dark justify-content-center text-decoration-none text-center">Solicitar Obra</a>
-                    <a href="contacto" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 mr-5 border-2 rounded border-transparent d-flex align-items-center text-dark justify-content-center text-decoration-none text-center">Contacto</a>
+                    <a href="{{ route('solicitarObra') }}" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 mr-5 ml-sm-0 border-5 rounded d-flex align-items-center text-dark justify-content-center text-decoration-none text-center">Solicitar Obra</a>
+                    <a href="{{ route('contacto') }}" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 mr-5 border-2 rounded border-transparent d-flex align-items-center text-dark justify-content-center text-decoration-none text-center">Contacto</a>
                 </div>
                 @break
             @endswitch

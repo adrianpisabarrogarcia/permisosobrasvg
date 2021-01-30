@@ -7686,14 +7686,11 @@ a {
   content: "";
   width: 30px;
   height: 30px;
-  top: 2%;
+  top: 5%;
   left: 0.1em;
   right: unset;
   border-radius: 100px;
   transition: 0.3s ease all;
-}
-.switch .fa-sun, .switch .fa-moon {
-  margin-top: 7 !important;
 }
 .switch.active {
   background: orange;
@@ -7714,6 +7711,7 @@ a {
 body.dark {
   background-color: #282828 !important;
   color: white !important;
+  text-decoration: !important;
   color: white !important;
 }
 body.dark .sb-sidenav {
@@ -7721,13 +7719,15 @@ body.dark .sb-sidenav {
 }
 body.dark .enlace {
   color: white !important;
+  text-decoration: !important;
 }
 body.dark .enlace:hover, body.dark .text-primary {
   color: #15838b !important;
+  text-decoration: !important;
 }
 body.dark .enlace.active {
   color: white !important;
-  text-decoration: underline;
+  text-decoration: underline !important;
 }
 body.dark .bg-primary {
   background-color: #15838b !important;
@@ -7794,6 +7794,9 @@ body.dark .listmenu a:hover {
 body.dark .col-sm-3.col-md-2:hover {
   color: white !important;
 }
+body.dark .card-footer {
+  border-color: #009C8C !important;
+}
 
 .dropdown-item:active {
   background: none !important;
@@ -7802,19 +7805,26 @@ body.dark .col-sm-3.col-md-2:hover {
 
 .nav-link:hover, .enlace:hover {
   color: #009C8C !important;
+  text-decoration: !important;
 }
 
 .enlace.active {
   color: black !important;
-  text-decoration: underline;
+  text-decoration: underline !important;
+}
+
+.enlace.active:hover {
+  color: #009C8C !important;
 }
 
 .menusuario {
   color: white !important;
+  text-decoration: !important;
 }
 
 .menusuario:hover {
   color: black !important;
+  text-decoration: !important;
 }
 
 a.enlaceprin {
@@ -7890,7 +7900,20 @@ p {
 }
 
 #layoutSidenav_content {
-  justify-content: flex-start !important;
+  top: 0 !important;
+}
+
+#footer {
+  display: none !important;
+}
+
+.contacto {
+  border: 1px solid lightgrey !important;
+}
+
+.contacto:focus, .contacto:active {
+  outline-width: 0 !important;
+  box-shadow: none !important;
 }
 
 @media (max-width: 393px) {

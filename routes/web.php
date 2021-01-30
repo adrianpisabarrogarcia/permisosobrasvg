@@ -20,24 +20,30 @@ use Illuminate\Support\Facades\Route;
  */
 
 //PORTAL
-//Rutas generales
-Route::get('/portal', "ControladorPortal@index")->name('portal.index');
-Route::post('/portal','ControladorPortal@logout')->name('portal.logout');
-Route::get("/solicitarobra", "ControladorSolicitudObra@show")->name("solicitarObra");
-Route::post("solicitarObras","ControladorSolicitudObra@store")->name("solicitarObras");
-Route::get("/contacto","ControladorContacto@show")->name("contacto");
-Route::post("/contacto","ControladorContacto@index")->name("enviarContacto");
-Route::post('/filtro','ControladorPortal@ajax')->name('portal.ajax');
+    //Rutas generales
+        //Portal
+            Route::get('/portal', "ControladorPortal@index")->name('portal.index');
+            Route::post('/portal','ControladorPortal@logout')->name('portal.logout');
+            Route::post('/filtro','ControladorPortal@ajax')->name('portal.ajax');
+        //Solicitar Obra
+            Route::get("/solicitarobra", "ControladorSolicitudObra@show")->name("solicitarObra");
+            Route::post("/solicitarObras","ControladorSolicitudObra@store")->name("solicitarObras");
+        //Contacto
+            Route::get("/contacto","ControladorContacto@index")->name("contacto");
+            Route::post("/contacto","ControladorContacto@show")->name("enviarContacto");
+        //Perfil
+            Route::get("/perfil","ControladorPerfil@show")->name("perfil");
 
-//Perfil
-Route::get("/perfil","ControladorPerfil@show")->name("perfil");
-
-//Rutas para coordinadores
-Route::get("/asignarSolicitudes","ControladorCoordinador@asignarSolicitudes")->name("asignarSolicitudes");
-Route::get("/graficos","ControladorCoordinador@verGraficos")->name("portal.graficos");
-Route::get("/crearusuarios","ControladorCoordinador@crearUsuarios")->name("creacionUsuarios");
-Route::get("/listadousuarios","ControladorUsuarios@show")->name("listarUsuarios");
-Route::get('/listadousuarios/{id}','ControladorUsuarios@destroy')->name("borrarUsuario");
+    //Rutas para coordinadores
+        //AsignarSolicitudes
+            Route::get("/asignarSolicitudes","ControladorCoordinador@asignarSolicitudes")->name("asignarSolicitudes");
+        //Graficos
+            Route::get("/graficos","ControladorCoordinador@verGraficos")->name("portal.graficos");
+        //Creación de usuarios
+            Route::get("/crearusuarios","ControladorCoordinador@crearUsuarios")->name("creacionUsuarios");
+        //Listado de usuarios
+            Route::get("/listadousuarios","ControladorUsuarios@show")->name("listarUsuarios");
+            Route::get('/listadousuarios/{id}','ControladorUsuarios@destroy')->name("borrarUsuario");
 
 //Rutas para tecnicos
 Route::get("/solicitudesPendientes","ControladorTecnico@SolicitudesPendientes")->name("solicitudesPendientes");

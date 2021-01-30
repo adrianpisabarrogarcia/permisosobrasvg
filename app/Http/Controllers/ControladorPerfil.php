@@ -33,7 +33,7 @@ class ControladorPerfil extends Controller
     {
         $dni= Session::get("usuario");
         $usuario= DB::select("select * from usuarios where dni= ?", [$dni]);
-        return view("perfil")->with("usuario",$usuario);
+        return view("principal.perfil")->with("usuario",$usuario);
     }
     /**
      * Update the specified resource in storage.

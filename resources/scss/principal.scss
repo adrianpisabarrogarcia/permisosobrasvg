@@ -46,14 +46,11 @@ a{
         content: "";
         width: 30px;
         height: 30px;
-        top: 2%;
+        top: 5%;
         left: .1em;
         right: unset;
         border-radius: 100px;
         transition: .3s ease all;
-    }
-    .fa-sun, .fa-moon{
-        margin-top:7 !important;
     }
 
     &.active{
@@ -174,6 +171,10 @@ body.dark{
     .col-sm-3.col-md-2:hover{
         color: white !important;
     }
+
+    .card-footer{
+        border-color: $primary !important;
+    }
 }
 
 .dropdown-item:active{
@@ -187,6 +188,10 @@ body.dark{
 
 .enlace.active{
     @include modoscla(black,underline);
+}
+
+.enlace.active:hover{
+    color: $primary !important;
 }
 
 .menusuario{
@@ -275,11 +280,20 @@ p{
 }
 
 #layoutSidenav_content{
-    justify-content: flex-start !important;
+    top: 0 !important;
 }
 
 #footer{
     display: none !important;
+}
+
+.contacto{
+    border: 1px solid lightgrey !important;
+}
+
+.contacto:focus,.contacto:active{
+    outline-width: 0 !important;
+    box-shadow: none !important;
 }
 
 @media (max-width: 393px) {
