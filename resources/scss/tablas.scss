@@ -1,0 +1,10 @@
+$primary-color: #15838B !important;
+
+.dataTables_length, .dataTables_length select, .dataTables_filter,
+.dataTables_filter input, .dataTables_info, #table_of_users_next, #table_of_users_previous{
+    color: $primary-color;
+}
+
+.dataTables_filter input{
+    font-weight: bold !important;
+}

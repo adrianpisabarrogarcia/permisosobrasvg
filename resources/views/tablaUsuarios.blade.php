@@ -8,13 +8,13 @@
 @section("archivosCSS")
     <link href="/css/principal.css" rel="stylesheet" />
     <link href="/css/Principal/claro.css" rel="stylesheet" class="theme"/>
+    <link href="/css/tablas.css" rel="stylesheet" class="theme"/>
 @endsection
 
 @section("content")
-    <div class="container-fluid">
+    <div class="container-fluid ">
         <h1>Listado de usuarios</h1>
-        <table id="table_of_users" class="display stripe compact stripe">
-
+        <table id="table_of_users" class="display compact stripe">
             <thead>
             <tr>
                 <th>Nombre</th>
@@ -30,14 +30,12 @@
                 <th>Provincia</th>
                 <th>Rol</th>
                 <th>Eliminar</th>
-
-
             </tr>
             </thead>
             <tbody>
             @isset($datosUsuarios)
                 @foreach ($datosUsuarios as $datos)
-                    <tr>
+                    <tr class="text-primary">
                         <td><b>{{ $datos->nombre}}</b></td>
                         <td><b>{{ $datos->apellido}}</b></td>
                         <td>{{ $datos->dni}}</td>
