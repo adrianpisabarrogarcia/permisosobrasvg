@@ -57,7 +57,7 @@ class ControladorContacto extends Controller
         $datos = DB::select('select * from usuarios where dni = ?',[$dni]);
         $nombre = $datos[0]->nombre . ' ' . $datos[0]->apellido;
         $email = $datos[0]->email;
-        return view("contacto")->with(['nombre'=>$nombre,'email'=>$email]);
+        return view("principal.usuarios.contacto")->with(['nombre'=>$nombre,'email'=>$email]);
     }
     /**
      * Update the specified resource in storage.

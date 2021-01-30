@@ -41,7 +41,7 @@ class ControladorUsuarios extends Controller
 
 
 
-        return view("tablaUsuarios")->with([
+        return view("principal.tablaUsuarios")->with([
             "datosUsuarios" => $datosUsuarios]);
     }
 
@@ -65,6 +65,6 @@ class ControladorUsuarios extends Controller
      */
     public function destroy($id)
     {
-        DB::table('usuarios')->where('id_usu', '=', $id)->delete();
+        DB::table('principal.usuarios')->where('id_usu', '=', $id)->delete();
     }
 }

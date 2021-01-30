@@ -18,7 +18,7 @@ class ControladorTecnico extends Controller
     }
 
     public function solicitudesPendientes(){
-        return view("tecnico.solicitudesPendientes");
+        return view("principal.tecnico.solicitudesPendientes");
     }
 
     /**

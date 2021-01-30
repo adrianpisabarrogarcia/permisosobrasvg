@@ -86,7 +86,7 @@ class ControladorSolicitudObra extends Controller
         //$tipoEdificio=DB::table("tipo_edificio");
         $tipoObra = DB::select("select * from tipo_edificio");
         //$tipoObra=DB::table("tipo_obra");
-        return view("solicitarObra")->with(
+        return view("principal.usuarios.solicitarObra")->with(
             [
                 "usuario" => $usuario,
                 "tipoEdificios" => $tipoEdificio,

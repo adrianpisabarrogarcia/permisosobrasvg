@@ -18,15 +18,15 @@ class ControladorCoordinador extends Controller
     }
 
     public function asignarSolicitudes(){
-        return view("coordinador.asignarSolicitudes");
+        return view("principal.coordinador.asignarSolicitudes");
     }
 
     public function verGraficos(){
-        return view("coordinador.graficos");
+        return view("principal.coordinador.graficos");
     }
 
     public  function crearUsuarios(){
-        return view("coordinador.creacionUsuarios");
+        return view("principal.coordinador.creacionUsuarios");
     }
 
 

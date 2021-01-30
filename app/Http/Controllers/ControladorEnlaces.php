@@ -18,19 +18,19 @@ class ControladorEnlaces extends Controller
     }
     //Enlaces generales
     public function solicitarObra(){
-        return view("solicitarObra");
+        return view("principal.solicitarObra");
     }
 
     public function contacto(){
-        return view("contacto");
+        return view("principal.contacto");
     }
 
     public function comprobarSolicitudes(){
-        return view("comprobarSolicitudes");
+        return view("principal.comprobarSolicitudes");
     }
 
     public function consultarUsuarios(){
-        return view("tablaUsuarios");
+        return view("principal.tablaUsuarios");
     }
 
 

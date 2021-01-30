@@ -35,7 +35,7 @@ class ControladorCrearUsuarios extends Controller
      */
     public function show($id)
     {
-        return view("coordinador.creacionUsuarios");
+        return view("principal.coordinador.creacionUsuarios");
     }
 
     /**
