@@ -7,14 +7,14 @@
             </a>
         @switch(Session::get("rol"))
             @case("1")
-            @include("coordinador.menuCoordinador")
+            @include("principal.coordinador.menuCoordinador")
             @break
             @case("2")
-            @include("tecnico.menuTecnico")
+            @include("principal.tecnico.menuTecnico")
             @break
             @default
             <!--menu usuario normal-->
-                @include("usuarios.menuUsuarios")
+                @include("principal.usuarios.menuUsuarios")
             @endswitch
         </div>
     </div>

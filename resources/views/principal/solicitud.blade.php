@@ -2,7 +2,6 @@
 
 @section('archivosCSS')
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css">
-    <link rel="stylesheet" href="/css/principal.css">
 @endsection
 
 @section('content')

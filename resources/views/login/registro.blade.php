@@ -60,13 +60,18 @@
                     <label for="contra" class="form-label text-primary fw-bold mb-0">Contraseña</label>
                     <input type="password" class="form-control border-0 p-0" name="password" id="contra" minlength="8" pattern="^[A-Za-z0-9]+$" placeholder="8 carácteres. Sólo puede tener minúsculas, mayúculas y números."required>
                 </div>
-                <div class="mb-5">
-                    <label for="repcontra" class="form-label text-primary fw-bold mb-0">Confirma Contraseña</label>
-                    <input type="password" class="form-control border-0 p-0" id="repcontra" minlength="8" pattern="^[A-Za-z0-9]+$" placeholder="Repite la contraseña" required>
-                </div>
                 @isset($errores)
-                    <div class="alert alert-danger text-center" role="alert" id="errores">
-                    {!! $errores !!}
+                    <div class="mb-2">
+                        <label for="repcontra" class="form-label text-primary fw-bold mb-0">Confirma Contraseña</label>
+                        <input type="password" class="form-control border-0 p-0" id="repcontra" required pattern="^[A-Za-z0-9]+$">
+                    </div>
+                    <div class="alert alert-danger text-center" role="alert">
+                        {!! $errores !!}
+                    </div>
+                @else
+                    <div class="mb-4">
+                        <label for="repcontra" class="form-label text-primary fw-bold mb-0">Confirma Contraseña</label>
+                        <input type="password" class="form-control border-0 p-0" id="repcontra" required>
                     </div>
                 @endisset
                 <div id="erroresTypescript">

@@ -8,21 +8,29 @@ use Illuminate\Support\Facades\Session;
 
 class ControladorPortal extends Controller
 {
-    public function index()
-    {
-        if (!Session::exists('usuario')) {
+    public function index(){
+        if (!Session::exists('usuario')){
             return redirect()->route('login.home');
         }
 
-        if (Session::get('rol') == '3') {
-            $solicitudes = DB::table('obras')
-                ->where('id_usuario', '=', Session::get('id'))
-                ->orderBy('fecha_creacion', 'DESC')
-                ->paginate(4);
-        } else {
-            $solicitudes = DB::table('obras')
-                ->orderBy('fecha_creacion', 'DESC')
-                ->paginate(4);
+        switch (Session::get('rol'))
+        {
+            case "1":
+                $solicitudes = DB::table('obras')
+                    ->orderBy('fecha_creacion','DESC')
+                    ->paginate(4);
+                break;
+            case"2":
+                $solicitudes = DB::table('obras')
+                    ->where('id_tecnico','=',Session::get('id'))
+                    ->orderBy('fecha_creacion','DESC')
+                    ->paginate(4);
+                break;
+            default:
+                $solicitudes = DB::table('obras')
+                    ->where('id_usuario','=',Session::get('id'))
+                    ->orderBy('fecha_creacion','DESC')
+                    ->paginate(4);
         }
 
         $tipobras = DB::select('select * from tipo_obra');
@@ -34,36 +42,36 @@ class ControladorPortal extends Controller
         ]);
     }
 
-    public function logout()
-    {
+    public function logout(){
         Session::remove('usuario');
 
         return redirect()->route('login.home');
     }
 
-    public function ajax(Request $request)
-    {
-        switch (Session::get('rol')) {
+    public function ajax(Request $request){
+        switch (Session::get('rol'))
+        {
             case "1":
                 $solicitudes = DB::table('obras')
-                    ->where('estado', '=', $request->estado)
-                    ->orderBy('fecha_creacion', 'DESC')
+                    ->where('estado','=',$request->estado)
+                    ->orderBy('fecha_creacion','DESC')
                     ->paginate(4);
                 break;
             case"2":
                 $solicitudes = DB::table('obras')
-                    ->where('id_tecnico', '=', Session::get('id'))
-                    ->where('estado', '=', $request->estado)
-                    ->orderBy('fecha_creacion', 'DESC')
+                    ->where('id_tecnico','=',Session::get('id'))
+                    ->where('estado','=',$request->estado)
+                    ->orderBy('fecha_creacion','DESC')
                     ->paginate(4);
                 break;
             default:
                 $solicitudes = DB::table('obras')
-                    ->where('id_usuario', '=', Session::get('id'))
-                    ->where('estado', '=', $request->estado)
-                    ->orderBy('fecha_creacion', 'DESC')
+                    ->where('id_usuario','=',Session::get('id'))
+                    ->where('estado','=',$request->estado)
+                    ->orderBy('fecha_creacion','DESC')
                     ->paginate(4);
         }
+
         $tipobras = DB::select('select * from tipo_obra');
         $listausuarios = DB::select('select * from usuarios');
         return view('principal.portal')->with([
