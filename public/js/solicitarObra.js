@@ -30,7 +30,7 @@ $(document).ready(function () {
             }
             dato = dato.substring(0, dato.indexOf(","));
             if (dato !== datos || contador < 3) {
-                alert("Error");
+                alert("Dirección no encontrada");
                 e.preventDefault();
             }
             else {

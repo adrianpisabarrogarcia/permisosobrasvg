@@ -7797,6 +7797,9 @@ body.dark .col-sm-3.col-md-2:hover {
 body.dark .card-footer {
   border-color: #009C8C !important;
 }
+body.dark .ap-suggestion em, body.dark span.ap-name, body.dark .ap-suggestion, body.dark .ap-cursor {
+  color: black !important;
+}
 
 .dropdown-item:active {
   background: none !important;
@@ -7914,6 +7917,14 @@ p {
 .contacto:focus, .contacto:active {
   outline-width: 0 !important;
   box-shadow: none !important;
+}
+
+.ap-input-icon.ap-icon-pin {
+  display: none !important;
+}
+
+a.botonsolicitud:hover {
+  background-color: #009C8C !important;
 }
 
 @media (max-width: 393px) {

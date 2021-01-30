@@ -1,11 +1,3 @@
-<?php $__env->startSection("archivosCSS"); ?>
-    <link href="/css/principal.css" rel="stylesheet" />
-<?php $__env->stopSection(); ?>
-
-<?php $__env->startSection("logo"); ?>
-    <a href="portal"><img src="img/logo.png" class="w-8 "></a>
-<?php $__env->stopSection(); ?>
-
 <?php $__env->startSection("content"); ?>
         <div class="mt-5 container">
             <div class="row mt-5">

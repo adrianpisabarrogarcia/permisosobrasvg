@@ -49,7 +49,6 @@
 <script src="/js/principal.js"></script>
 <script src="/js/script-template-bootstrap.js"></script>
 
-
 @yield("scripts")
 
 </body>

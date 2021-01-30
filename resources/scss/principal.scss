@@ -175,6 +175,10 @@ body.dark{
     .card-footer{
         border-color: $primary !important;
     }
+
+    .ap-suggestion em,span.ap-name,.ap-suggestion,.ap-cursor{
+        color: black !important;
+    }
 }
 
 .dropdown-item:active{
@@ -294,6 +298,14 @@ p{
 .contacto:focus,.contacto:active{
     outline-width: 0 !important;
     box-shadow: none !important;
+}
+
+.ap-input-icon.ap-icon-pin{
+    display: none !important;
+}
+
+a.botonsolicitud:hover{
+    background-color: $primary !important;
 }
 
 @media (max-width: 393px) {
