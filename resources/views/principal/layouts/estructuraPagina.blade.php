@@ -22,7 +22,7 @@
 
 @include("principal.layouts.navbar")
 <!--MENU DESPLEGABLE-->
-<div id="layoutSidenav" >
+<div id="layoutSidenav">
     <div id="layoutSidenav_nav">
         @include("principal.layouts.menuDesplegable")
     </div>
@@ -48,7 +48,6 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script src="/js/principal.js"></script>
 <script src="/js/script-template-bootstrap.js"></script>
-
 
 @yield("scripts")
 

@@ -1,7 +1,9 @@
-<p>Hola {{$name}}, <br>
-    hemos recibido tu mensaje. Un supervisor se pondrá en contacto contigo en las siguientes 48 horas.</p>
-<div class="m-auto table-bordered bg-light">
-    <p class="">{{$mensaje}}</p>
+<p>Hola {{$name}}, hemos recibido tu mensaje. Un supervisor se pondrá en contacto contigo en las siguientes 48 horas.</p>
 
+<div>
+    <h4>Mensaje</h4>
+    <span>{{ $mensaje }}</span>
 </div>
-<p class="text-danger">Esto es un mensaje automatico, por favor no responda a este correo.</p>
+<br />
+<br />
+<small>Esto es un mensaje automatico, por favor no responda a este correo.</small>

@@ -2,8 +2,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Session;
+use Illuminate\Support\Facades\Session;
 use Mail;
+
 class ControladorContacto extends Controller
 {
     /**
@@ -11,30 +12,20 @@ class ControladorContacto extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $this->correoUsuario($request);
-        $this->correoAdmin($request);
-        return redirect()->route("portal.index");
+        if (!Session::exists('usuario'))
+            return redirect()->route('login.home');
+        else
+        {
+            $dni = Session::get('usuario');
+            $datos = DB::select('select * from usuarios where dni = ?',[$dni]);
+            $nombre = $datos[0]->nombre . ' ' . $datos[0]->apellido;
+            $email = $datos[0]->email;
+            return view("principal.usuarios.contacto")->with(['nombre'=>$nombre,'email'=>$email]);
+        }
     }
-    public function correoUsuario($request){
-        $subject="Solicitud de obra creada.";
-        $for= $request->email;
-        Mail::send('emails.contactousuario',$request->all(), function($msj) use($subject,$for){
-            $msj->from("developersweapp@gmail.com","Permisos y Obras VG");
-            $msj->subject($subject);
-            $msj->to($for);
-        });
-    }
-    public function correoAdmin($request){
-        $subject="Solicitud de obra creada.";
-        $for= "developersweapp@gmail.com";
-        Mail::send('emails.contactoconcliente',$request->all(), function($msj) use($subject,$for){
-            $msj->from("developersweapp@gmail.com","Permisos y Obras VG");
-            $msj->subject($subject);
-            $msj->to($for);
-        });
-    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -51,13 +42,30 @@ class ControladorContacto extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Request $request)
     {
-        $dni = Session::get('usuario');
-        $datos = DB::select('select * from usuarios where dni = ?',[$dni]);
-        $nombre = $datos[0]->nombre . ' ' . $datos[0]->apellido;
-        $email = $datos[0]->email;
-        return view("principal.usuarios.contacto")->with(['nombre'=>$nombre,'email'=>$email]);
+        $this->correoUsuario($request);
+        $this->correoAdmin($request);
+        return redirect()->route("portal.index");
+    }
+
+    public function correoUsuario($request){
+        $subject="Permisos y Obras VG";
+        $for= $request->email;
+        Mail::send('emails.contactousuario',$request->all(), function($msj) use($subject,$for){
+            $msj->from("developersweapp@gmail.com","Permisos y Obras VG");
+            $msj->subject($subject);
+            $msj->to($for);
+        });
+    }
+    public function correoAdmin($request){
+        $subject="Permisos y Obras VG";
+        $for= "developersweapp@gmail.com";
+        Mail::send('emails.contactoconcliente',$request->all(), function($msj) use($subject,$for){
+            $msj->from("developersweapp@gmail.com","Permisos y Obras VG");
+            $msj->subject($subject);
+            $msj->to($for);
+        });
     }
     /**
      * Update the specified resource in storage.

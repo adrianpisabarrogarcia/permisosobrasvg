@@ -84,7 +84,7 @@ class ControladorSolicitudObra extends Controller
         $usuario = DB::select("select * from usuarios where dni= ? ", [$dni]);
         $tipoEdificio = DB::select("select * from tipo_edificio");
         //$tipoEdificio=DB::table("tipo_edificio");
-        $tipoObra = DB::select("select * from tipo_edificio");
+        $tipoObra = DB::select("select * from tipo_obra");
         //$tipoObra=DB::table("tipo_obra");
         return view("principal.usuarios.solicitarObra")->with(
             [

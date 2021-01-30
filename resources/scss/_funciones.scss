@@ -9,5 +9,5 @@
 
 @mixin modoscla($color,$decoracion){
     color: $color !important;
-    text-decoration: $decoracion;
+    text-decoration: $decoracion !important;
 }
