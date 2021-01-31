@@ -179,6 +179,10 @@ body.dark{
     .ap-suggestion em,span.ap-name,.ap-suggestion,.ap-cursor{
         color: black !important;
     }
+
+    a.botonfile{
+        color: black !important;
+    }
 }
 
 .dropdown-item:active{
@@ -285,6 +289,7 @@ p{
 
 #layoutSidenav_content{
     top: 0 !important;
+    min-height: 0 !important;
 }
 
 #footer{
@@ -306,6 +311,10 @@ p{
 
 a.botonsolicitud:hover{
     background-color: $primary !important;
+}
+
+a.botonfile:hover{
+    color: $primary !important;
 }
 
 @media (max-width: 393px) {

@@ -41,6 +41,11 @@ function modooscyclaro(url, modo) {
     $(".logo").attr('src', url);
     localStorage.setItem("modo", modo);
 }
+$(".quitarestado").on('click', function (event) {
+    event.preventDefault();
+    $("#estado").val('quitar');
+    document.getElementById('form-estado').submit();
+});
 $(".filtro").on('click', function (event) {
     $("#estado").val($(this).attr("id"));
     event.preventDefault();

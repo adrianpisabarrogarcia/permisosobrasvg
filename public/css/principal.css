@@ -7800,6 +7800,9 @@ body.dark .card-footer {
 body.dark .ap-suggestion em, body.dark span.ap-name, body.dark .ap-suggestion, body.dark .ap-cursor {
   color: black !important;
 }
+body.dark a.botonfile {
+  color: black !important;
+}
 
 .dropdown-item:active {
   background: none !important;
@@ -7904,6 +7907,7 @@ p {
 
 #layoutSidenav_content {
   top: 0 !important;
+  min-height: 0 !important;
 }
 
 #footer {
@@ -7925,6 +7929,10 @@ p {
 
 a.botonsolicitud:hover {
   background-color: #009C8C !important;
+}
+
+a.botonfile:hover {
+  color: #009C8C !important;
 }
 
 @media (max-width: 393px) {

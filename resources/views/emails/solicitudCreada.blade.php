@@ -8,7 +8,7 @@
     <li>Nombre: {{$nombre}}</li>
     <li>Apellidos: {{$apellido}}</li>
     <li>DNI: {{$dni}}</li>
-    <li>Dirección: {{$dir}}</li>
+    <li>Dirección: {{$direccion}}</li>
     <li>C.P.: {{$cp}}</li>
     <li>Portal: {{$portal}}</li>
     @if($piso!=null)

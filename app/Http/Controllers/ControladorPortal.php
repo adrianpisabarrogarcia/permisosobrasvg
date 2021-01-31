@@ -72,13 +72,19 @@ class ControladorPortal extends Controller
                     ->paginate(4);
         }
 
-        $tipobras = DB::select('select * from tipo_obra');
-        $listausuarios = DB::select('select * from usuarios');
-        return view('principal.portal')->with([
-            'listasolicitudes' => $solicitudes,
-            'tipo_obra' => $tipobras,
-            'listausuarios' => $listausuarios,
-            'estado' => $request->estado,
-        ]);
+        if ($request->estado == "quitar")
+            return redirect()->route('portal.index');
+        else
+        {
+            $tipobras = DB::select('select * from tipo_obra');
+            $listausuarios = DB::select('select * from usuarios');
+            return view('principal.portal')->with([
+                'listasolicitudes' => $solicitudes,
+                'tipo_obra' => $tipobras,
+                'listausuarios' => $listausuarios,
+                'estado' => $request->estado,
+            ]);
+
+        }
     }
 }

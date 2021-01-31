@@ -37,13 +37,15 @@ class ControladorSolicitudObra extends Controller
         $id_usu = $usuario[0]->id_usu;
         //conseguir ruta del archivo
         $archivo = $request->file("plano");
-        $archivo->store("public");
-        $rutaArchivo = "storage/" . $archivo->hashName();
+        $nombrehash = $request->file("plano")->hashName();
+        $archivo->move('img/planos',$nombrehash);
+        $rutaArchivo = "/img/planos/" . $nombrehash;
+
         DB::table("obras")->insert([
             "id_tipo_edificio" => $request->edificio,
             "id_tipo_obra" => $request->obra,
             "id_usuario" => $id_usu,
-            "calle" => $request->dir,
+            "calle" => $request->direccion,
             "lat" => $request->lat,
             "lng" => $request->lng,
             "numero" => $request->portal,
@@ -55,7 +57,7 @@ class ControladorSolicitudObra extends Controller
             "fecha_fin" => null,
             "plano" => $rutaArchivo,
             "estado" => "creado",
-            "descrip" => $request->descripcion
+            "descrip" => $request->mensaje
         ]);
         $this->contacto($usuario, $request);
         return redirect()->route("portal.index");
