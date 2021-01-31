@@ -46,7 +46,7 @@ use Illuminate\Support\Facades\Route;
             Route::get('/listadousuarios/{id}','ControladorUsuarios@destroy')->name("borrarUsuario");
 
 //Rutas para coordinadores y tecnicos
-Route::get("/comprobarSolicitudes","ControladorEnlaces@comprobarSolicitudes")->name("comprobarSolicitudes");
+    Route::get("/comprobarSolicitudes","ControladorEnlaces@comprobarSolicitudes")->name("comprobarSolicitudes");
 
 //SOLICITUD
     Route::get('/solicitud/{id}','ControladorSolicitud@show')->name('solicitud.show');
@@ -54,11 +54,14 @@ Route::get("/comprobarSolicitudes","ControladorEnlaces@comprobarSolicitudes")->n
     Route::patch("/solicitud",'ControladorSolicitud@update')->name('cambioestado');
 
 //LOGIN
-    //Llamamos al controlador ControladorLogin y a los diferentes metodos para mostrar las vistas
-        Route::get('/','ControladorLogin@index')->name('login.home');
-        Route::get('/registro','ControladorLogin@registro')->name('registro.index');
     //Validar el dni del que intenta acceder a la pagina
         Route::post('/','ControladorLogin@show')->name('login.auth');
         Route::post('/registro','ControladorRegistro@store')->name('register');
-
+    //Llamamos al controlador ControladorLogin y a los diferentes metodos para mostrar las vistas
+        Route::get('/','ControladorLogin@index')->name('login.home');
+        Route::get('/registro','ControladorLogin@registro')->name('registro.index');
+        Route::get('/restablecer','ControladorLogin@restablecer')->name('restcontra.index');
+        Route::post('/restablcer','ControladorLogin@authemail')->name('restablecer.auth');
+        Route::post('/codigo','ControladorLogin@authcodigo')->name('codigo.auth');
+        Route::patch('/contra','ControladorLogin@modificarcontra')->name('modificar.contra');
 

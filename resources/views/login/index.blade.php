@@ -34,5 +34,7 @@
     <div class="text-center px-lg-5 pb-lg-2 p-2 w-100">
         <p class="d-inline-block mb-0">¿Todavía no tienes una cuenta?</p>
         <a href="{{ route('registro.index') }}" class="text-primary fw-bold text-decoration-none">Regístrate</a>
+        <br />
+        <a href="{{ route('restcontra.index') }}" class="text-primary fw-bold text-decoration-none">¿Has olvidado tu contraseña?</a>
     </div>
 @endsection
