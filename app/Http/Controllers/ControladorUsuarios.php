@@ -65,6 +65,7 @@ class ControladorUsuarios extends Controller
      */
     public function destroy($id)
     {
-        DB::table('principal.usuarios')->where('id_usu', '=', $id)->delete();
+        DB::table('usuarios')->where('id_usu', '=', $id)->delete();
+        return $this->show();
     }
 }
