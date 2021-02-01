@@ -30,7 +30,6 @@ function registro() {
 
 
         try {
-
             //compruebo DNI
             let dniSinLetra: string = ""
             for (let i = 0; i < (dni.length - 1); i++) {

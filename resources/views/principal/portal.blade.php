@@ -13,14 +13,14 @@
             @switch(Session::get('rol'))
                 @case('1')
                 <div class="col-12 col-lg-6 h-auto row mt-3 ml-4 ml-lg-0 pl-5 float-end align-items-center justify-content-around">
-                    <a href="solicitudpendiente" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 mr-5 ml-sm-0 border-5 rounded text-dark d-flex align-items-center justify-content-center text-decoration-none text-center">Solicitudes Pendientes</a>
-                    <a href="comprobarsolicitud" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 mr-5 border-2 rounded border-transparent text-dark d-flex align-items-center justify-content-center text-decoration-none text-center">Comprobar Solicitudes</a>
+                    <a href="asignarsolicitudes" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 mr-5 ml-sm-0 border-5 rounded text-dark d-flex align-items-center justify-content-center text-decoration-none text-center">Asignar Solicitudes</a>
+                    <a href="graficos" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 mr-5 border-2 rounded border-transparent text-dark d-flex align-items-center justify-content-center text-decoration-none text-center">Gráficos</a>
                 </div>
                 @break
                 @case('2')
                 <div class="col-12 col-lg-6 h-auto row mt-3 ml-4 ml-lg-0 pl-5 float-end align-items-center justify-content-around">
-                    <a href="asignarsolicitudes" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 mr-5 ml-sm-0 border-5 rounded text-dark d-flex align-items-center justify-content-center text-decoration-none text-center">Asignar Solicitudes</a>
-                    <a href="graficos" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 mr-5 border-2 rounded border-transparent text-dark d-flex align-items-center justify-content-center text-decoration-none text-center">Gráficos</a>
+                    <a class="h-25 text-white enlaceprin filtro col-4 col-md-4 col-lg-5 py-4 mr-5 ml-sm-0 border-5 rounded text-dark d-flex align-items-center justify-content-center text-decoration-none text-center" href="#" id="pendiente">Solicitudes Pendientes</a>
+                    <a href="comprobarsolicitud" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 mr-5 border-2 rounded border-transparent text-dark d-flex align-items-center justify-content-center text-decoration-none text-center">Comprobar Solicitudes</a>
                 </div>
                 @break
                 @default
@@ -36,7 +36,13 @@
         <div class="row">
             @if(count($listasolicitudes) > 0)
                 <div class="col-12 dropdown mt-3">
-                    <div class="nav-item dropdown" id="menu">
+                    <div class="nav-item mt-2 dropdown" id="menu">
+                        @if(isset($estado))
+                            <button class="btn quitarestado btn-primary col-md-2 col-4 mt-1 float-end text-white">
+                                {{ $estado }} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi text-white mb-1 bi-x-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                                </svg></button>
+                        @endif
                         <a class="nav-link col-3 mb-2 text-center col-sm-3 col-md-2 col-xl-1 filtrar border border-primary dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="marginmenu()">
                             Filtrar
                         </a>
@@ -64,7 +70,7 @@
                                 <div class="w-100 mt-3">
                                     @foreach($tipo_obra as $tipo)
                                         @if ($tipo->id_tipobra == $solicitudes->id_tipo_obra)
-                                            <span class="card-title text-dark h5 clearfix">{{ $tipo->tipo }}:</span>
+                                            <span class="card-title text-dark h5 clearfix">{{ ucfirst($tipo->tipo) }}:</span>
                                             @break
                                         @endif
                                     @endforeach
@@ -117,7 +123,11 @@
             @else
                 @if(isset($estado))
                     <div class="col-12 dropdown mt-3">
-                        <div class="nav-item dropdown" id="menu">
+                        <div class="nav-item dropdown mt-2" id="menu">
+                            <button class="btn quitarestado btn-primary col-md-2 col-4 mt-1 float-end text-white">
+                                {{ $estado }} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi text-white mb-1 bi-x-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                                </svg></button>
                             <a class="nav-link col-3 mb-2 text-center col-sm-3 col-md-2 col-xl-1 filtrar border border-primary dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="marginmenu()">
                                 Filtrar
                             </a>

@@ -7741,6 +7741,13 @@ body.dark .dropdown-item:active a {
 body.dark a.enlaceprin {
   background: #15838b !important;
 }
+body.dark .dataTables_length, body.dark .dataTables_length select, body.dark .dataTables_filter,
+body.dark .dataTables_filter input, body.dark .dataTables_info, body.dark #table_of_users_next, body.dark #table_of_users_previous {
+  color: white !important;
+}
+body.dark .dataTables_filter input {
+  font-weight: bold !important;
+}
 body.dark .paginacion .page-link {
   color: #15838b !important;
   background-color: #282828;
@@ -7798,6 +7805,9 @@ body.dark .card-footer {
   border-color: #009C8C !important;
 }
 body.dark .ap-suggestion em, body.dark span.ap-name, body.dark .ap-suggestion, body.dark .ap-cursor {
+  color: black !important;
+}
+body.dark a.botonfile {
   color: black !important;
 }
 
@@ -7904,6 +7914,7 @@ p {
 
 #layoutSidenav_content {
   top: 0 !important;
+  min-height: 0 !important;
 }
 
 #footer {
@@ -7925,6 +7936,10 @@ p {
 
 a.botonsolicitud:hover {
   background-color: #009C8C !important;
+}
+
+a.botonfile:hover {
+  color: #009C8C !important;
 }
 
 @media (max-width: 393px) {

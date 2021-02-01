@@ -1,5 +1,3 @@
-;
-
 <?php $__env->startSection("content"); ?>
     <div class="bg-primary table-bordered rounded w-50 m-auto my-0 mt-4 ">
         <div id="listado_perfil" class="w-100">
@@ -12,10 +10,10 @@
     </div>
     <div class="card w-50 m-auto mt-5 ">
         <div class="card-header bg-primary py-3 text-white">
-            <h4 class="text-center font-weight-normal">Datos de usuario</h4>
-            <!--<h4 class="text-center font-weight-normal">Modificar usuario</h4>-->
-            <!--<h4 class="text-center font-weight-normal">Cambiar contraseña</h4>-->
-            <!--<h4 class="text-center font-weight-normal">Borrar usuario</h4>-->
+            <!--<h4 class="text-center font-weight-normal">Datos de usuario</h4>
+            <h4 class="text-center font-weight-normal">Modificar usuario</h4>
+            <h4 class="text-center font-weight-normal">Cambiar contraseña</h4>
+            <h4 class="text-center font-weight-normal">Borrar usuario</h4>-->
         </div>
         <form>
             <div class=" card-body row my-3">

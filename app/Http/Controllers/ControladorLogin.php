@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
+use Mail;
 
 class ControladorLogin extends Controller
 {
@@ -19,6 +20,10 @@ class ControladorLogin extends Controller
     public function registro()
     {
         return view('login.registro');
+    }
+
+    public function restablecer(){
+        return view('login.restablecercontra');
     }
 
     //Metodo para comprobar los datos del login
@@ -45,5 +50,66 @@ class ControladorLogin extends Controller
             'error' => 'Usuario o contraseña incorrecto',
         ]);
 
+    }
+
+    public function authemail(Request $request){
+        $usuario = DB::select('select * from usuarios where email = ?',[$request->correo]);
+        if ($usuario == null){
+            return view('login.restablecercontra',['error' => 'Cuenta de correo incorrecta']);
+        }
+        else
+        {
+            $this->correo($request);
+            return view('login.codigo');
+        }
+    }
+
+    public function correo($request){
+        $subject = "Restablecer contraseña";
+        $for = $request->correo;
+
+        $numero = "";
+
+        for ($x = 0; $x <5;$x++){
+            $numero .= mt_rand(0,9);
+        }
+
+        $numeroale = ['numero' => $numero];
+
+        Session::put('numerocontra',$numero);
+        Session::put('email',$request->correo);
+
+        Mail::send('emails.restablecercontra',$numeroale, function($msj) use($subject,$for){
+            $msj->from("developersweapp@gmail.com","Permisos y Obras (Vitoria-Gasteiz)");
+            $msj->subject($subject);
+            $msj->to($for);
+        });
+    }
+
+    public function authcodigo(Request $request){
+        if ($request->codigo != Session::get('numerocontra')){
+            return view('login.codigo',['error' => 'Codigo de verificación incorrecto']);
+        }
+        else
+            return view('login.contraseña');
+    }
+
+    public function modificarcontra(Request $request){
+        DB::update('update usuarios set password = ? where email = ?',[Hash::make($request->passnew),Session::get('email')]);
+        $this->modcontra($request);
+        Session::remove('numerocontra');
+        Session::remove('email');
+        return redirect()->route('login.home');
+    }
+
+    public function modcontra($request){
+        $subject = "Restablecer contraseña";
+        $for = Session::get('email');
+
+        Mail::send('emails.contramodificada',$request->all(), function($msj) use($subject,$for){
+            $msj->from("developersweapp@gmail.com","Permisos y Obras (Vitoria-Gasteiz)");
+            $msj->subject($subject);
+            $msj->to($for);
+        });
     }
 }

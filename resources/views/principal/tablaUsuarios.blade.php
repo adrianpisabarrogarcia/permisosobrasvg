@@ -1,11 +1,6 @@
 @extends("principal.layouts.estructuraPagina")
-
 @section("logo")
     <a href="portal"><img src="img/logo.png" class="w-8 "></a>
-@endsection
-
-@section("archivosCSS")
-    <link href="/css/tablas.css" rel="stylesheet" class="theme"/>
 @endsection
 
 @section("content")
@@ -32,7 +27,7 @@
             <tbody>
             @isset($datosUsuarios)
                 @foreach ($datosUsuarios as $datos)
-                    <tr class="text-primary">
+                    <tr class="text-dark">
                         <td><b>{{ $datos->nombre}}</b></td>
                         <td><b>{{ $datos->apellido}}</b></td>
                         <td>{{ $datos->dni}}</td>
@@ -54,31 +49,25 @@
                             <td></td>
                         @endif
                         @if (Session::get('rol') == 1 && Session::get('usuario') != $datos->dni)
-                                <td><center><a href="/listadousuarios/{{ $datos->id_usu }}"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-trash-fill" viewBox="0 0 16 16"><path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/></svg></a></center></td>
+                            <td><center><a href="/listadousuarios/{{ $datos->id_usu }}"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-trash-fill" viewBox="0 0 16 16"><path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/></svg></a></center></td>
                         @else
                             <td><center>-</center></td>
                         @endif
                     </tr>
                 @endforeach
             @endisset
-
             </tbody>
         </table>
-
     </div>
-<br><br><br>
-
+    <br><br><br>
 @endsection
-
 @section('scripts')
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
     <script type="text/javascript">
         //var dt = require( 'datatables.net' )();
-
         $(document).ready(function () {
             $('#table_of_users').DataTable();
         });
-
         $('#table_of_users').DataTable({
             language: {
                 "processing": "Procesando...",
@@ -219,9 +208,6 @@
                 "thousands": "."
             }
         } );
-
-
-
         $('#table_of_userss').DataTable( {
             scrollY: true,
             scroller: {
@@ -230,5 +216,3 @@
         } );
     </script>
 @endsection
-
-

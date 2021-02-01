@@ -107,6 +107,15 @@ body.dark{
         background: #15838b !important;
     }
 
+    //css de tablas
+    .dataTables_length, .dataTables_length select, .dataTables_filter,
+    .dataTables_filter input, .dataTables_info, #table_of_users_next, #table_of_users_previous{
+        color: white !important;
+    }
+    .dataTables_filter input{
+        font-weight: bold !important;
+    }
+
     .paginacion{
         .page-link{
             color: #15838b !important;
@@ -177,6 +186,10 @@ body.dark{
     }
 
     .ap-suggestion em,span.ap-name,.ap-suggestion,.ap-cursor{
+        color: black !important;
+    }
+
+    a.botonfile{
         color: black !important;
     }
 }
@@ -285,6 +298,7 @@ p{
 
 #layoutSidenav_content{
     top: 0 !important;
+    min-height: 0 !important;
 }
 
 #footer{
@@ -306,6 +320,10 @@ p{
 
 a.botonsolicitud:hover{
     background-color: $primary !important;
+}
+
+a.botonfile:hover{
+    color: $primary !important;
 }
 
 @media (max-width: 393px) {

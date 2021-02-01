@@ -69,4 +69,22 @@ class ControladorSolicitud extends Controller
             $msj->to($for);
         });
     }
+
+    public function update(Request $request){
+        DB::update('update obras set estado = ? where id_obra = ?',[$request->resolucion,$request->idsoli]);
+        $obra = DB::select('select * from obras where id_obra = ?',[$request->idsoli]);
+        $usuario = DB::select('select * from usuarios where id_usu = ?',[$obra[0]->id_usuario]);
+        $this->contacto($request,$usuario);
+        return redirect()->route('solicitud.show',array("id" => $request->idsoli));
+    }
+
+    public function contacto($request,$usuario){
+        $subject = "Permisos y Obras VG";
+        $for = $usuario[0]->email;
+        Mail::send('emails.cambioestado',$request->all(),function ($msj) use ($subject,$for){
+            $msj->from("developersweapp@gmail.com","Permisos y Obras (Vitoria-Gasteiz)");
+            $msj->subject($subject);
+            $msj->to($for);
+        });
+    }
 }

@@ -25,7 +25,7 @@
                     </button>
                 </span>
                 <div class="dropdown-divider mt-1 mb-1"></div>
-                <a class="dropdown-item" href="<?php echo e(route("perfil")); ?>">Ajustes</a>
+                <a class="dropdown-item" href="<?php echo e(route("perfil")); ?>">Perfil</a>
                 <a class="dropdown-item" href="<?php echo e(route('portal.logout')); ?>" onclick="
                     event.preventDefault();
                     document.getElementById('logout-form').submit();">Cerrar Sesión
