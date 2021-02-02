@@ -1,140 +1,50 @@
 @extends("principal.layouts.estructuraPagina")
-@section("logo")
-    <a href="portal"><img src="img/logo.png" class="w-8 "></a>
-@endsection
-
 @section("content")
-    <div class="container-fluid ">
-        <h1>Listado de usuarios</h1>
-        @if(Session::get('rol') == 1)
-            <button type="button" id="btntablastecnicos" class="btn btn-primary mt-2 mb-2" onclick="tablaTecnico()">
-                Gestionar Técnicos
-            </button>
-            <button type="button" id="btntablastodos" class="btn btn-primary mt-2 mb-2 d-none" onclick="tablaTodos()">
-                Volver a ver todos
-            </button>
-
-        @endif
-
-
-        <div class="tablatodos">
-            <table class="table_of_users" class="display compact stripe">
-                <thead>
+    <h1>Solicitudes pendientes de asignar</h1>
+    <table class="table_of_users" class="display compact stripe">
+        <thead>
+        <tr>
+            <th>Solcitante</th>
+            <th>Calle</th>
+            <th>Nº</th>
+            <th>Piso</th>
+            <th>Mano</th>
+            <th>Fecha de Creación</th>
+            <th>Tipo Edificio</th>
+            <th>Tipo Obra</th>
+            <th>Estado</th>
+            <th>Abrir</th>
+        </tr>
+        </thead>
+        <tbody class="text-dark">
+        @isset($datosSolicitudes)
+            @foreach ($datosSolicitudes as $datos)
                 <tr>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>DNI</th>
-                    <th>Fecha de Nac.</th>
-                    <th>Lugar de Nac.</th>
-                    <th>Email</th>
-                    <th>Telefono</th>
-                    <th>Calle</th>
-                    <th>Código Postal</th>
-                    <th>Municipio</th>
-                    <th>Provincia</th>
-                    <th>Rol</th>
-                    <th>Eliminar</th>
+                    <td><b>{{ $datos->nombre . " " . $datos->apellido }}</b></td>
+                    <td>{{ $datos->calle }}</td>
+                    <td>{{ $datos->numero }}</td>
+                    <td>{{ $datos->piso }}</td>
+                    <td>{{ ucfirst($datos->mano) }}</td>
+                    <td><b>{{ $datos->fecha_creacion }}</b></td>
+                    <td>{{ ucfirst($datos->tipoedificio) }}</td>
+                    <td>{{ ucfirst($datos->tipo) }}</td>
+                    <td style="color: #055160">{{ ucfirst($datos->estado) }}</td>
+                    <td><a href="/solicitud/{{ ucfirst($datos->id_obra) }}">
+                            <button type="button" class="btn btn-outline-primary">Abrir
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                          d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                                    <path fill-rule="evenodd"
+                                          d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                                </svg>
+                            </button>
+                        </a></td>
                 </tr>
-                </thead>
-                <tbody>
-                @isset($datosUsuarios)
-                    @foreach ($datosUsuarios as $datos)
-                        <tr class="text-dark">
-                            <td><b>{{ $datos->nombre}}</b></td>
-                            <td><b>{{ $datos->apellido}}</b></td>
-                            <td>{{ $datos->dni}}</td>
-                            <td>{{ $datos->fecha_nac}}</td>
-                            <td>{{ $datos->lugar_nac}}</td>
-                            <td><b>{{ $datos->email}}</b></td>
-                            <td>{{ $datos->telefono}}</td>
-                            <td>{{ $datos->calle}}</td>
-                            <td>{{ $datos->codigo_postal}}</td>
-                            <td>{{ $datos->municipio}}</td>
-                            <td>{{ $datos->provincia}}</td>
-                            @if($datos->rol == 3)
-                                <td><b>Solicitante</b></td>
-                            @elseif($datos->rol == 2)
-                                <td><b>Técnico</b></td>
-                            @elseif($datos->rol == 1)
-                                <td><b>Coordinador</b></td>
-                            @else
-                                <td></td>
-                            @endif
-                            @if (Session::get('rol') == 1 && Session::get('usuario') != $datos->dni)
-                                <td>
-                                    <center><a href="/listadousuarios/{{ $datos->id_usu }}">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red"
-                                                 class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                            </svg>
-                                        </a></center>
-                                </td>
-                            @else
-                                <td>
-                                    <center>-</center>
-                                </td>
-                            @endif
-                        </tr>
-                    @endforeach
-                @endisset
-                </tbody>
-            </table>
-        </div>
-        <div class="d-none tablatecnicos">
-            <table class="table_of_users" class="compact stripe">
-                <thead>
-                <tr>
-                    <th>Nombre y Apellidos</th>
-                    <th>DNI</th>
-                    <th>Email</th>
-                    <th>Teléfono</th>
-                    <th>Estado del técnico</th>
-                </tr>
-                </thead>
-                <tbody>
-                @isset($datosUsuarios)
-                    @foreach ($datosUsuarios as $datos)
-                        @if ($datos->rol == 2)
-                            <tr class="text-dark">
-                                <td><b>{{ $datos->nombre . ' ' . $datos->apellido }}</b></td>
-                                <td>{{ $datos->dni }}</td>
-                                <td>{{ $datos->email }}</td>
-                                <td>{{ $datos->telefono }}</td>
-                                <td>
-                                    <form action="{{route("cambiarEstadoTecnico")}}" method="post">
-                                        @csrf
-                                        <input id="id" name="id" type="hidden" value="{{ $datos->id_usu }}">
-                                        <div class="input-group">
-                                            <select name="estado-tecnico" class="custom-select" id="inputGroupSelect04">
-                                                @if ($datos->estado_tecnico == "alta")
-                                                    <option value="alta" class="text-success" selected>Alta</option>
-                                                    <option value="baja" class="text-danger">Baja</option>
-                                                @endif
-                                                @if ($datos->estado_tecnico == "baja")
-                                                    <option value="alta" class="text-success">Alta</option>
-                                                    <option value="baja" class="text-danger" selected>Baja</option>
-                                                @endif
-                                            </select>
-                                            <div class="input-group-append">
-                                                <button
-                                                    class="btn btn-outline-secondary" type="submit"
-                                                    id="boton">Cambiar
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endif
-                    @endforeach
-                @endisset
-                </tbody>
-            </table>
-        </div>
-
-    </div>
-    <br><br><br>
+            @endforeach
+        @endisset
+        </tbody>
+    </table>
 @endsection
 @section('scripts')
     <script type="text/javascript" charset="utf8"
@@ -291,5 +201,4 @@
             }
         });
     </script>
-    <script src="js/tablausuarios.js"></script>
 @endsection

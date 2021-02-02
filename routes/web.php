@@ -36,7 +36,7 @@ use Illuminate\Support\Facades\Route;
 
     //Rutas para coordinadores
         //AsignarSolicitudes
-            Route::get("/asignarSolicitudes","ControladorCoordinador@asignarSolicitudes")->name("asignarSolicitudes");
+            Route::get("/solicitudespendientesasignar","ControladorSolicitudesSinAsignar@show")->name("solicitudesSinAsignar");
         //Graficos
             Route::get("/graficos","ControladorCoordinador@verGraficos")->name("portal.graficos");
             Route::get("/graficos/{estado}","ControladorGraficos@show")->name("graficos");
@@ -53,7 +53,7 @@ use Illuminate\Support\Facades\Route;
             Route::get('/annadirobraedificio/borraredificio/{id}','ControladorAnnadirTObraTEdificio@destroyEdificio')->name("borrarUsuario");
 
 //Rutas para coordinadores y tecnicos
-    Route::get("/comprobarSolicitudes","ControladorEnlaces@comprobarSolicitudes")->name("comprobarSolicitudes");
+    Route::get("/comprobarsolicitudes","ControladorComprobarSolicitudes@show")->name("comprobarSolicitudes");
 
 //SOLICITUD
     Route::get('/solicitud/{id}','ControladorSolicitud@show')->name('solicitud.show');
@@ -72,3 +72,7 @@ use Illuminate\Support\Facades\Route;
         Route::post('/codigo','ControladorLogin@authcodigo')->name('codigo.auth');
         Route::patch('/contra','ControladorLogin@modificarcontra')->name('modificar.contra');
 
+//Asignar tecnico
+    Route::patch('/asignartecnico','ControladorSolicitud@asignartecnico')->name('asignartecnico.update');
+
+    Route::post('/listadousuarios/estadotecnico','ControladorUsuarios@cambiarEstadoTecnico')->name("cambiarEstadoTecnico");

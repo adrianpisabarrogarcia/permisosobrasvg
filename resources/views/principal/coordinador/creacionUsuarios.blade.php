@@ -1,15 +1,7 @@
 @extends("principal.layouts.estructuraPagina")
-@section("logo")
-    <a href="portal"><img src="img/logo.png" class="w-8 "></a>
-@endsection
-@section("archivosCSS")
-    <link href="/css/principal.css" rel="stylesheet"/>
-    <link href="/css/Principal/claro.css" rel="stylesheet" class="theme"/>
-    <style>
-    </style
-@endsection
+
 @section("content")
-    <div class="align-self-center p-3">
+    <div class="align-self-center mt-5 p-3">
         <h2 class="">Registro de usuarios, técnicos y coordinadores</h2>
         <form method="POST" action="{{ route('creacionUsuarioSave') }}">
             @csrf

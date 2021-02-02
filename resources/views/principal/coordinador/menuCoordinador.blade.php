@@ -1,13 +1,12 @@
 <div class="sb-sidenav-menu-heading bg-primary text-light pt-3">Solicitudes</div>
 <!-- solucionar la ruta -->
-<a class="nav-link enlace" href="/portal">
-    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt text-primary"></i></div>
-    Asignar Solicitudes
-</a>
-<!-- solucionar la ruta -->
-<a class="nav-link enlace" href="/portal">
+<a class="nav-link enlace" href="{{ route('comprobarSolicitudes') }}">
     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt text-primary"></i></div>
     Comprobar Solicitudes
+</a>
+<a class="nav-link enlace" href="{{ route('solicitudesSinAsignar') }}">
+    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt text-primary"></i></div>
+    Asignar Solicitudes
 </a>
 <div class="sb-sidenav-menu-heading bg-primary text-light pt-3">Datos</div>
 <a class="nav-link enlace" href="{{ route('portal.graficos') }}">

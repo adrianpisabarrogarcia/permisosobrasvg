@@ -7810,6 +7810,9 @@ body.dark .ap-suggestion em, body.dark span.ap-name, body.dark .ap-suggestion, b
 body.dark a.botonfile {
   color: black !important;
 }
+body.dark .apexcharts-bar-area {
+  fill: #15838b !important;
+}
 
 .dropdown-item:active {
   background: none !important;
@@ -7940,6 +7943,22 @@ a.botonsolicitud:hover {
 
 a.botonfile:hover {
   color: #009C8C !important;
+}
+
+.apexcharts-menu.apexcharts-menu-open {
+  color: black !important;
+}
+
+#estado, #tipo {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+#selector:focus, #selector:active {
+  border-color: #009C8C !important;
+  outline-width: 0 !important;
+  box-shadow: none !important;
 }
 
 @media (max-width: 393px) {

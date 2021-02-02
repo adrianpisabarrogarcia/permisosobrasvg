@@ -16,6 +16,7 @@ class ControladorSolicitud extends Controller
             $tipobras = DB::select('select * from tipo_obra where id_tipobra = ?',[$datosobra[0]->id_tipo_obra]);
             $tipoedificio = DB::select('select * from tipo_edificio where id = ?',[$datosobra[0]->id_tipo_edificio]);
             $listausuarios = DB::select('select * from usuarios where id_usu = ?',[$datosobra[0]->id_usuario]);
+            $listatecnicos = DB::select('select * from usuarios where rol = ? and estado_tecnico = ?',["2","alta"]);
             $listacomentarios = DB::table('comentarios')
                 ->where('id_obra','=',$datosobra[0]->id_obra)
                 ->orderBy('fecha_comentario','DESC')
@@ -25,7 +26,8 @@ class ControladorSolicitud extends Controller
                 'tipo_obra' => $tipobras,
                 'tipo_edificio' => $tipoedificio,
                 'listausuarios' => $listausuarios,
-                'listacomentarios' => $listacomentarios
+                'listacomentarios' => $listacomentarios,
+                'listatecnicos' => $listatecnicos,
             ]);
         }
         return redirect()->route('login.home');
@@ -85,6 +87,22 @@ class ControladorSolicitud extends Controller
             $msj->from("developersweapp@gmail.com","Permisos y Obras (Vitoria-Gasteiz)");
             $msj->subject($subject);
             $msj->to($for);
+        });
+    }
+
+    public function asignartecnico(Request $request){
+        DB::update("update obras set estado = ?, id_tecnico = ?, where id_obra = ?",["pendiente",$request->tecnico,$request->idsoli]);
+        $this->contactotecnico($request);
+        //return redirect()->route('solicitud.show',array("id" => $request->idsoli));
+    }
+
+    public function contactotecnico($request){
+        $subject = "Asignación de solicitud";
+        $for = $request->tecnico;
+        Mail::send('emails.asignacionsolicitud',$request->all(),function ($msj) use ($subject,$for){
+           $msj->from("developersweapp@gmail.com","Permisis y Obras (Vitoria-Gasteiz");
+           $msj->subject($subject);
+           $msj->to($for);
         });
     }
 }

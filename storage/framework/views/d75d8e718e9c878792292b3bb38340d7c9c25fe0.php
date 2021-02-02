@@ -31,11 +31,11 @@
                                     <h5 class="text-dark text-center pt-lg-2">Datos de la Obra</h5>
                                     <div class="d-flex justify-content-center flex-column align-items-center">
                                         <?php $__currentLoopData = $tipo_edificio; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tipoedi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <span class="text-dark"><small><b>Tipo de edificio: </b><?php echo e($tipoedi->tipo); ?></small></span>
+                                            <span class="text-dark"><small><b>Tipo de edificio: </b><?php echo e(ucfirst($tipoedi->tipo)); ?></small></span>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php $__currentLoopData = $tipo_obra; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tipobra): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <span
-                                                class="text-dark"><small><b>Tipo de obra: </b><?php echo e($tipobra->tipo); ?></small></span>
+                                                class="text-dark"><small><b>Tipo de obra: </b><?php echo e(ucfirst($tipobra->tipo)); ?></small></span>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <span class="text-dark text-center"><small><b>Fecha de Creación: </b><?php echo e($solicitudes->fecha_creacion); ?></small></span>
                                         <?php if($solicitudes->fecha_ini !=null): ?>
@@ -99,6 +99,20 @@
                                             <input type="hidden" name="idsoli" value="<?php echo e($listasolicitudes[0]->id_obra); ?>">
                                             <button type="submit" class="mt-3 btn btn-primary botoncoment text-white">Enviar Resolución</button>
                                         </form>
+                                    <?php else: ?>
+                                        <?php if(Session::get('rol') == "1"): ?>
+                                            <h5 class="text-dark text-center pt-2 mt-lg-2">Asignar técnico</h5>
+                                            <form action="<?php echo e(route('asignartecnico.update')); ?>" method="post" class="d-flex align-items-center flex-column">
+                                                <?php echo csrf_field(); ?> <?php echo method_field('PATCH'); ?>
+                                                <select name="tecnico" class="form-select pt-1 mt-2 card-footer col-9 col-md-7 rounded text-center" style="text-align-last: center">
+                                                    <?php $__currentLoopData = $listatecnicos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tecnicos): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <option value="<?php echo e($tecnicos->id_usu); ?>"><?php echo e($tecnicos->nombre); ?> <?php echo e($tecnicos->apellido); ?></option>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                </select>
+                                                <input type="hidden" name="idsoli" value="<?php echo e($listasolicitudes[0]->id_obra); ?>">
+                                                <button class="btn btn-primary botoncoment text-white col-9 mt-2 col-md-7">Asignar técnico</button>
+                                            </form>
+                                        <?php endif; ?>
                                     <?php endif; ?>
                                 </div>
                         </div>

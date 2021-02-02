@@ -1,14 +1,5 @@
-<?php $__env->startSection("logo"); ?>
-    <a href="portal"><img src="img/logo.png" class="w-8 "></a>
-<?php $__env->stopSection(); ?>
-<?php $__env->startSection("archivosCSS"); ?>
-    <link href="/css/principal.css" rel="stylesheet"/>
-    <link href="/css/Principal/claro.css" rel="stylesheet" class="theme"/>
-    <style>
-    </style
-<?php $__env->stopSection(); ?>
 <?php $__env->startSection("content"); ?>
-    <div class="align-self-center p-3">
+    <div class="align-self-center mt-5 p-3">
         <h2 class="">Registro de usuarios, técnicos y coordinadores</h2>
         <form method="POST" action="<?php echo e(route('creacionUsuarioSave')); ?>">
             <?php echo csrf_field(); ?>

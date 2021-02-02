@@ -192,6 +192,10 @@ body.dark{
     a.botonfile{
         color: black !important;
     }
+
+    .apexcharts-bar-area{
+        fill: #15838b !important;
+    }
 }
 
 .dropdown-item:active{
@@ -324,6 +328,22 @@ a.botonsolicitud:hover{
 
 a.botonfile:hover{
     color: $primary !important;
+}
+
+.apexcharts-menu.apexcharts-menu-open{
+    color: black !important;
+}
+
+#estado,#tipo{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+#selector:focus,#selector:active{
+    border-color: $primary !important;
+    outline-width: 0 !important;
+    box-shadow: none !important;
 }
 
 @media (max-width: 393px) {

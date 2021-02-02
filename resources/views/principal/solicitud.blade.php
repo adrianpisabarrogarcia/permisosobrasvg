@@ -33,11 +33,11 @@
                                     <h5 class="text-dark text-center pt-lg-2">Datos de la Obra</h5>
                                     <div class="d-flex justify-content-center flex-column align-items-center">
                                         @foreach($tipo_edificio as $tipoedi)
-                                            <span class="text-dark"><small><b>Tipo de edificio: </b>{{ $tipoedi->tipo }}</small></span>
+                                            <span class="text-dark"><small><b>Tipo de edificio: </b>{{ ucfirst($tipoedi->tipo) }}</small></span>
                                         @endforeach
                                         @foreach($tipo_obra as $tipobra)
                                             <span
-                                                class="text-dark"><small><b>Tipo de obra: </b>{{ $tipobra->tipo }}</small></span>
+                                                class="text-dark"><small><b>Tipo de obra: </b>{{ ucfirst($tipobra->tipo) }}</small></span>
                                         @endforeach
                                         <span class="text-dark text-center"><small><b>Fecha de Creación: </b>{{ $solicitudes->fecha_creacion }}</small></span>
                                         @if($solicitudes->fecha_ini !=null)
@@ -101,6 +101,20 @@
                                             <input type="hidden" name="idsoli" value="{{ $listasolicitudes[0]->id_obra }}">
                                             <button type="submit" class="mt-3 btn btn-primary botoncoment text-white">Enviar Resolución</button>
                                         </form>
+                                    @else
+                                        @if(Session::get('rol') == "1")
+                                            <h5 class="text-dark text-center pt-2 mt-lg-2">Asignar técnico</h5>
+                                            <form action="{{ route('asignartecnico.update') }}" method="post" class="d-flex align-items-center flex-column">
+                                                @csrf @method('PATCH')
+                                                <select name="tecnico" class="form-select pt-1 mt-2 card-footer col-9 col-md-7 rounded text-center" style="text-align-last: center">
+                                                    @foreach($listatecnicos as $tecnicos)
+                                                        <option value="{{ $tecnicos->id_usu }}">{{ $tecnicos->nombre }} {{ $tecnicos->apellido }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <input type="hidden" name="idsoli" value="{{ $listasolicitudes[0]->id_obra }}">
+                                                <button class="btn btn-primary botoncoment text-white col-9 mt-2 col-md-7">Asignar técnico</button>
+                                            </form>
+                                        @endif
                                     @endif
                                 </div>
                         </div>

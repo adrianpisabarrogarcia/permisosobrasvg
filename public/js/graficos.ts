@@ -1,86 +1,98 @@
-$(document).ready(function () {
-    var selector = $("#selector").val();
+$(document).ready(function (){
+    let selector= $("#selector").val();
     llamadaAjax(selector);
-    $("#selector").on("change", function () {
+    $("#selector").on("change",function (){
         llamadaAjax($("#selector").val());
-    });
-});
-function llamadaAjax(filtro) {
+    })
+})
+
+function  llamadaAjax(filtro){
     $.ajax({
-        url: "/graficos/" + filtro,
+        url: "/graficos/"+filtro,
         method: "get",
-        success: function (response) {
+        success: function (response){
             var tabla;
-            switch ($("#selector").val()) {
+            switch ($("#selector").val()){
                 case "estado":
-                    tabla = estadoGrafica(response);
-                    $("#graficos").append("<div id='estado'></div>");
+                    tabla= estadoGrafica(response);
+                    $("#graficos").append("<div id='estado'></div>")
+
                     var chart = new ApexCharts(document.querySelector("#estado"), tabla);
                     chart.render();
                     $("#temporada").remove();
                     $("#tipo").remove();
                     $("#carga").remove();
+
                     break;
                 case "temporada":
-                    tabla = temporadaGrafica(response);
+                    tabla= temporadaGrafica(response);
                     $("#estado").remove();
                     $("#tipo").remove();
                     $("#carga").remove();
-                    $("#graficos").append("<div id='temporada'></div>");
+
+                    $("#graficos").append("<div id='temporada'></div>")
                     var chart = new ApexCharts(document.querySelector("#temporada"), tabla);
                     chart.render();
+
+
                     break;
                 case "tipo":
-                    tabla = tipoGrafica(response);
+                    tabla= tipoGrafica(response);
                     $("#estado").remove();
                     $("#temporada").remove();
                     $("#carga").remove();
-                    $("#graficos").append("<div id='tipo'></div>");
+                    $("#graficos").append("<div id='tipo'></div>")
                     var chart = new ApexCharts(document.querySelector("#tipo"), tabla);
                     chart.render();
                     break;
                 default:
-                    tabla = cargaGrafica(response);
+                    tabla= cargaGrafica(response);
                     $("#estado").remove();
                     $("#tipo").remove();
                     $("#temporada").remove();
-                    $("#graficos").append("<div id='carga'></div>");
+                    $("#graficos").append("<div id='carga'></div>")
                     var chart = new ApexCharts(document.querySelector("#carga"), tabla);
                     chart.render();
+
             }
+
         }
+
     });
 }
-function estadoGrafica(datos) {
+
+
+function estadoGrafica(datos){
     var graficaEstado = {
         series: [datos["creada"], datos["pendiente"], datos["aceptada"], datos["rechazada"]],
-        colors: ["rgb(0,143,251)", "rgb(254,176,25)", "#009C8C", "rgb(255,69,96)"],
+        colors:["rgb(0,143,251)","rgb(254,176,25)","#009C8C","rgb(255,69,96)"],
         chart: {
             width: 380,
             type: 'pie',
         },
         labels: ['Creado', 'Pendiente', 'Aceptado', 'Rechazado'],
         responsive: [{
-                breakpoint: 480,
-                options: {
-                    chart: {
-                        width: 350
-                    },
-                    legend: {
-                        position: 'bottom'
-                    }
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 350
+                },
+                legend: {
+                    position: 'bottom'
                 }
-            }]
+            }
+        }]
     };
+
     return graficaEstado;
 }
-function temporadaGrafica(datos) {
+function temporadaGrafica(datos){
     var graficaTemporada = {
         colors: ["#009C8C"],
         series: [{
-                name: 'Cantidad',
-                data: [datos[0]["cantidad"], datos[1]["cantidad"], datos[2]["cantidad"], datos[3]["cantidad"], datos[4]["cantidad"], datos[5]["cantidad"], datos[6]["cantidad"], datos[7]["cantidad"], datos[8]["cantidad"], datos[9]["cantidad"], datos[10]["cantidad"], datos[11]["cantidad"]]
-            }],
+            name: 'Cantidad',
+            data: [datos[0]["cantidad"], datos[1]["cantidad"], datos[2]["cantidad"], datos[3]["cantidad"], datos[4]["cantidad"], datos[5]["cantidad"], datos[6]["cantidad"], datos[7]["cantidad"], datos[8]["cantidad"], datos[9]["cantidad"], datos[10]["cantidad"], datos[11]["cantidad"]]
+        }],
         chart: {
             height: 350,
             type: 'bar',
@@ -88,7 +100,7 @@ function temporadaGrafica(datos) {
         plotOptions: {
             bar: {
                 dataLabels: {
-                    position: 'center',
+                    position: 'center', // top, center, bottom
                 },
             }
         },
@@ -97,11 +109,13 @@ function temporadaGrafica(datos) {
             formatter: function (val) {
                 return val;
             },
+
             style: {
                 fontSize: '12px',
                 colors: ["#304758"]
             }
         },
+
         xaxis: {
             categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             position: 'top',
@@ -140,6 +154,7 @@ function temporadaGrafica(datos) {
                     return val;
                 }
             }
+
         },
         title: {
             text: 'Solicitudes de obras anuales',
@@ -152,48 +167,51 @@ function temporadaGrafica(datos) {
         },
     };
     return graficaTemporada;
+
 }
-function tipoGrafica(datos) {
+
+
+function tipoGrafica(datos){
     var graficaTipo = {
-        series: [datos[0]["porcentaje"], datos[1]["porcentaje"]],
+        series: [datos[0]["porcentaje"],datos[1]["porcentaje"]],
         chart: {
             width: 380,
             type: 'pie',
         },
         labels: [datos[0]["tipo"], datos[1]["tipo"]],
         responsive: [{
-                breakpoint: 480,
-                options: {
-                    chart: {
-                        width: 350
-                    },
-                    legend: {
-                        position: 'bottom'
-                    }
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 350
+                },
+                legend: {
+                    position: 'bottom'
                 }
-            }]
+            }
+        }]
     };
     return graficaTipo;
 }
-function cargaGrafica(datos) {
+function cargaGrafica(datos){
     var graficaCarga = {
-        series: [datos[0]["porcentaje"], datos[1]["porcentaje"]],
+        series: [datos[0]["porcentaje"],datos[1]["porcentaje"]],
         chart: {
             width: 380,
             type: 'pie',
         },
         labels: [datos[0]["tipo"], datos[1]["tipo"]],
         responsive: [{
-                breakpoint: 480,
-                options: {
-                    chart: {
-                        width: 350
-                    },
-                    legend: {
-                        position: 'bottom'
-                    }
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 350
+                },
+                legend: {
+                    position: 'bottom'
                 }
-            }]
+            }
+        }]
     };
     return graficaCarga;
 }

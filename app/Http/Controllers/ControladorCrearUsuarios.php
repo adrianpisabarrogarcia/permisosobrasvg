@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Mail;
-
+use function Symfony\Component\Translation\t;
 class ControladorCrearUsuarios extends Controller
 {
     /**
@@ -37,24 +37,43 @@ class ControladorCrearUsuarios extends Controller
         }
         if (empty($errores)) {
             //utilizar este método para guardar la info recibida por parámetro
-            DB::table('usuarios')->insert([
-                'nombre' => $request->get('nombre'),
-                'apellido' => $request->get('apellidos'),
-                'dni' => $request->get('dni'),
-                'fecha_nac' => $request->get('fecha_nac'),
-                'lugar_nac' => $request->get('lugar_nac'),
-                'email' => $request->get('email'),
-                'telefono' => $request->get('telefono'),
-                'calle' => $request->get('calle'),
-                'codigo_postal' => $request->get('codigopostal'),
-                'municipio' => $request->get('municipio'),
-                'provincia' => $request->get('provincia'),
-                'password' => Hash::make($request->get('password')),
-                'rol' => $request->get('tipousuario')
-            ]);
+            if ($request->get('tipousuario')!=2){
+                DB::table('usuarios')->insert([
+                    'nombre' => $request->get('nombre'),
+                    'apellido' => $request->get('apellidos'),
+                    'dni' => $request->get('dni'),
+                    'fecha_nac' => $request->get('fecha_nac'),
+                    'lugar_nac' => $request->get('lugar_nac'),
+                    'email' => $request->get('email'),
+                    'telefono' => $request->get('telefono'),
+                    'calle' => $request->get('calle'),
+                    'codigo_postal' => $request->get('codigopostal'),
+                    'municipio' => $request->get('municipio'),
+                    'provincia' => $request->get('provincia'),
+                    'password' => Hash::make($request->get('password')),
+                    'rol' => $request->get('tipousuario')
+                ]);
+            }else{
+                DB::table('usuarios')->insert([
+                    'nombre' => $request->get('nombre'),
+                    'apellido' => $request->get('apellidos'),
+                    'dni' => $request->get('dni'),
+                    'fecha_nac' => $request->get('fecha_nac'),
+                    'lugar_nac' => $request->get('lugar_nac'),
+                    'email' => $request->get('email'),
+                    'telefono' => $request->get('telefono'),
+                    'calle' => $request->get('calle'),
+                    'codigo_postal' => $request->get('codigopostal'),
+                    'municipio' => $request->get('municipio'),
+                    'provincia' => $request->get('provincia'),
+                    'password' => Hash::make($request->get('password')),
+                    'rol' => $request->get('tipousuario'),
+                    'estado_tecnico' => 'Alta'
+                ]);
+            }
         }
         $this->contact($request);
-        return $this->show();
+        return $this->show('Se ha introducido el usuario');
     }
     /**
      * Display the specified resource.
@@ -62,9 +81,9 @@ class ControladorCrearUsuarios extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($hecho = '')
     {
-        return view("principal.coordinador.creacionUsuarios");
+        return view("principal.coordinador.creacionUsuarios")->with(['hecho'=>$hecho]);
     }
     /**
      * Update the specified resource in storage.

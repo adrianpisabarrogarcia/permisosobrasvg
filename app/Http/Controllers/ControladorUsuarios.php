@@ -1,11 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\DB;
-
-
 class ControladorUsuarios extends Controller
 {
     /**
@@ -15,9 +11,7 @@ class ControladorUsuarios extends Controller
      */
     public function index()
     {
-
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -28,7 +22,6 @@ class ControladorUsuarios extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      *
@@ -38,13 +31,9 @@ class ControladorUsuarios extends Controller
     public function show()
     {
         $datosUsuarios = DB::select('select * from usuarios');
-
-
-
         return view("principal.tablaUsuarios")->with([
             "datosUsuarios" => $datosUsuarios]);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -56,7 +45,6 @@ class ControladorUsuarios extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -67,5 +55,17 @@ class ControladorUsuarios extends Controller
     {
         DB::table('usuarios')->where('id_usu', '=', $id)->delete();
         return $this->show();
+    }
+    public function cambiarEstadoTecnico(Request $request)
+    {
+        DB::table('usuarios')
+            ->where('id_usu', '=', $request->get('id'))
+            ->update(['estado_tecnico' => $request->get('estado-tecnico')]);
+        /*
+        $datosUsuarios = DB::select('select * from usuarios');
+        return view("principal.tablaUsuarios")->with([
+            "datosUsuarios" => $datosUsuarios]);
+        */
+        return redirect()->route('listarUsuarios');
     }
 }

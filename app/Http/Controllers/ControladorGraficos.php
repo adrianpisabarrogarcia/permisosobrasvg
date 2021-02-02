@@ -187,11 +187,6 @@ class ControladorGraficos extends Controller
         return $datos;
     }
 
-    function select()
-    {
-    }
-
-
     /**
      * Update the specified resource in storage.
      *
