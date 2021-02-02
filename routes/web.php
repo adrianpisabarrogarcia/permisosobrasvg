@@ -33,20 +33,30 @@ use Illuminate\Support\Facades\Route;
             Route::post("/contacto","ControladorContacto@show")->name("enviarContacto");
         //Perfil
             Route::get("/perfil","ControladorPerfil@show")->name("perfil");
+            Route::post("/modificarPerfil","ControladorPerfil@updateDatos")->name("modificarPerfil");
+            Route::post("cambiarContra","ControladorPerfil@updatePassword")->name("cambiarContra");
+            Route::get("/perfil/borrarUsuario","ControladorPerfil@destroy")->name("borrarUsuario");
 
     //Rutas para coordinadores
         //AsignarSolicitudes
-            Route::get("/asignarSolicitudes","ControladorCoordinador@asignarSolicitudes")->name("asignarSolicitudes");
+            Route::get("/solicitudespendientesasignar","ControladorSolicitudesSinAsignar@show")->name("solicitudesSinAsignar");
         //Graficos
             Route::get("/graficos","ControladorCoordinador@verGraficos")->name("portal.graficos");
+            Route::get("/graficos/{estado}","ControladorGraficos@show")->name("graficos");
         //Creación de usuarios
-            Route::get("/crearusuarios","ControladorCoordinador@crearUsuarios")->name("creacionUsuarios");
+            Route::get("/crearusuarios","ControladorCrearUsuarios@show")->name("creacionUsuarios");
+            Route::post('/crearusuariosregistro','ControladorCrearUsuarios@store')->name('creacionUsuarioSave');
         //Listado de usuarios
             Route::get("/listadousuarios","ControladorUsuarios@show")->name("listarUsuarios");
             Route::get('/listadousuarios/{id}','ControladorUsuarios@destroy')->name("borrarUsuario");
+            Route::get('/annadirobraedificio','ControladorAnnadirTObraTEdificio@show')->name("annadirObraEdificio");
+            Route::post('/annadirobraedificio/annadirobra','ControladorAnnadirTObraTEdificio@annadirTObra')->name("annadirObra");
+            Route::post('/annadirobraedificio/annadiredificio','ControladorAnnadirTObraTEdificio@annadirTEdificio')->name("annadirEdificio");
+            Route::get('/annadirobraedificio/borrarobra/{id}','ControladorAnnadirTObraTEdificio@destroyObra')->name("borrarUsuario");
+            Route::get('/annadirobraedificio/borraredificio/{id}','ControladorAnnadirTObraTEdificio@destroyEdificio')->name("borrarUsuario");
 
 //Rutas para coordinadores y tecnicos
-    Route::get("/comprobarSolicitudes","ControladorEnlaces@comprobarSolicitudes")->name("comprobarSolicitudes");
+    Route::get("/comprobarsolicitudes","ControladorComprobarSolicitudes@show")->name("comprobarSolicitudes");
 
 //SOLICITUD
     Route::get('/solicitud/{id}','ControladorSolicitud@show')->name('solicitud.show');
@@ -64,4 +74,11 @@ use Illuminate\Support\Facades\Route;
         Route::post('/restablcer','ControladorLogin@authemail')->name('restablecer.auth');
         Route::post('/codigo','ControladorLogin@authcodigo')->name('codigo.auth');
         Route::patch('/contra','ControladorLogin@modificarcontra')->name('modificar.contra');
+
+//Asignar tecnico
+    Route::patch('/asignartecnico','ControladorSolicitud@asignartecnico')->name('asignartecnico.update');
+
+    Route::post('/listadousuarios/estadotecnico','ControladorUsuarios@cambiarEstadoTecnico')->name("cambiarEstadoTecnico");
+    Route::patch('/finalizarobra/','ControladorSolicitud@finalizarobra')->name('finalizarobra');
+
 

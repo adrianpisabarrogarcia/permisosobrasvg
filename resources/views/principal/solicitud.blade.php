@@ -33,11 +33,11 @@
                                     <h5 class="text-dark text-center pt-lg-2">Datos de la Obra</h5>
                                     <div class="d-flex justify-content-center flex-column align-items-center">
                                         @foreach($tipo_edificio as $tipoedi)
-                                            <span class="text-dark"><small><b>Tipo de edificio: </b>{{ $tipoedi->tipo }}</small></span>
+                                            <span class="text-dark"><small><b>Tipo de edificio: </b>{{ ucfirst($tipoedi->tipo) }}</small></span>
                                         @endforeach
                                         @foreach($tipo_obra as $tipobra)
                                             <span
-                                                class="text-dark"><small><b>Tipo de obra: </b>{{ $tipobra->tipo }}</small></span>
+                                                class="text-dark"><small><b>Tipo de obra: </b>{{ ucfirst($tipobra->tipo) }}</small></span>
                                         @endforeach
                                         <span class="text-dark text-center"><small><b>Fecha de Creación: </b>{{ $solicitudes->fecha_creacion }}</small></span>
                                         @if($solicitudes->fecha_ini !=null)
@@ -57,17 +57,20 @@
                                             @if($solicitudes->mano != null)
                                                 <small><b> Mano: </b>{{ $solicitudes->mano }}</small>
                                             @endif
-                                                </span>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 mt-lg-0 mt-2 d-flex flex-column">
                                     <h5 class="text-dark text-center pt-2">Descripción</h5>
                                     <span class="text-center text-dark"><small>{!! $solicitudes->descrip !!}</small></span>
                                     <div class="d-flex justify-content-center align-items-end mt-4">
-                                        <button class="alert alert-primary py-2 me-3 mb-2">
-                                            <small><a class="text-dark" href="{{ $solicitudes->plano }}" target="_blank"
-                                                      download><i class="fa fa-download"></i> Planos</a></small>
-                                        </button>
+                                        <a class="text-dark planos" href="{{ $solicitudes->plano }}" target="_blank"
+                                            download>
+                                            <button class="alert alert-primary py-2 me-3 mb-2">
+                                                <small><i class="fa fa-download"></i> Planos</small>
+                                            </button>
+                                        </a>
+
                                         @switch($solicitudes->estado)
                                             @case("creado")
                                             <div class="alert alert-info py-2 mb-2" role="alert">
@@ -90,7 +93,7 @@
                                             </div>
                                         @endswitch
                                     </div>
-                                    @if(Session::get('rol') == "2")
+                                    @if(Session::get('rol') == "2" && $solicitudes->estado != "finalizado")
                                         <h5 class="text-dark text-center pt-2 mt-lg-2">Resolver Solicitud</h5>
                                         <form action="{{ route('cambioestado') }}" method="post" class="text-center">
                                             @csrf @method('PATCH')
@@ -99,8 +102,23 @@
                                             <input type="radio" name="resolucion" value="rechazado" required><span class="text-dark"> Rechazar</span>
                                             <br />
                                             <input type="hidden" name="idsoli" value="{{ $listasolicitudes[0]->id_obra }}">
+                                            <input type="hidden" name="fechahoy" id="fechahoy">
                                             <button type="submit" class="mt-3 btn btn-primary botoncoment text-white">Enviar Resolución</button>
                                         </form>
+                                    @else
+                                        @if(Session::get('rol') == "1" && $solicitudes->estado != "finalizado")
+                                            <h5 class="text-dark text-center pt-2 mt-lg-2">Asignar técnico</h5>
+                                            <form action="{{ route('asignartecnico.update') }}" method="post" class="d-flex align-items-center flex-column">
+                                                @csrf @method('PATCH')
+                                                <select name="tecnico" class="form-select pt-1 mt-2 card-footer col-9 col-md-7 rounded text-center" style="text-align-last: center">
+                                                    @foreach($listatecnicos as $tecnicos)
+                                                        <option value="{{ $tecnicos->id_usu }}">{{ $tecnicos->nombre }} {{ $tecnicos->apellido }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <input type="hidden" name="idsoli" value="{{ $listasolicitudes[0]->id_obra }}">
+                                                <button class="btn btn-primary botoncoment text-white col-9 mt-2 col-md-7">Asignar técnico</button>
+                                            </form>
+                                        @endif
                                     @endif
                                 </div>
                         </div>
@@ -116,13 +134,24 @@
                             </div>
                         </div>
                     </div>
+                    @if($solicitudes->estado == "aceptado" && Session::get('rol') == "2" && $solicitudes->estado != "finalizado")
+                        <form action="{{ route('finalizarobra') }}" method="post" class="mt-4 p-0">
+                            @csrf @method('PATCH')
+                            <div class="bg-primary col-12 p-0">
+                                <input type="hidden" name="idsoli" value="{{ $solicitudes->id_obra }}">
+                                <input type="hidden" name="fechafin" id="fechafin">
+                                <input type="hidden" name="email" value="{{ $listausuarios[0]->email }}">
+                                <button type="submit" class="card-footer datosusu finalizarobra px-5 py-2 col-12 p-0 text-primary border border-primary">Finalizar Obra</button>
+                            </div>
+                        </form>
+                    @endif
                 @endforeach
                 </div>
             </div>
-            @if (count($listacomentarios) > 0)
-                <div class="container">
-                    <div class="row">
-                        <h5 class="text-dark text-start comentario">Comentarios</h5>
+                @if (count($listacomentarios) > 0)
+                    <div class="container">
+                        <div class="row">
+                            <h5 class="text-dark text-start comentario">Comentarios</h5>
                         @foreach($listacomentarios as $comentarios)
                             <div class="col-lg-6 mt-2 mt-lg-2">
                                 <div class="datos bg-primary"

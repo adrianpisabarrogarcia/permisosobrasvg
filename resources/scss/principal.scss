@@ -107,6 +107,15 @@ body.dark{
         background: #15838b !important;
     }
 
+    //css de tablas
+    .dataTables_length, .dataTables_length select, .dataTables_filter,
+    .dataTables_filter input, .dataTables_info, #table_of_users_next, #table_of_users_previous{
+        color: white !important;
+    }
+    .dataTables_filter input{
+        font-weight: bold !important;
+    }
+
     .paginacion{
         .page-link{
             color: #15838b !important;
@@ -118,6 +127,10 @@ body.dark{
             color: white !important;
             border-color: white !important;
         }
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+        color: white !important;
     }
 
     .solicitudes{
@@ -181,6 +194,14 @@ body.dark{
     }
 
     a.botonfile{
+        color: black !important;
+    }
+
+    .apexcharts-bar-area{
+        fill: #15838b !important;
+    }
+
+    .datosusu.finalizarobra{
         color: black !important;
     }
 }
@@ -276,15 +297,22 @@ p{
 }
 
 .filtrado{
-    margin-bottom: 95px !important;
+    margin-bottom: 109px !important;
 }
 
 .listmenu{
-    top: -60px !important;
+    top: -75px !important;
 }
 
 .nav-link.p-0:hover{
     color: black !important;
+}
+
+.planos{
+    button {
+        outline-width: 0 !important;
+        box-shadow: none !important;
+    }
 }
 
 #layoutSidenav_content{
@@ -315,6 +343,28 @@ a.botonsolicitud:hover{
 
 a.botonfile:hover{
     color: $primary !important;
+}
+
+.apexcharts-menu.apexcharts-menu-open{
+    color: black !important;
+}
+
+#estado,#tipo{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+#selector:focus,#selector:active{
+    border-color: $primary !important;
+    outline-width: 0 !important;
+    box-shadow: none !important;
+}
+
+.datosusu.finalizarobra{
+    border-color: $primary !important;
+    outline-width: 0 !important;
+    box-shadow: none !important;
 }
 
 @media (max-width: 393px) {

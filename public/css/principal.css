@@ -7741,6 +7741,13 @@ body.dark .dropdown-item:active a {
 body.dark a.enlaceprin {
   background: #15838b !important;
 }
+body.dark .dataTables_length, body.dark .dataTables_length select, body.dark .dataTables_filter,
+body.dark .dataTables_filter input, body.dark .dataTables_info, body.dark #table_of_users_next, body.dark #table_of_users_previous {
+  color: white !important;
+}
+body.dark .dataTables_filter input {
+  font-weight: bold !important;
+}
 body.dark .paginacion .page-link {
   color: #15838b !important;
   background-color: #282828;
@@ -7749,6 +7756,9 @@ body.dark .paginacion .page-item.active .page-link {
   background-color: #15838b !important;
   color: white !important;
   border-color: white !important;
+}
+body.dark .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, body.dark .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, body.dark .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+  color: white !important;
 }
 body.dark .solicitudes {
   background-color: #15838b !important;
@@ -7801,6 +7811,12 @@ body.dark .ap-suggestion em, body.dark span.ap-name, body.dark .ap-suggestion, b
   color: black !important;
 }
 body.dark a.botonfile {
+  color: black !important;
+}
+body.dark .apexcharts-bar-area {
+  fill: #15838b !important;
+}
+body.dark .datosusu.finalizarobra {
   color: black !important;
 }
 
@@ -7894,15 +7910,20 @@ p {
 }
 
 .filtrado {
-  margin-bottom: 95px !important;
+  margin-bottom: 109px !important;
 }
 
 .listmenu {
-  top: -60px !important;
+  top: -75px !important;
 }
 
 .nav-link.p-0:hover {
   color: black !important;
+}
+
+.planos button {
+  outline-width: 0 !important;
+  box-shadow: none !important;
 }
 
 #layoutSidenav_content {
@@ -7933,6 +7954,28 @@ a.botonsolicitud:hover {
 
 a.botonfile:hover {
   color: #009C8C !important;
+}
+
+.apexcharts-menu.apexcharts-menu-open {
+  color: black !important;
+}
+
+#estado, #tipo {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+#selector:focus, #selector:active {
+  border-color: #009C8C !important;
+  outline-width: 0 !important;
+  box-shadow: none !important;
+}
+
+.datosusu.finalizarobra {
+  border-color: #009C8C !important;
+  outline-width: 0 !important;
+  box-shadow: none !important;
 }
 
 @media (max-width: 393px) {

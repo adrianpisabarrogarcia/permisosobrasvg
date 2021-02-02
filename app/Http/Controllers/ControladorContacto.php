@@ -20,7 +20,7 @@ class ControladorContacto extends Controller
         {
             $dni = Session::get('usuario');
             $datos = DB::select('select * from usuarios where dni = ?',[$dni]);
-            $nombre = $datos[0]->nombre . ' ' . $datos[0]->apellido;
+            $nombre = $datos[0]->nombre;
             $email = $datos[0]->email;
             return view("principal.usuarios.contacto")->with(['nombre'=>$nombre,'email'=>$email]);
         }

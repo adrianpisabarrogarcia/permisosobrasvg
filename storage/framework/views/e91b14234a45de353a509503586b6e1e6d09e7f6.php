@@ -5,7 +5,7 @@
         <img src="/img/login/logo.png" class="img-fluid" width="55%" height="50%">
     </div>
     <div class="align-self-center login">
-        <h2 class="fw-bold mb-5 mt-md-5">Codigo de Verificación</h2>
+        <h2 class="fw-bold mb-5 mt-md-5">Código de Verificación</h2>
         <form class="mb-3" method="POST" action="<?php echo e(route('codigo.auth')); ?>">
             <?php echo csrf_field(); ?>
             <?php if(isset($error)): ?>

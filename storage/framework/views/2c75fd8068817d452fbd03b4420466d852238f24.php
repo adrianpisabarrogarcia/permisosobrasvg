@@ -54,7 +54,7 @@
                                     <br />
                                     <label class="text-dark mt-1 font-weight-bold">Planos</label>
                                     <br />
-                                    <label for="plano" ><a class="px-5 py-2 border border-primary botonfile text-primary rounded" style="cursor: pointer !important;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-paperclip mb-1" viewBox="0 0 16 16">
+                                    <label for="plano"><a class="px-5 py-2 border border-primary botonfile text-primary rounded" style="cursor: pointer !important;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-paperclip mb-1" viewBox="0 0 16 16">
                                                 <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
                                             </svg> Adjuntar planos</a></label>
                                     <input type="file" class="d-none" name="plano" id="plano" accept="image/png, .jpeg, .jpg, application/pdf" required>
@@ -62,7 +62,7 @@
                                 <div class="col-12 mt-2 mt-lg-4 text-center">
                                     <label for="descripcion" class="font-weight-bold text-dark">Descripción</label>
                                     <br />
-                                    <textarea class="form-control p-2 card-footer col-11 col-md-8 mx-auto" name="mensaje" id="mensaje" required maxlength="250"></textarea>
+                                    <textarea class="form-control p-2 card-footer col-11 col-md-8 mx-auto text-center" name="mensaje" id="mensaje" required maxlength="250"></textarea>
                                     <input type="hidden" name="lat" id="lat">
                                     <input type="hidden" name="lng" id="lng">
                                     <input type="hidden" name="cp" id="codigopostal">

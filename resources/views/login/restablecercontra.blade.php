@@ -7,7 +7,7 @@
         <img src="/img/login/logo.png" class="img-fluid" width="55%" height="50%">
     </div>
     <div class="align-self-center login">
-        <h2 class="fw-bold mb-5 mt-md-5">Restablecer Contraseña</h2>
+        <h2 class="fw-bold mb-5 mt-md-5">Reestablecer Contraseña</h2>
         <form class="mb-3" method="POST" action="{{ route('restablecer.auth') }}">
             @csrf
             @isset($error)

@@ -15,7 +15,7 @@
         </svg></div>
     Contacto
 </a>
-<div class="sb-sidenav-menu-heading bg-primary pt-3 text-white">Ajustes</div>
+<div class="sb-sidenav-menu-heading bg-primary pt-3 text-white">Perfil</div>
 <a class="nav-link enlace" href="#" onclick="
                     event.preventDefault();
                     document.getElementById('logout-form').submit();">
