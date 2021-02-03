@@ -3,7 +3,7 @@
 @section("content")
     <div class="align-self-center mt-5 p-3">
         <h2 class="">Registro de usuarios, técnicos y coordinadores</h2>
-        <form method="POST" action="{{ route('creacionUsuarioSave') }}">
+        <form id="formulregi" method="POST" action="{{ route('creacionUsuarioSave') }}">
             @csrf
             <div class="mb-2">
                 <label class="form-label text-primary fw-bold mb-0">Selecciona el tipo de usuario que quieres
@@ -99,7 +99,7 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary bg-primary col-12 text-white" onclick="registro()">
+            <button type="submit" class="btn btn-primary bg-primary col-12 text-white">
                 Registrarse
             </button>
             @isset($errores)
