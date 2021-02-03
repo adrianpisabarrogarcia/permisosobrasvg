@@ -2,55 +2,20 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 class ControladorUsuarios extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-    }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show()
     {
+        if (!Session::exists('usuario') || Session::get('rol') == "3"){
+            return redirect()->route('login.home');
+        }
         $datosUsuarios = DB::select('select * from usuarios');
         return view("principal.tablaUsuarios")->with([
             "datosUsuarios" => $datosUsuarios]);
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         DB::table('usuarios')->where('id_usu', '=', $id)->delete();
@@ -61,11 +26,7 @@ class ControladorUsuarios extends Controller
         DB::table('usuarios')
             ->where('id_usu', '=', $request->get('id'))
             ->update(['estado_tecnico' => $request->get('estado-tecnico')]);
-        /*
-        $datosUsuarios = DB::select('select * from usuarios');
-        return view("principal.tablaUsuarios")->with([
-            "datosUsuarios" => $datosUsuarios]);
-        */
+
         return redirect()->route('listarUsuarios');
     }
 }

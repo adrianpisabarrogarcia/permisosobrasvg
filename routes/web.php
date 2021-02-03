@@ -41,7 +41,7 @@ use Illuminate\Support\Facades\Route;
         //AsignarSolicitudes
             Route::get("/solicitudespendientesasignar","ControladorSolicitudesSinAsignar@show")->name("solicitudesSinAsignar");
         //Graficos
-            Route::get("/graficos","ControladorCoordinador@verGraficos")->name("portal.graficos");
+            Route::get('/graficos','ControladorGraficos@index')->name('portal.graficos');
             Route::get("/graficos/{estado}","ControladorGraficos@show")->name("graficos");
         //Creación de usuarios
             Route::get("/crearusuarios","ControladorCrearUsuarios@show")->name("creacionUsuarios");

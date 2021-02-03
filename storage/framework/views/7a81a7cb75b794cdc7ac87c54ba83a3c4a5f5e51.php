@@ -106,6 +106,12 @@
 
                 </div>
             <?php endif; ?>
+            <?php if($hecho != ''): ?>
+                <div class="alert alert-success text-center mt-2" role="alert" id="hecho">
+                    <?php echo $hecho; ?>
+
+                </div>
+            <?php endif; ?>
             <div id="erroresTypescript">
             </div>
         </form>

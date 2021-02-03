@@ -14,7 +14,7 @@ class ControladorContacto extends Controller
      */
     public function index()
     {
-        if (!Session::exists('usuario'))
+        if (!Session::exists('usuario') || Session::get('rol') != "3")
             return redirect()->route('login.home');
         else
         {

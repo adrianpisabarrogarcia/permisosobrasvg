@@ -8,36 +8,12 @@ use Mail;
 
 class ControladorPerfil extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-
-    }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function usuarioSesion(){
         $dni= Session::get("usuario");
         $usuario= DB::select("select * from usuarios where dni= ?", [$dni]);
         return $usuario;
     }
+
     public function show()
     {
         if (!Session::exists('usuario')) {
@@ -47,15 +23,8 @@ class ControladorPerfil extends Controller
             $usuario= $this->usuarioSesion();
             return view("principal.perfil")->with("usuario",$usuario);
         }
-
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function updateDatos(Request $request)
     {
         $verificarCorreo=DB::select("select email from usuarios where email=? and dni!= ? ", [$request->email, $request->dni]);
@@ -87,12 +56,6 @@ class ControladorPerfil extends Controller
         });
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy()
     {
         DB::delete("delete from usuarios where dni= ?",[Session::get("usuario")]);

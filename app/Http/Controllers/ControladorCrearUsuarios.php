@@ -4,24 +4,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Mail;
+use Illuminate\Support\Facades\Session;
+
 use function Symfony\Component\Translation\t;
 class ControladorCrearUsuarios extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $dni = $request->get('dni');
@@ -75,37 +63,15 @@ class ControladorCrearUsuarios extends Controller
         $this->contact($request);
         return $this->show('Se ha introducido el usuario');
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($hecho = '')
     {
+        if (!Session::exists('usuario') || Session::get('rol') != "1"){
+            return redirect()->route('login.home');
+        }
         return view("principal.coordinador.creacionUsuarios")->with(['hecho'=>$hecho]);
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
     public function contact(Request $request)
     {
         $subject = "Bienvenido/a " . $request['nombre']; //asunto

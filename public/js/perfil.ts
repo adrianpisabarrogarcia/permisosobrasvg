@@ -23,7 +23,7 @@ function modificarDatos(){
 }
 
 function datos(){
-    let boton= $("#modificar");
+    let boton=$("#modificar");
     $(".guardar").addClass("d-none");
 
 

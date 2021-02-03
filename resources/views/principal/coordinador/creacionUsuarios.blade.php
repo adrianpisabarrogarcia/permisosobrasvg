@@ -107,6 +107,11 @@
                     {!! $errores !!}
                 </div>
             @endisset
+            @if($hecho != '')
+                <div class="alert alert-success text-center mt-2" role="alert" id="hecho">
+                    {!! $hecho !!}
+                </div>
+            @endisset
             <div id="erroresTypescript">
             </div>
         </form>

@@ -2,36 +2,15 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 class ControladorSolicitudesSinAsignar extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
     public function show()
     {
-        //$datosSolicitudes = DB::select('select * from obras where estado = "creado"');
+        if (!Session::exists('usuario') || Session::get('rol') != "1"){
+            return redirect()->route('login.home');
+        }
         $datosSolicitudes = DB::table('obras')
             ->join('usuarios', 'obras.id_usuario', '=', 'usuarios.id_usu')
             ->join('tipo_edificio', 'obras.id_tipo_edificio', '=', 'tipo_edificio.id')
@@ -41,26 +20,5 @@ class ControladorSolicitudesSinAsignar extends Controller
             ->get();
         return view("principal.coordinador.SolicitudesSinAsignar")->with([
             "datosSolicitudes" => $datosSolicitudes]);
-    }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
