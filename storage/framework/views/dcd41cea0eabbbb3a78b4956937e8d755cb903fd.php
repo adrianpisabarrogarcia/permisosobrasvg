@@ -1,25 +1,19 @@
-<?php $__env->startSection("logo"); ?>
-    <a href="portal"><img src="img/logo.png" class="w-8 "></a>
-<?php $__env->stopSection(); ?>
-
 <?php $__env->startSection("content"); ?>
-    <div class="container-fluid ">
-        <h1>Listado de usuarios</h1>
+    <div class="container-fluid mt-5 p-2">
+        <h1 class="text-center text-md-start">Listado de usuarios</h1>
         <?php if(Session::get('rol') == 1): ?>
-            <button type="button" id="btntablastecnicos" class="btn btn-primary mt-2 mb-2" onclick="tablaTecnico()">
+            <button type="button" id="btntablastecnicos" class="d-flex btn btn-primary botoncoment text-white justify-content-center mx-auto mx-md-0 mt-2 mb-4 text-white" onclick="tablaTecnico()">
                 Gestionar Técnicos
             </button>
-            <button type="button" id="btntablastodos" class="btn btn-primary mt-2 mb-2 d-none" onclick="tablaTodos()">
+            <button type="button" id="btntablastodos" class="btn btn-primary botoncoment text-white justify-content-center mx-auto mx-md-0 mt-2 mb-4 text-white d-none" onclick="tablaTodos()">
                 Volver a ver todos
             </button>
-
         <?php endif; ?>
 
-
         <div class="tablatodos">
-            <table class="table_of_users" class="display compact stripe">
+            <table class="table_of_users display compact stripe bg-primary">
                 <thead>
-                <tr>
+                <tr class="text-white">
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>DNI</th>
@@ -61,7 +55,7 @@
                             <?php endif; ?>
                             <?php if(Session::get('rol') == 1 && Session::get('usuario') != $datos->dni): ?>
                                 <td>
-                                    <center><a href="/listadousuarios/<?php echo e($datos->id_usu); ?>">
+                                    <center><a href="/listadousuarios/<?php echo e($datos->id_usu); ?>" onclick="prueba(event)">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red"
                                                  class="bi bi-trash-fill" viewBox="0 0 16 16">
                                                 <path
@@ -81,14 +75,14 @@
             </table>
         </div>
         <div class="d-none tablatecnicos">
-            <table class="table_of_users" class="compact stripe">
+            <table class="table_of_users compact stripe bg-primary">
                 <thead>
-                <tr>
-                    <th>Nombre y Apellidos</th>
-                    <th>DNI</th>
-                    <th>Email</th>
-                    <th>Teléfono</th>
-                    <th>Estado del técnico</th>
+                <tr class="text-white">
+                    <th class="pt-3 pb-3">Nombre y Apellidos</th>
+                    <th class="pt-3 pb-3">DNI</th>
+                    <th class="pt-3 pb-3">Email</th>
+                    <th class="pt-3 pb-3">Teléfono</th>
+                    <th class="pt-3 pb-3">Estado del técnico</th>
                 </tr>
                 </thead>
                 <tbody>

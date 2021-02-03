@@ -1,51 +1,109 @@
-<?php $__env->startSection("content"); ?>
-    <h1 class="mt-5">Solicitudes pendientes de asignar</h1>
-    <table class="table_of_users display compact stripe bg-primary">
+@extends("principal.layouts.estructuraPagina")
+@section("content")
+
+    <h1 class="mt-5">Comprobar Solicitudes</h1>
+    <table class="table_of_users" class="display compact stripe">
         <thead>
-        <tr class="text-white">
-            <th class="pt-3 pb-3">Solcitante</th>
-            <th class="pt-3 pb-3">Calle</th>
-            <th class="pt-3 pb-3">Nº</th>
-            <th class="pt-3 pb-3">Piso</th>
-            <th class="pt-3 pb-3">Mano</th>
-            <th class="pt-3 pb-3">Fecha de Creación</th>
-            <th class="pt-3 pb-3">Tipo Edificio</th>
-            <th class="pt-3 pb-3">Tipo Obra</th>
-            <th class="pt-3 pb-3">Estado</th>
-            <th class="pt-3 pb-3">Abrir</th>
+        <tr>
+            <th>Solcitante</th>
+            <th>Calle</th>
+            <th>Nº</th>
+            <th>Piso</th>
+            <th>Mano</th>
+            <th>Fecha de Creación</th>
+            <th>Tipo Edificio</th>
+            <th>Tipo Obra</th>
+            @if (Session::get('rol') != 2)
+                <th>Técnico</th>
+            @endif
+            <th>Estado</th>
+            <th>Abrir</th>
         </tr>
         </thead>
         <tbody class="text-dark">
-        <?php if(isset($datosSolicitudes)): ?>
-            <?php $__currentLoopData = $datosSolicitudes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $datos): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <tr>
-                    <td><b><?php echo e($datos->nombre . " " . $datos->apellido); ?></b></td>
-                    <td><?php echo e($datos->calle); ?></td>
-                    <td><?php echo e($datos->numero); ?></td>
-                    <td><?php echo e($datos->piso); ?></td>
-                    <td><?php echo e(ucfirst($datos->mano)); ?></td>
-                    <td><b><?php echo e($datos->fecha_creacion); ?></b></td>
-                    <td><?php echo e(ucfirst($datos->tipoedificio)); ?></td>
-                    <td><?php echo e(ucfirst($datos->tipo)); ?></td>
-                    <td style="color: #055160"><?php echo e(ucfirst($datos->estado)); ?></td>
-                    <td><a href="/solicitud/<?php echo e(ucfirst($datos->id_obra)); ?>">
-                            <button type="button" class="btn btn-outline-primary">Abrir
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                     class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                          d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
-                                    <path fill-rule="evenodd"
-                                          d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-                                </svg>
-                            </button>
-                        </a></td>
-                </tr>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        <?php endif; ?>
+        @isset($datosSolicitudes)
+            @if (Session::get('rol') == 2)
+
+                @foreach ($datosSolicitudes as $datos)
+                    @if ($datos->id_tecnico == Session::get('id'))
+                        <tr>
+                            <td><b>{{ $datos->nombre . " " . $datos->apellido }}</b></td>
+                            <td>{{ $datos->calle }}</td>
+                            <td>{{ $datos->numero }}</td>
+                            <td>{{ $datos->piso }}</td>
+                            <td>{{ ucfirst($datos->mano) }}</td>
+                            <td><b>{{ $datos->fecha_creacion }}</b></td>
+                            <td>{{ ucfirst($datos->tipoedificio) }}</td>
+                            <td>{{ ucfirst($datos->tipo) }}</td>
+                            <td> -</td>
+                            @if ($datos->estado == 'rechazado')
+                                <td style="color: red">{{ ucfirst($datos->estado) }}</td>
+                            @elseif($datos->estado == 'pendiente')
+                                <td style="color: orange">{{ ucfirst($datos->estado) }}</td>
+                            @elseif($datos->estado == 'aceptado')
+                                <td style="color: blue">{{ ucfirst($datos->estado) }}</td>
+                            @else
+                                <td style="color: green">{{ ucfirst($datos->estado) }}</td>
+                            @endif
+                            <td><a href="/solicitud/{{ ucfirst($datos->id_obra) }}">
+                                    <button type="button" class="btn btn-outline-primary">Abrir
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             fill="currentColor"
+                                             class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                  d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                                            <path fill-rule="evenodd"
+                                                  d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                                        </svg>
+                                    </button>
+                                </a></td>
+                        </tr>
+                    @endif
+                @endforeach
+            @else
+                <?php $i=0; ?>
+                @foreach ($datosSolicitudes as $datos)
+                    <tr>
+                        <td><b>{{ $datos->nombre . " " . $datos->apellido }}</b></td>
+                        <td>{{ $datos->calle }}</td>
+                        <td>{{ $datos->numero }}</td>
+                        <td>{{ $datos->piso }}</td>
+                        <td>{{ ucfirst($datos->mano) }}</td>
+                        <td><b>{{ $datos->fecha_creacion }}</b></td>
+                        <td>{{ ucfirst($datos->tipoedificio) }}</td>
+                        <td>{{ ucfirst($datos->tipo) }}</td>
+                        <td> {{ ucfirst($tecnicos[$i]) }}</td>
+                        @if ($datos->estado == 'rechazado')
+                            <td style="color: red">{{ ucfirst($datos->estado) }}</td>
+                        @elseif($datos->estado == 'pendiente')
+                            <td style="color: orange">{{ ucfirst($datos->estado) }}</td>
+                        @elseif($datos->estado == 'aceptado')
+                            <td style="color: blue">{{ ucfirst($datos->estado) }}</td>
+                        @else
+                            <td style="color: green">{{ ucfirst($datos->estado) }}</td>
+                        @endif
+                        <td><a href="/solicitud/{{ ucfirst($datos->id_obra) }}">
+                                <button type="button" class="btn btn-outline-primary">Abrir
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                         fill="currentColor"
+                                         class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                              d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                                        <path fill-rule="evenodd"
+                                              d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                                    </svg>
+                                </button>
+                            </a></td>
+                    </tr>
+                    <?php $i = $i + 1; ?>
+                @endforeach
+
+            @endif
+        @endisset
         </tbody>
     </table>
-<?php $__env->stopSection(); ?>
-<?php $__env->startSection('scripts'); ?>
+@endsection
+@section('scripts')
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
     <script type="text/javascript">
@@ -200,6 +258,4 @@
             }
         });
     </script>
-<?php $__env->stopSection(); ?>
-
-<?php echo $__env->make("principal.layouts.estructuraPagina", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/vagrant/code/permisosobrasvg/resources/views/principal/coordinador/SolicitudesSinAsignar.blade.php ENDPATH**/ ?>
+@endsection

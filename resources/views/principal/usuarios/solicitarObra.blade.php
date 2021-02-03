@@ -64,7 +64,7 @@
                                 <div class="col-12 mt-2 mt-lg-4 text-center">
                                     <label for="descripcion" class="font-weight-bold text-dark">Descripción</label>
                                     <br />
-                                    <textarea class="form-control p-2 card-footer col-11 col-md-8 mx-auto" name="mensaje" id="mensaje" required maxlength="250"></textarea>
+                                    <textarea class="form-control p-2 card-footer col-11 col-md-8 mx-auto text-center" name="mensaje" id="mensaje" required maxlength="250"></textarea>
                                     <input type="hidden" name="lat" id="lat">
                                     <input type="hidden" name="lng" id="lng">
                                     <input type="hidden" name="cp" id="codigopostal">

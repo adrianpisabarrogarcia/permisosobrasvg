@@ -129,6 +129,10 @@ body.dark{
         }
     }
 
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+        color: white !important;
+    }
+
     .solicitudes{
         background-color: #15838b !important;
         span,.fecha{
@@ -195,6 +199,10 @@ body.dark{
 
     .apexcharts-bar-area{
         fill: #15838b !important;
+    }
+
+    .datosusu.finalizarobra{
+        color: black !important;
     }
 }
 
@@ -289,15 +297,22 @@ p{
 }
 
 .filtrado{
-    margin-bottom: 95px !important;
+    margin-bottom: 109px !important;
 }
 
 .listmenu{
-    top: -60px !important;
+    top: -75px !important;
 }
 
 .nav-link.p-0:hover{
     color: black !important;
+}
+
+.planos{
+    button {
+        outline-width: 0 !important;
+        box-shadow: none !important;
+    }
 }
 
 #layoutSidenav_content{
@@ -341,6 +356,12 @@ a.botonfile:hover{
 }
 
 #selector:focus,#selector:active{
+    border-color: $primary !important;
+    outline-width: 0 !important;
+    box-shadow: none !important;
+}
+
+.datosusu.finalizarobra{
     border-color: $primary !important;
     outline-width: 0 !important;
     box-shadow: none !important;

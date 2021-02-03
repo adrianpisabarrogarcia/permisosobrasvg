@@ -16,3 +16,9 @@ function tablaTodos(){
     $('#btntablastecnicos').removeClass('d-none')
     $('#btntablastecnicos').addClass('d-block')
 }
+
+function prueba(event){
+    if (!confirm("¿Estas segur@ que deseas eliminar a este usuario?"))
+        event.preventDefault();
+}
+

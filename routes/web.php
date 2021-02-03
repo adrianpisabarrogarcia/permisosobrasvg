@@ -33,6 +33,9 @@ use Illuminate\Support\Facades\Route;
             Route::post("/contacto","ControladorContacto@show")->name("enviarContacto");
         //Perfil
             Route::get("/perfil","ControladorPerfil@show")->name("perfil");
+            Route::post("/modificarPerfil","ControladorPerfil@updateDatos")->name("modificarPerfil");
+            Route::post("cambiarContra","ControladorPerfil@updatePassword")->name("cambiarContra");
+            Route::get("/perfil/borrarUsuario","ControladorPerfil@destroy")->name("borrarUsuario");
 
     //Rutas para coordinadores
         //AsignarSolicitudes
@@ -76,3 +79,6 @@ use Illuminate\Support\Facades\Route;
     Route::patch('/asignartecnico','ControladorSolicitud@asignartecnico')->name('asignartecnico.update');
 
     Route::post('/listadousuarios/estadotecnico','ControladorUsuarios@cambiarEstadoTecnico')->name("cambiarEstadoTecnico");
+    Route::patch('/finalizarobra/','ControladorSolicitud@finalizarobra')->name('finalizarobra');
+
+

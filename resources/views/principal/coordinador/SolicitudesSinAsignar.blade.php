@@ -1,19 +1,19 @@
 @extends("principal.layouts.estructuraPagina")
 @section("content")
-    <h1>Solicitudes pendientes de asignar</h1>
-    <table class="table_of_users" class="display compact stripe">
+    <h1 class="mt-5">Solicitudes pendientes de asignar</h1>
+    <table class="table_of_users display compact stripe bg-primary">
         <thead>
-        <tr>
-            <th>Solcitante</th>
-            <th>Calle</th>
-            <th>Nº</th>
-            <th>Piso</th>
-            <th>Mano</th>
-            <th>Fecha de Creación</th>
-            <th>Tipo Edificio</th>
-            <th>Tipo Obra</th>
-            <th>Estado</th>
-            <th>Abrir</th>
+        <tr class="text-white">
+            <th class="pt-3 pb-3">Solcitante</th>
+            <th class="pt-3 pb-3">Calle</th>
+            <th class="pt-3 pb-3">Nº</th>
+            <th class="pt-3 pb-3">Piso</th>
+            <th class="pt-3 pb-3">Mano</th>
+            <th class="pt-3 pb-3">Fecha de Creación</th>
+            <th class="pt-3 pb-3">Tipo Edificio</th>
+            <th class="pt-3 pb-3">Tipo Obra</th>
+            <th class="pt-3 pb-3">Estado</th>
+            <th class="pt-3 pb-3">Abrir</th>
         </tr>
         </thead>
         <tbody class="text-dark">

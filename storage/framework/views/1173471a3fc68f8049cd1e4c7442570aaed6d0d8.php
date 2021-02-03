@@ -1,46 +1,103 @@
 <?php $__env->startSection("content"); ?>
-    <h1 class="mt-5">Solicitudes pendientes de asignar</h1>
-    <table class="table_of_users display compact stripe bg-primary">
+
+    <h1 class="mt-5">Comprobar Solicitudes</h1>
+    <table class="table_of_users" class="display compact stripe">
         <thead>
-        <tr class="text-white">
-            <th class="pt-3 pb-3">Solcitante</th>
-            <th class="pt-3 pb-3">Calle</th>
-            <th class="pt-3 pb-3">Nº</th>
-            <th class="pt-3 pb-3">Piso</th>
-            <th class="pt-3 pb-3">Mano</th>
-            <th class="pt-3 pb-3">Fecha de Creación</th>
-            <th class="pt-3 pb-3">Tipo Edificio</th>
-            <th class="pt-3 pb-3">Tipo Obra</th>
-            <th class="pt-3 pb-3">Estado</th>
-            <th class="pt-3 pb-3">Abrir</th>
+        <tr>
+            <th>Solcitante</th>
+            <th>Calle</th>
+            <th>Nº</th>
+            <th>Piso</th>
+            <th>Mano</th>
+            <th>Fecha de Creación</th>
+            <th>Tipo Edificio</th>
+            <th>Tipo Obra</th>
+            <?php if(Session::get('rol') != 2): ?>
+                <th>Técnico</th>
+            <?php endif; ?>
+            <th>Estado</th>
+            <th>Abrir</th>
         </tr>
         </thead>
         <tbody class="text-dark">
         <?php if(isset($datosSolicitudes)): ?>
-            <?php $__currentLoopData = $datosSolicitudes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $datos): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <tr>
-                    <td><b><?php echo e($datos->nombre . " " . $datos->apellido); ?></b></td>
-                    <td><?php echo e($datos->calle); ?></td>
-                    <td><?php echo e($datos->numero); ?></td>
-                    <td><?php echo e($datos->piso); ?></td>
-                    <td><?php echo e(ucfirst($datos->mano)); ?></td>
-                    <td><b><?php echo e($datos->fecha_creacion); ?></b></td>
-                    <td><?php echo e(ucfirst($datos->tipoedificio)); ?></td>
-                    <td><?php echo e(ucfirst($datos->tipo)); ?></td>
-                    <td style="color: #055160"><?php echo e(ucfirst($datos->estado)); ?></td>
-                    <td><a href="/solicitud/<?php echo e(ucfirst($datos->id_obra)); ?>">
-                            <button type="button" class="btn btn-outline-primary">Abrir
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                     class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                          d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
-                                    <path fill-rule="evenodd"
-                                          d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-                                </svg>
-                            </button>
-                        </a></td>
-                </tr>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php if(Session::get('rol') == 2): ?>
+
+                <?php $__currentLoopData = $datosSolicitudes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $datos): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php if($datos->id_tecnico == Session::get('id')): ?>
+                        <tr>
+                            <td><b><?php echo e($datos->nombre . " " . $datos->apellido); ?></b></td>
+                            <td><?php echo e($datos->calle); ?></td>
+                            <td><?php echo e($datos->numero); ?></td>
+                            <td><?php echo e($datos->piso); ?></td>
+                            <td><?php echo e(ucfirst($datos->mano)); ?></td>
+                            <td><b><?php echo e($datos->fecha_creacion); ?></b></td>
+                            <td><?php echo e(ucfirst($datos->tipoedificio)); ?></td>
+                            <td><?php echo e(ucfirst($datos->tipo)); ?></td>
+                            <td> -</td>
+                            <?php if($datos->estado == 'rechazado'): ?>
+                                <td style="color: red"><?php echo e(ucfirst($datos->estado)); ?></td>
+                            <?php elseif($datos->estado == 'pendiente'): ?>
+                                <td style="color: orange"><?php echo e(ucfirst($datos->estado)); ?></td>
+                            <?php elseif($datos->estado == 'aceptado'): ?>
+                                <td style="color: blue"><?php echo e(ucfirst($datos->estado)); ?></td>
+                            <?php else: ?>
+                                <td style="color: green"><?php echo e(ucfirst($datos->estado)); ?></td>
+                            <?php endif; ?>
+                            <td><a href="/solicitud/<?php echo e(ucfirst($datos->id_obra)); ?>">
+                                    <button type="button" class="btn btn-outline-primary">Abrir
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             fill="currentColor"
+                                             class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                  d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                                            <path fill-rule="evenodd"
+                                                  d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                                        </svg>
+                                    </button>
+                                </a></td>
+                        </tr>
+                    <?php endif; ?>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php else: ?>
+                <?php $i=0; ?>
+                <?php $__currentLoopData = $datosSolicitudes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $datos): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <tr>
+                        <td><b><?php echo e($datos->nombre . " " . $datos->apellido); ?></b></td>
+                        <td><?php echo e($datos->calle); ?></td>
+                        <td><?php echo e($datos->numero); ?></td>
+                        <td><?php echo e($datos->piso); ?></td>
+                        <td><?php echo e(ucfirst($datos->mano)); ?></td>
+                        <td><b><?php echo e($datos->fecha_creacion); ?></b></td>
+                        <td><?php echo e(ucfirst($datos->tipoedificio)); ?></td>
+                        <td><?php echo e(ucfirst($datos->tipo)); ?></td>
+                        <td> <?php echo e(ucfirst($tecnicos[$i])); ?></td>
+                        <?php if($datos->estado == 'rechazado'): ?>
+                            <td style="color: red"><?php echo e(ucfirst($datos->estado)); ?></td>
+                        <?php elseif($datos->estado == 'pendiente'): ?>
+                            <td style="color: orange"><?php echo e(ucfirst($datos->estado)); ?></td>
+                        <?php elseif($datos->estado == 'aceptado'): ?>
+                            <td style="color: blue"><?php echo e(ucfirst($datos->estado)); ?></td>
+                        <?php else: ?>
+                            <td style="color: green"><?php echo e(ucfirst($datos->estado)); ?></td>
+                        <?php endif; ?>
+                        <td><a href="/solicitud/<?php echo e(ucfirst($datos->id_obra)); ?>">
+                                <button type="button" class="btn btn-outline-primary">Abrir
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                         fill="currentColor"
+                                         class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                              d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                                        <path fill-rule="evenodd"
+                                              d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                                    </svg>
+                                </button>
+                            </a></td>
+                    </tr>
+                    <?php $i = $i + 1; ?>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+            <?php endif; ?>
         <?php endif; ?>
         </tbody>
     </table>
@@ -202,4 +259,4 @@
     </script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make("principal.layouts.estructuraPagina", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/vagrant/code/permisosobrasvg/resources/views/principal/coordinador/SolicitudesSinAsignar.blade.php ENDPATH**/ ?>
+<?php echo $__env->make("principal.layouts.estructuraPagina", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/vagrant/code/permisosobrasvg/resources/views/principal/comprobarSolicitudes.blade.php ENDPATH**/ ?>

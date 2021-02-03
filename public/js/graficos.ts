@@ -55,22 +55,20 @@ function  llamadaAjax(filtro){
                     chart.render();
 
             }
-
         }
-
     });
 }
 
 
 function estadoGrafica(datos){
     var graficaEstado = {
-        series: [datos["creada"], datos["pendiente"], datos["aceptada"], datos["rechazada"]],
-        colors:["rgb(0,143,251)","rgb(254,176,25)","#009C8C","rgb(255,69,96)"],
+        series: [datos["creada"], datos["pendiente"], datos["aceptada"], datos["rechazada"],datos["finalizada"]],
+        colors:["rgb(0,143,251)","rgb(254,176,25)","#009C8C","rgb(255,69,96)","rgb(119, 93, 208)"],
         chart: {
             width: 380,
             type: 'pie',
         },
-        labels: ['Creado', 'Pendiente', 'Aceptado', 'Rechazado'],
+        labels: ['Creado', 'Pendiente', 'Aceptado', 'Rechazado',"Finalizado"],
         responsive: [{
             breakpoint: 480,
             options: {
@@ -129,8 +127,8 @@ function temporadaGrafica(datos){
                 fill: {
                     type: 'gradient',
                     gradient: {
-                        colorFrom: '#009C8C',
-                        colorTo: '#009C8C',
+                        colorFrom: '#D8E3F0',
+                        colorTo: '#BED1E6',
                         stops: [0, 100],
                         opacityFrom: 0.4,
                         opacityTo: 0.5,
@@ -164,21 +162,43 @@ function temporadaGrafica(datos){
             style: {
                 color: '#444'
             }
-        },
+        }
     };
     return graficaTemporada;
 
 }
+function porcentajeDeObras(datos){
+    let string= "[ ";
+    for (let x=0; x<datos.length; x++){
+        string= string + datos[x]["porcentaje"]+",";
+    }
+    alert(string);
+    let porcentajes= string.substr(0,string.length-1)+"]";
+    alert(porcentajes);
+    return porcentajes ;
+}
 
+function tipoDeObras(datos){
+    let string= "[ ";
+    for (let x=0; x<datos.length; x++){
+        string= string + datos[x]["tipo"]+",";
+
+    }
+    alert(string);
+    let tipos= string.substr(0,string.length-1)+"]";
+    alert(tipos);
+    return tipos ;
+}
 
 function tipoGrafica(datos){
+
     var graficaTipo = {
-        series: [datos[0]["porcentaje"],datos[1]["porcentaje"]],
+        series:[datos[0]["porcentaje"],datos[1]["porcentaje"],datos[2]["porcentaje"]],
         chart: {
             width: 380,
             type: 'pie',
         },
-        labels: [datos[0]["tipo"], datos[1]["tipo"]],
+        labels: [datos[0]["tipo"],datos[1]["tipo"],datos[2]["tipo"]],
         responsive: [{
             breakpoint: 480,
             options: {
@@ -194,11 +214,12 @@ function tipoGrafica(datos){
     return graficaTipo;
 }
 function cargaGrafica(datos){
+
     var graficaCarga = {
         series: [datos[0]["porcentaje"],datos[1]["porcentaje"]],
         chart: {
             width: 380,
-            type: 'pie',
+            type: 'donut',
         },
         labels: [datos[0]["tipo"], datos[1]["tipo"]],
         responsive: [{

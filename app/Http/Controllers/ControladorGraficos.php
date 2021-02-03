@@ -44,6 +44,7 @@ class ControladorGraficos extends Controller
                 $creada = 0;
                 $aceptada = 0;
                 $rechazada = 0;
+                $finalizada = 0;
                 foreach ($obras as $obra) {
                     switch ($obra->estado) {
                         case "creado":
@@ -55,6 +56,9 @@ class ControladorGraficos extends Controller
                         case "aceptado":
                             $aceptada++;
                             break;
+                        case "finalizado":
+                            $finalizada++;
+                            break;
                         default:
                             $rechazada++;
                     }
@@ -64,12 +68,15 @@ class ControladorGraficos extends Controller
                 $creada = $creada * 100 / count($obras);
                 $aceptada = $aceptada * 100 / count($obras);
                 $rechazada = $rechazada * 100 / count($obras);
+                $finalizada = $finalizada * 100 / count($obras);
+
                 $datos = [
                     "obras" => count($obras),
                     "pendiente" => $pendiente,
                     "creada" => $creada,
                     "aceptada" => $aceptada,
-                    "rechazada" => $rechazada
+                    "rechazada" => $rechazada,
+                    "finalizada"=> $finalizada
                 ];
 
 
@@ -145,24 +152,43 @@ class ControladorGraficos extends Controller
                 $porcentaje = 0;
 
                 $datos = [];
-
-                foreach ($tipoObra as $tipo) {
+                //bucle para coger objetos de posicion 0 y 1 de tipos de obra: reforma y nueva obra
+                for($x=0; $x<2; $x++ ){
                     $objeto = [
-                        "id" => $tipo->id_tipobra,
-                        "tipo" => $tipo->tipo,
+                        "id" => $tipoObra[$x]->id_tipobra,
+                        "tipo" => $tipoObra[$x]->tipo,
                         "cantidad" => $cantidad,
                         "porcentaje" => $porcentaje
                     ];
-
                     array_push($datos, $objeto);
                 }
+                $objetoOtrosTipos = [
+                    "tipo" => "Otros",
+                    "cantidad" => $cantidad,
+                    "porcentaje" => $porcentaje
+                ];
+                array_push($datos, $objetoOtrosTipos);
+
                 foreach ($obras as $obra) {
 
-                    for ($x = 0; $x < count($datos); $x++) {
-                        if ($obra->id_tipo_obra == $datos[$x]["id"]) {
-                            $datos[$x]["cantidad"]++;
-                        }
+                    switch ($obra->id_tipo_obra){
+                        case 1:
+                            $datos[0]["cantidad"]++;
+                            break;
+                        case 2:
+                            $datos[1]["cantidad"]++;
+                            break;
+                        default:
+                            $datos[2]["cantidad"]++;
+
                     }
+                    /*if ($obra->id_tipo_obra == $datos[$x]["id"]) {
+                        $datos[$x]["cantidad"]++;
+                    }
+                    else
+                        $datos[2]["cantidad"]++;*/
+
+
                 }
                 for ($x = 0; $x < count($datos); $x++) {
                     $datos[$x]["porcentaje"] = $datos[$x]["cantidad"] * 100 / count($obras);
@@ -175,17 +201,22 @@ class ControladorGraficos extends Controller
                 $obrasSinAsignar = DB::select("select id_obra, id_tipo_obra, estado, fecha_creacion from obras where id_tecnico is null");
 
                 $obrasAsignadas = DB::select("select id_obra, id_tipo_obra, estado, fecha_creacion from obras where id_tecnico is not null");
-                $datos= [
-                    ["tipo"=>"asignadas",
-                        "porcentaje"=>count($obrasAsignadas)*100/count($obras)],
-                    ["tipo"=>"sin asignar",
-                        "porcentaje"=>count($obrasSinAsignar)*100/count($obras)],
 
-                ];
+                $tecnicos= DB::select("select id_usu, nombre, apellidos where rol= ?",["2"]);
+
+            /*$datos= [
+                ["tipo"=>"asignadas",
+                    "porcentaje"=>count($obrasAsignadas)*100/count($obras)],
+                ["tipo"=>"sin asignar",
+                    "porcentaje"=>count($obrasSinAsignar)*100/count($obras)],
+
+            ];*/
         }
 
         return $datos;
     }
+
+
 
     /**
      * Update the specified resource in storage.

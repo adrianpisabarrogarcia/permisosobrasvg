@@ -68,7 +68,7 @@ class ControladorCrearUsuarios extends Controller
                     'provincia' => $request->get('provincia'),
                     'password' => Hash::make($request->get('password')),
                     'rol' => $request->get('tipousuario'),
-                    'estado_tecnico' => 'Alta'
+                    'estado_tecnico' => 'alta'
                 ]);
             }
         }
