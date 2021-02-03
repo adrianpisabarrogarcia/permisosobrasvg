@@ -17,13 +17,13 @@
                                     <label for="obra" class="text-dark mt-1 font-weight-bold">Tipo de obra:</label>
                                     <select class="form-select pt-1 card-footer contacto pb-1 border-primary rounded" name="obra" required style="text-align-last: center">
                                         <?php $__currentLoopData = $tipoObras; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $obra): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <option value="<?php echo e($obra->id_tipobra); ?>"><?php echo e($obra->tipo); ?></option>
+                                            <option value="<?php echo e($obra->id_tipobra); ?>"><?php echo e(ucfirst($obra->tipo)); ?></option>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                     <label for="edificio" class="text-dark mt-1 direc font-weight-bold">Tipo de edificio:</label>
                                     <select class="form-select pb-1 pt-1 card-footer contacto rounded" name="edificio" required style="text-align-last: center">
                                         <?php $__currentLoopData = $tipoEdificios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $edificio): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <option value="<?php echo e($edificio->id); ?>" class="card-footer contacto text-center"><?php echo e($edificio->tipo); ?></option>
+                                            <option value="<?php echo e($edificio->id); ?>" class="card-footer contacto text-center"><?php echo e(ucfirst($edificio->tipo)); ?></option>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                     <label for="nombre" class="text-dark mt-1 font-weight-bold">Nombre:</label>

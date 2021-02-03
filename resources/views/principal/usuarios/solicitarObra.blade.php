@@ -19,13 +19,13 @@
                                     <label for="obra" class="text-dark mt-1 font-weight-bold">Tipo de obra:</label>
                                     <select class="form-select pt-1 card-footer contacto pb-1 border-primary rounded" name="obra" required style="text-align-last: center">
                                         @foreach($tipoObras as $obra)
-                                            <option value="{{$obra->id_tipobra}}">{{$obra->tipo}}</option>
+                                            <option value="{{$obra->id_tipobra}}">{{ ucfirst($obra->tipo)}}</option>
                                         @endforeach
                                     </select>
                                     <label for="edificio" class="text-dark mt-1 direc font-weight-bold">Tipo de edificio:</label>
                                     <select class="form-select pb-1 pt-1 card-footer contacto rounded" name="edificio" required style="text-align-last: center">
                                         @foreach($tipoEdificios as $edificio)
-                                            <option value="{{$edificio->id}}" class="card-footer contacto text-center">{{$edificio->tipo}}</option>
+                                            <option value="{{$edificio->id}}" class="card-footer contacto text-center">{{ ucfirst($edificio->tipo)}}</option>
                                         @endforeach
                                     </select>
                                     <label for="nombre" class="text-dark mt-1 font-weight-bold">Nombre:</label>

@@ -27,7 +27,15 @@
                     <td><b><?php echo e($datos->fecha_creacion); ?></b></td>
                     <td><?php echo e(ucfirst($datos->tipoedificio)); ?></td>
                     <td><?php echo e(ucfirst($datos->tipo)); ?></td>
-                    <td style="color: #055160"><?php echo e(ucfirst($datos->estado)); ?></td>
+                    <?php if($datos->estado == 'rechazado' || $datos->estado == 'finalizado'): ?>
+                        <td style="color: red"><?php echo e(ucfirst($datos->estado)); ?></td>
+                    <?php elseif($datos->estado == 'pendiente'): ?>
+                        <td style="color: orange"><?php echo e(ucfirst($datos->estado)); ?></td>
+                    <?php elseif($datos->estado == 'aceptado'): ?>
+                        <td style="color: green"><?php echo e(ucfirst($datos->estado)); ?></td>
+                    <?php else: ?>
+                        <td style="color: blue"><?php echo e(ucfirst($datos->estado)); ?></td>
+                    <?php endif; ?>
                     <td><a href="/solicitud/<?php echo e(ucfirst($datos->id_obra)); ?>">
                             <button type="button" class="btn btn-outline-primary">Abrir
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

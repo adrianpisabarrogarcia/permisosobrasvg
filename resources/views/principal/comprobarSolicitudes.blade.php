@@ -1,23 +1,23 @@
 @extends("principal.layouts.estructuraPagina")
 @section("content")
 
-    <h1 class="mt-5">Comprobar Solicitudes</h1>
-    <table class="table_of_users" class="display compact stripe">
+    <h1 class="mt-5 text-center text-md-start">Comprobar Solicitudes</h1>
+    <table class="table_of_users display compact stripe bg-primary">
         <thead>
         <tr>
-            <th>Solcitante</th>
-            <th>Calle</th>
-            <th>Nº</th>
-            <th>Piso</th>
-            <th>Mano</th>
-            <th>Fecha de Creación</th>
-            <th>Tipo Edificio</th>
-            <th>Tipo Obra</th>
+            <th class="text-white">Solcitante</th>
+            <th class="text-white">Calle</th>
+            <th class="text-white">Nº</th>
+            <th class="text-white">Piso</th>
+            <th class="text-white">Mano</th>
+            <th class="text-white">Fecha de Creación</th>
+            <th class="text-white">Tipo Edificio</th>
+            <th class="text-white">Tipo Obra</th>
             @if (Session::get('rol') != 2)
-                <th>Técnico</th>
+                <th class="text-white">Técnico</th>
             @endif
-            <th>Estado</th>
-            <th>Abrir</th>
+            <th class="text-white">Estado</th>
+            <th class="text-white">Abrir</th>
         </tr>
         </thead>
         <tbody class="text-dark">
@@ -35,15 +35,14 @@
                             <td><b>{{ $datos->fecha_creacion }}</b></td>
                             <td>{{ ucfirst($datos->tipoedificio) }}</td>
                             <td>{{ ucfirst($datos->tipo) }}</td>
-                            <td> -</td>
-                            @if ($datos->estado == 'rechazado')
+                            @if ($datos->estado == 'rechazado' || $datos->estado == 'finalizado')
                                 <td style="color: red">{{ ucfirst($datos->estado) }}</td>
                             @elseif($datos->estado == 'pendiente')
                                 <td style="color: orange">{{ ucfirst($datos->estado) }}</td>
                             @elseif($datos->estado == 'aceptado')
-                                <td style="color: blue">{{ ucfirst($datos->estado) }}</td>
-                            @else
                                 <td style="color: green">{{ ucfirst($datos->estado) }}</td>
+                            @else
+                                <td style="color: blue">{{ ucfirst($datos->estado) }}</td>
                             @endif
                             <td><a href="/solicitud/{{ ucfirst($datos->id_obra) }}">
                                     <button type="button" class="btn btn-outline-primary">Abrir

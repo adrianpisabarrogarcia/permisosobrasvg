@@ -28,7 +28,15 @@
                     <td><b>{{ $datos->fecha_creacion }}</b></td>
                     <td>{{ ucfirst($datos->tipoedificio) }}</td>
                     <td>{{ ucfirst($datos->tipo) }}</td>
-                    <td style="color: #055160">{{ ucfirst($datos->estado) }}</td>
+                    @if ($datos->estado == 'rechazado' || $datos->estado == 'finalizado')
+                        <td style="color: red">{{ ucfirst($datos->estado) }}</td>
+                    @elseif($datos->estado == 'pendiente')
+                        <td style="color: orange">{{ ucfirst($datos->estado) }}</td>
+                    @elseif($datos->estado == 'aceptado')
+                        <td style="color: green">{{ ucfirst($datos->estado) }}</td>
+                    @else
+                        <td style="color: blue">{{ ucfirst($datos->estado) }}</td>
+                    @endif
                     <td><a href="/solicitud/{{ ucfirst($datos->id_obra) }}">
                             <button type="button" class="btn btn-outline-primary">Abrir
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

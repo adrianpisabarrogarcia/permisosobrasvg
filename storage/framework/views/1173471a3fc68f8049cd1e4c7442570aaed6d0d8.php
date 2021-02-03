@@ -1,22 +1,22 @@
 <?php $__env->startSection("content"); ?>
 
-    <h1 class="mt-5">Comprobar Solicitudes</h1>
-    <table class="table_of_users" class="display compact stripe">
+    <h1 class="mt-5 text-center text-md-start">Comprobar Solicitudes</h1>
+    <table class="table_of_users display compact stripe bg-primary">
         <thead>
         <tr>
-            <th>Solcitante</th>
-            <th>Calle</th>
-            <th>Nº</th>
-            <th>Piso</th>
-            <th>Mano</th>
-            <th>Fecha de Creación</th>
-            <th>Tipo Edificio</th>
-            <th>Tipo Obra</th>
+            <th class="text-white">Solcitante</th>
+            <th class="text-white">Calle</th>
+            <th class="text-white">Nº</th>
+            <th class="text-white">Piso</th>
+            <th class="text-white">Mano</th>
+            <th class="text-white">Fecha de Creación</th>
+            <th class="text-white">Tipo Edificio</th>
+            <th class="text-white">Tipo Obra</th>
             <?php if(Session::get('rol') != 2): ?>
-                <th>Técnico</th>
+                <th class="text-white">Técnico</th>
             <?php endif; ?>
-            <th>Estado</th>
-            <th>Abrir</th>
+            <th class="text-white">Estado</th>
+            <th class="text-white">Abrir</th>
         </tr>
         </thead>
         <tbody class="text-dark">
@@ -34,15 +34,14 @@
                             <td><b><?php echo e($datos->fecha_creacion); ?></b></td>
                             <td><?php echo e(ucfirst($datos->tipoedificio)); ?></td>
                             <td><?php echo e(ucfirst($datos->tipo)); ?></td>
-                            <td> -</td>
-                            <?php if($datos->estado == 'rechazado'): ?>
+                            <?php if($datos->estado == 'rechazado' || $datos->estado == 'finalizado'): ?>
                                 <td style="color: red"><?php echo e(ucfirst($datos->estado)); ?></td>
                             <?php elseif($datos->estado == 'pendiente'): ?>
                                 <td style="color: orange"><?php echo e(ucfirst($datos->estado)); ?></td>
                             <?php elseif($datos->estado == 'aceptado'): ?>
-                                <td style="color: blue"><?php echo e(ucfirst($datos->estado)); ?></td>
-                            <?php else: ?>
                                 <td style="color: green"><?php echo e(ucfirst($datos->estado)); ?></td>
+                            <?php else: ?>
+                                <td style="color: blue"><?php echo e(ucfirst($datos->estado)); ?></td>
                             <?php endif; ?>
                             <td><a href="/solicitud/<?php echo e(ucfirst($datos->id_obra)); ?>">
                                     <button type="button" class="btn btn-outline-primary">Abrir
