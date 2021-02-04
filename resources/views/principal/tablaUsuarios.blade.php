@@ -126,6 +126,7 @@
                 @endisset
                 </tbody>
             </table>
+            <div class="mb-3"></div>
         </div>
 
     </div>
