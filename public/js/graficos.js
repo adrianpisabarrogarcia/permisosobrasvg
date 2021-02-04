@@ -10,6 +10,7 @@ function llamadaAjax(filtro) {
         url: "/graficos/" + filtro,
         method: "get",
         success: function (response) {
+            $("#tecnicos").remove();
             var tabla;
             switch ($("#selector").val()) {
                 case "estado":
@@ -45,16 +46,37 @@ function llamadaAjax(filtro) {
                     $("#tipo").remove();
                     $("#temporada").remove();
                     $("#graficos").append("<div id='carga'></div>");
-                    var chart = new ApexCharts(document.querySelector("#carga"), tabla);
-                    chart.render();
+                    creacionSelect(response);
+                    cargaGeneral(response);
+                    $("#tecnicos").on("change", function () {
+                        $.ajax({
+                            url: "/graficos/" + filtro,
+                            method: "get",
+                            data: { valor: $("#tecnicos").val() },
+                            success: function (response) {
+                                if (response["listaTecnicos"] != null) {
+                                    $("#general").remove();
+                                    $("#individual").remove();
+                                    cargaGeneral(response);
+                                }
+                                else {
+                                    $("#individual").remove();
+                                    $("#carga").append("<div id='individual'></div>");
+                                    $("#general").remove();
+                                    var chart = new ApexCharts(document.querySelector("#individual"), cargaEmpleado(response));
+                                    chart.render();
+                                }
+                            }
+                        });
+                    });
             }
         }
     });
 }
 function estadoGrafica(datos) {
+    $("#tecnicos").addClass("d-none");
     var graficaEstado = {
         series: [datos["creada"], datos["pendiente"], datos["aceptada"], datos["rechazada"], datos["finalizada"]],
-        colors: ["rgb(0,143,251)", "rgb(254,176,25)", "#009C8C", "rgb(255,69,96)", "rgb(119, 93, 208)"],
         chart: {
             width: 380,
             type: 'pie',
@@ -75,8 +97,8 @@ function estadoGrafica(datos) {
     return graficaEstado;
 }
 function temporadaGrafica(datos) {
+    $("#tecnicos").addClass("d-none");
     var graficaTemporada = {
-        colors: ["#009C8C"],
         series: [{
                 name: 'Cantidad',
                 data: [datos[0]["cantidad"], datos[1]["cantidad"], datos[2]["cantidad"], datos[3]["cantidad"], datos[4]["cantidad"], datos[5]["cantidad"], datos[6]["cantidad"], datos[7]["cantidad"], datos[8]["cantidad"], datos[9]["cantidad"], datos[10]["cantidad"], datos[11]["cantidad"]]
@@ -164,6 +186,7 @@ function porcentajeDeObras(datos) {
     return porcentajes;
 }
 function tipoDeObras(datos) {
+    $("#tecnicos").addClass("d-none");
     var string = "[ ";
     for (var x = 0; x < datos.length; x++) {
         string = string + datos[x]["tipo"] + ",";
@@ -174,6 +197,7 @@ function tipoDeObras(datos) {
     return tipos;
 }
 function tipoGrafica(datos) {
+    $("#tecnicos").addClass("d-none");
     var graficaTipo = {
         series: [datos[0]["porcentaje"], datos[1]["porcentaje"], datos[2]["porcentaje"]],
         chart: {
@@ -216,4 +240,69 @@ function cargaGrafica(datos) {
             }]
     };
     return graficaCarga;
+}
+function creacionSelect(datos) {
+    $("#selects").append("<select class='ml-5' id='tecnicos'></select>");
+    $("#tecnicos").append("<option class='usuariosTecnicos' value='general'>General</option>");
+    datos["listaTecnicos"].forEach(function (tecnico) {
+        var nombre = tecnico["nombre"] + " " + tecnico["apellido"];
+        $("#tecnicos").append("<option class='usuariosTecnicos' value='" + tecnico["id"] + "'>" + nombre + "</option>");
+    });
+}
+function cargaEmpleado(datos) {
+    var cargaEmple = {
+        series: [{
+                name: 'Aceptadas',
+                data: [datos["enero"]["aceptados"], datos["febrero"]["aceptados"], datos["marzo"]["aceptados"], datos["abril"]["aceptados"], datos["mayo"]["aceptados"], datos["junio"]["aceptados"], datos["julio"]["aceptados"], datos["agosto"]["aceptados"], datos["septiembre"]["aceptados"], datos["octubre"]["aceptados"], datos["noviembre"]["aceptados"], datos["diciembre"]["aceptados"]]
+            }, {
+                name: 'Pendientes',
+                data: [datos["enero"]["pendiente"], datos["febrero"]["pendiente"], datos["marzo"]["pendiente"], datos["abril"]["pendiente"], datos["mayo"]["pendiente"], datos["junio"]["pendiente"], datos["julio"]["pendiente"], datos["agosto"]["pendiente"], datos["septiembre"]["pendiente"], datos["octubre"]["pendiente"], datos["noviembre"]["pendiente"], datos["diciembre"]["pendiente"]]
+            }, {
+                name: 'Rechazadas',
+                data: [datos["enero"]["rechazados"], datos["febrero"]["rechazados"], datos["marzo"]["rechazados"], datos["abril"]["rechazados"], datos["mayo"]["rechazados"], datos["junio"]["rechazados"], datos["julio"]["rechazados"], datos["agosto"]["rechazados"], datos["septiembre"]["rechazados"], datos["octubre"]["rechazados"], datos["noviembre"]["rechazados"], datos["diciembre"]["rechazados"]]
+            }],
+        chart: {
+            type: 'bar',
+            height: 350
+        },
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: '55%',
+                endingShape: 'rounded'
+            },
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            show: true,
+            width: 2,
+            colors: ['transparent']
+        },
+        xaxis: {
+            categories: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        },
+        yaxis: {
+            title: {
+                text: 'obras'
+            }
+        },
+        fill: {
+            opacity: 1
+        },
+        tooltip: {
+            y: {
+                formatter: function (val) {
+                    return val + " obras";
+                }
+            }
+        }
+    };
+    return cargaEmple;
+}
+function cargaGeneral(response) {
+    $("#carga").append("<div id='general'></div>");
+    var chart = new ApexCharts(document.querySelector("#general"), cargaGrafica(response));
+    chart.render();
 }

@@ -184,7 +184,7 @@
                 @if(count($listacomentarios) ==  0)
                     <div class="container mb-3 mt-3">
                         @else
-                            <div class="container mb-3">
+                            <div class="container" style="margin-bottom: 80px">
                                 @endif
                                 <div class="row">
                                     <h5 class="text-dark text-start comentario">Añadir Comentario</h5>

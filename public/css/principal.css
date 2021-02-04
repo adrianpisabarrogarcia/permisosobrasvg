@@ -7931,10 +7931,6 @@ p {
   min-height: 0 !important;
 }
 
-#footer {
-  display: none !important;
-}
-
 .contacto {
   border: 1px solid lightgrey !important;
 }
