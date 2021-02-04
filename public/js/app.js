@@ -37799,11 +37799,12 @@ var render = function() {
     {
       staticClass: "py-4 bg-primary mt-auto d-none d-md-block",
       staticStyle: {
+        "/*position": "-webkit-sticky",
         position: "fixed",
         bottom: "0",
         right: "0",
         left: "0",
-        "z-index": "999999"
+        "z-index": "999999*/"
       }
     },
     [
