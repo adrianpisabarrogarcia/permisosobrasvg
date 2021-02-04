@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="container mt-5 mb-4 border-bottom border-secondary">
+    <div class="container mt-5 border-bottom border-secondary">
         <div class="row mb-4">
             @foreach($listasolicitudes as $solicitudes)
                 @foreach($listausuarios as $usuarios)
@@ -149,7 +149,7 @@
                 </div>
             </div>
                 @if (count($listacomentarios) > 0)
-                    <div class="container">
+                    <div class="container mb-5 mt-2">
                         <div class="row">
                             <h5 class="text-dark text-start comentario">Comentarios</h5>
                         @foreach($listacomentarios as $comentarios)
@@ -213,6 +213,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="mb-5"></div>
                             </div>
                         @endif
                     </div>

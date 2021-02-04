@@ -1,5 +1,4 @@
 <?php $__env->startSection("content"); ?>
-
     <h1 class="mt-5 text-center text-md-start">Comprobar Solicitudes</h1>
     <table class="table_of_users display compact stripe bg-primary">
         <thead>
@@ -19,10 +18,9 @@
             <th class="text-white">Abrir</th>
         </tr>
         </thead>
-        <tbody class="text-dark">
+        <tbody class="text-dark" style="margin-bottom: 70px !important;">
         <?php if(isset($datosSolicitudes)): ?>
             <?php if(Session::get('rol') == 2): ?>
-
                 <?php $__currentLoopData = $datosSolicitudes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $datos): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php if($datos->id_tecnico == Session::get('id')): ?>
                         <tr>
@@ -44,7 +42,7 @@
                                 <td style="color: blue"><?php echo e(ucfirst($datos->estado)); ?></td>
                             <?php endif; ?>
                             <td><a href="/solicitud/<?php echo e(ucfirst($datos->id_obra)); ?>">
-                                    <button type="button" class="btn btn-outline-primary">Abrir
+                                    <button type="button" class="btn btn-outline-primary botontabla">Abrir
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                              fill="currentColor"
                                              class="bi bi-box-arrow-right" viewBox="0 0 16 16">
@@ -81,7 +79,7 @@
                             <td style="color: green"><?php echo e(ucfirst($datos->estado)); ?></td>
                         <?php endif; ?>
                         <td><a href="/solicitud/<?php echo e(ucfirst($datos->id_obra)); ?>">
-                                <button type="button" class="btn btn-outline-primary">Abrir
+                                <button type="button" class="btn btn-outline-primary botontabla">Abrir
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                          fill="currentColor"
                                          class="bi bi-box-arrow-right" viewBox="0 0 16 16">
@@ -100,6 +98,7 @@
         <?php endif; ?>
         </tbody>
     </table>
+    <div class="mb-3"></div>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('scripts'); ?>
     <script type="text/javascript" charset="utf8"

@@ -1,22 +1,24 @@
+//Funcion para mostrar las tablas de los tecnicos
 function tablaTecnico() {
-    $('.tablatecnicos').removeClass('d-none');
-    $('.tablatecnicos').addClass('d-block');
-    $('.tablatodos').addClass('d-none');
-    $('#btntablastodos').removeClass('d-none');
-    $('#btntablastodos').addClass('d-block');
-    $('#btntablastecnicos').addClass('d-none');
+    mostrar('d-none', 'd-block', 'd-none', 'd-block', 'd-none');
 }
+//Funcion para mostrar la tabla de todos
 function tablaTodos() {
-    $('.tablatecnicos').removeClass('d-block');
-    $('.tablatecnicos').addClass('d-none');
+    mostrar('d-block', 'd-none', 'd-block', 'd-none', 'd-block');
     $('.tablatodos').removeClass('d-none');
-    $('.tablatodos').addClass('d-block');
-    $('#btntablastodos').removeClass('d-block');
-    $('#btntablastodos').addClass('d-none');
     $('#btntablastecnicos').removeClass('d-none');
-    $('#btntablastecnicos').addClass('d-block');
+}
+//Funcion para no repetir codigo
+function mostrar(valor1, valor2, valor4, valor5, valor6) {
+    $('.tablatecnicos').removeClass(valor1);
+    $('.tablatecnicos').addClass(valor2);
+    $('.tablatodos').addClass('d-block');
+    $('#btntablastodos').removeClass(valor4);
+    $('#btntablastodos').addClass(valor5);
+    $('#btntablastecnicos').addClass(valor6);
 }
 function prueba(event) {
+    //Funcion para saber si estas seguro de eliminar el usuario
     if (!confirm("¿Estas segur@ que deseas eliminar a este usuario?"))
         event.preventDefault();
 }

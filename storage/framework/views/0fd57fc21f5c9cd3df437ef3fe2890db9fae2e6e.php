@@ -7,8 +7,8 @@
         <div class="datos bg-primary">
             <h4 class="text-center font-weight-normal pt-2 pb-2 mb-0 text-white">Gráficos</h4>
             <div class="card-footer p-0 datosusu card shadow">
-                <div id="selects">
-                    <select id="selector" class="border m-2 border-primary p-0 pt-1 pb-1 card-footer rounded col-lg-2 col-md-3 col-sm-4 col-9" style="text-align-last: center">
+                <div id="selects" class="d-flex justify-content-center justify-content-lg-start align-items-center align-content-lg-start flex-column flex-lg-row">
+                    <select id="selector" class="border m-2 border-primary p-0 pt-1 pb-1 card-footer rounded col-lg-2 col-md-3 col-sm-4 col-11 ml-2" style="text-align-last: center">
                         <option value="estado">Estado</option>
                         <option value="temporada">Temporada</option>
                         <option value="tipo">Tipo</option>

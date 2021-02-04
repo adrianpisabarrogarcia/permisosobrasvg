@@ -3,7 +3,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-    <div class="container mt-5 mb-4 border-bottom border-secondary">
+    <div class="container mt-5 border-bottom border-secondary">
         <div class="row mb-4">
             <?php $__currentLoopData = $listasolicitudes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $solicitudes): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <?php $__currentLoopData = $listausuarios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $usuarios): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -147,7 +147,7 @@
                 </div>
             </div>
                 <?php if(count($listacomentarios) > 0): ?>
-                    <div class="container">
+                    <div class="container mb-5 mt-2">
                         <div class="row">
                             <h5 class="text-dark text-start comentario">Comentarios</h5>
                         <?php $__currentLoopData = $listacomentarios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comentarios): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -212,6 +212,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="mb-5"></div>
                             </div>
                         <?php endif; ?>
                     </div>

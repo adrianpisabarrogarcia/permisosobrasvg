@@ -9,6 +9,7 @@ $(document).ready(function(){
      * @author WeApp
      */
 
+    //Funcion para guardar y validar los datos de la direccion de la obra
     (function() {
         var placesAutocomplete = places({
             appId: 'plEHFE8OXN3L',
@@ -40,6 +41,7 @@ $(document).ready(function(){
                 $("#lat").val(lat);
                 $("#lng").val(lng);
                 $("#codigopostal").val(cp);
+                //Generamos la fecha de hoy para saber la fecha de creación
                 let date= new Date();
                 let ano= date.getFullYear();
                 let mes= date.getMonth() +1;

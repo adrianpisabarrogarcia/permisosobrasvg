@@ -1,16 +1,19 @@
 <div class="sb-sidenav-menu-heading bg-primary text-light pt-3">Solicitudes</div>
 <!-- solucionar la ruta -->
 <a class="nav-link enlace" href="{{ route('comprobarSolicitudes') }}">
-    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt text-primary"></i></div>
+    <div class="sb-nav-link-icon"><i class="fas text-primary fa-list"></i></div>
     Comprobar Solicitudes
 </a>
 <a class="nav-link enlace" href="{{ route('solicitudesSinAsignar') }}">
-    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt text-primary"></i></div>
+    <div class="sb-nav-link-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi text-primary bi-person-check-fill" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+        </svg></div>
     Asignar Solicitudes
 </a>
 <div class="sb-sidenav-menu-heading bg-primary text-light pt-3">Datos</div>
 <a class="nav-link enlace" href="{{ route('portal.graficos') }}">
-    <div class="sb-nav-link-icon"><i class="fas fa-chart-bar text-primary"></i></div>
+    <div class="sb-nav-link-icon"><i class="fas mt-1 fa-chart-bar text-primary"></i></div>
     Estadísticas
 </a>
 <a class="nav-link enlace" href="{{ route('annadirObraEdificio') }}">

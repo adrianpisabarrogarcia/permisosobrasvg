@@ -30,7 +30,7 @@
     <div id="layoutSidenav_content">
         @yield("content")
         <div class="mb-5">
-            
+
         </div>
         @include("principal.layouts.footer")
     </div>

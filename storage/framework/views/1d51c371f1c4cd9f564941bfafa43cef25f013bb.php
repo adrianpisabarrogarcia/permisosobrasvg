@@ -30,7 +30,7 @@
     <div id="layoutSidenav_content">
         <?php echo $__env->yieldContent("content"); ?>
         <div class="mb-5">
-            
+
         </div>
         <?php echo $__env->make("principal.layouts.footer", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </div>

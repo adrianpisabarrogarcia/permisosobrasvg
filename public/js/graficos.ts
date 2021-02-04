@@ -1,6 +1,9 @@
+
 $(document).ready(function (){
+    //Cuando carga la pagina ejecuta la llamada ajax para generar el grafico
     let selector= $("#selector").val();
     llamadaAjax(selector);
+    //Cuando cambie la opcion select realizar la llamada ajax para generar el grafico dependiendo del valor
     $("#selector").on("change",function (){
         llamadaAjax($("#selector").val());
     })
@@ -13,7 +16,7 @@ function  llamadaAjax(filtro){
         success: function (response){
             $("#tecnicos").remove();
 
-
+            //Gestionar los graficos dependiendo del valor
             var tabla;
             switch ($("#selector").val()){
                 case "estado":
@@ -83,7 +86,7 @@ function  llamadaAjax(filtro){
     });
 }
 
-
+//Grafico para los estados de las solicitudes
 function estadoGrafica(datos){
     $("#tecnicos").addClass("d-none");
 
@@ -109,6 +112,8 @@ function estadoGrafica(datos){
 
     return graficaEstado;
 }
+
+//Grafica para sacar las solicitudes creadas por meses
 function temporadaGrafica(datos){
     $("#tecnicos").addClass("d-none");
 
@@ -199,13 +204,13 @@ function tipoDeObras(datos){
     let string= "[ ";
     for (let x=0; x<datos.length; x++){
         string= string + datos[x]["tipo"]+",";
-
     }
-    alert(string);
+
     let tipos= string.substr(0,string.length-1)+"]";
-    alert(tipos);
     return tipos ;
 }
+
+//Grafica para la tipo de obra
 
 function tipoGrafica(datos){
     $("#tecnicos").addClass("d-none");
@@ -231,6 +236,8 @@ function tipoGrafica(datos){
     };
     return graficaTipo;
 }
+
+//Grafica para la carga de trabajo
 function cargaGrafica(datos){
     var graficaCarga = {
         series: [datos[0]["porcentaje"],datos[1]["porcentaje"]],
@@ -257,10 +264,9 @@ function cargaGrafica(datos){
     return graficaCarga;
 }
 
+//Función para generar la select de la grafica de los tecnicos
 function creacionSelect(datos):void{
-
-    $("#selects").append("<select class='ml-5 border m-2 border-primary p-0 pt-1 pb-1 card-footer rounded col-lg-2 col-md-3 col-sm-4 col-9' id='tecnicos' style='text-align-last: center'></select>");
-
+    $("#selects").append("<select class='ml-5 border m-2 border-primary p-0 pt-1 pb-1 card-footer rounded col-lg-2 col-md-3 col-sm-4 col-11' id='tecnicos' style='text-align-last: center'></select>");
     $("#tecnicos").append("<option class='usuariosTecnicos' value='general'>General</option>");
 
     datos["listaTecnicos"].forEach(function (tecnico){
@@ -268,6 +274,8 @@ function creacionSelect(datos):void{
         $("#tecnicos").append("<option class='usuariosTecnicos' value='"+tecnico["id"]+"'>"+nombre+"</option>");
     } )
 }
+
+//Grafica para la carga de trabajo por cada empleado
 function cargaEmpleado(datos){
     var cargaEmple = {
         series: [{

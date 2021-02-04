@@ -193,6 +193,26 @@ body.dark{
             fill: #15838b !important;
         }
     }
+
+    .dataTables_wrapper {
+            .dataTables_paginate {
+                .paginate_button{
+                    color: white !important;
+                }
+        }
+    }
+
+    .dataTables_wrapper {
+        .dataTables_paginate {
+            .paginate_button.current{
+                color: black !important;
+            }
+        }
+    }
+
+    .form-label{
+        color: white !important;
+    }
 }
 
 .dropdown-item:active{
@@ -340,9 +360,21 @@ a.botonfile:hover{
    @include select();
 }
 
+.botontabla:focus{
+    background-color: $primary !important;
+    color: white !important;
+    border-color: $primary !important;
+    outline-width: 0 !important;
+    box-shadow: none !important;
+}
+
 @media (max-width: 393px) {
     .h-25.text-white{
         width: 100% !important;
+    }
+
+    .logo{
+        width: 75% !important;
     }
 }
 

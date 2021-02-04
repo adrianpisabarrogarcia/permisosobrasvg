@@ -1,3 +1,4 @@
+//Cuando carga la pagina coje los valores de la lat y lng y crea el mapa
 $(document).ready(function (){
     let lat = Number($("#lat").val());
     let lng = Number($("#lng").val());

@@ -1,6 +1,5 @@
 @extends("principal.layouts.estructuraPagina")
 @section("content")
-
     <h1 class="mt-5 text-center text-md-start">Comprobar Solicitudes</h1>
     <table class="table_of_users display compact stripe bg-primary">
         <thead>
@@ -20,10 +19,9 @@
             <th class="text-white">Abrir</th>
         </tr>
         </thead>
-        <tbody class="text-dark">
+        <tbody class="text-dark" style="margin-bottom: 70px !important;">
         @isset($datosSolicitudes)
             @if (Session::get('rol') == 2)
-
                 @foreach ($datosSolicitudes as $datos)
                     @if ($datos->id_tecnico == Session::get('id'))
                         <tr>
@@ -45,7 +43,7 @@
                                 <td style="color: blue">{{ ucfirst($datos->estado) }}</td>
                             @endif
                             <td><a href="/solicitud/{{ ucfirst($datos->id_obra) }}">
-                                    <button type="button" class="btn btn-outline-primary">Abrir
+                                    <button type="button" class="btn btn-outline-primary botontabla">Abrir
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                              fill="currentColor"
                                              class="bi bi-box-arrow-right" viewBox="0 0 16 16">
@@ -82,7 +80,7 @@
                             <td style="color: green">{{ ucfirst($datos->estado) }}</td>
                         @endif
                         <td><a href="/solicitud/{{ ucfirst($datos->id_obra) }}">
-                                <button type="button" class="btn btn-outline-primary">Abrir
+                                <button type="button" class="btn btn-outline-primary botontabla">Abrir
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                          fill="currentColor"
                                          class="bi bi-box-arrow-right" viewBox="0 0 16 16">
@@ -101,6 +99,7 @@
         @endisset
         </tbody>
     </table>
+    <div class="mb-3"></div>
 @endsection
 @section('scripts')
     <script type="text/javascript" charset="utf8"

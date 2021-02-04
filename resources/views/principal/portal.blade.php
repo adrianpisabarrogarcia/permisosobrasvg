@@ -4,29 +4,29 @@
 
 <!--MAIN-->
 @section("content")
-    <div class="jumbotron jumbotron-fluid w-100 m-0 p-0 bg-transparent border-bottom border-secondary col-11 mx-auto d-flex align-items-center h-auto">
-        <div class="container-fluid row justify-content-between py-5 w-100">
-            <div class="h-auto py-5 col-12 col-lg-6 d-flex flex-column align-items-center">
-                <img src="img/principal/logo-claro.png" class="logo w-50 h-75 mr-5">
-                <p class="lead w-50 m-0 ml-5">Obras y reformas Vitoria-Gasteiz.</p>
+    <div class="jumbotron jumbotron-fluid w-100 m-0 p-0 bg-transparent border-bottom border-secondary col-12 mx-auto d-flex align-items-center h-auto">
+        <div class="container row justify-content-between py-5 ml-2 ml-lg-0 col-lg-11 col-12">
+            <div class="h-auto py-lg-4 pt-2 col-12 col-lg-6 d-flex p-0 flex-column align-items-center">
+                <img src="img/principal/logo-claro.png" class="logo w-50 h-75">
+                <p class="m-0 mt-3">Obras y reformas Vitoria-Gasteiz.</p>
             </div>
             @switch(Session::get('rol'))
                 @case('1')
-                <div class="col-12 col-lg-6 h-auto row mt-3 ml-4 ml-lg-0 pl-5 float-end align-items-center justify-content-around">
+                <div class="col-12 col-lg-6 h-auto row mt-3 mt-lg-0 pe-0 align-items-center">
                     <a href="{{ route('solicitudesSinAsignar') }}" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 mr-5 ml-sm-0 border-5 rounded text-dark d-flex align-items-center justify-content-center text-decoration-none text-center">Asignar Solicitudes</a>
-                    <a href="{{ route('portal.graficos') }}" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 mr-5 border-2 rounded border-transparent text-dark d-flex align-items-center justify-content-center text-decoration-none text-center">Gráficos</a>
+                    <a href="{{ route('portal.graficos') }}" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 border-2 rounded border-transparent text-dark d-flex align-items-center justify-content-center text-decoration-none text-center">Gráficos</a>
                 </div>
                 @break
                 @case('2')
-                <div class="col-12 col-lg-6 h-auto row mt-3 ml-4 ml-lg-0 pl-5 float-end align-items-center justify-content-around">
-                    <a href="{{ route('listarUsuarios') }}" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 mr-5 border-2 rounded border-transparent text-dark d-flex align-items-center justify-content-center text-decoration-none text-center">Empleados y Usuarios</a>
-                    <a href=" {{ route('comprobarSolicitudes') }}" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 mr-5 border-2 rounded border-transparent text-dark d-flex align-items-center justify-content-center text-decoration-none text-center">Comprobar Solicitudes</a>
+                <div class="col-12 col-lg-6 h-auto row mt-3 mt-lg-0 pe-0 align-items-center">
+                    <a href="{{ route('listarUsuarios') }}" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 mr-5 ml-sm-0 border-5 rounded text-dark d-flex align-items-center justify-content-center text-decoration-none text-center">Empleados y Usuarios</a>
+                    <a href=" {{ route('comprobarSolicitudes') }}" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 border-2 rounded border-transparent text-dark d-flex align-items-center justify-content-center text-decoration-none text-center">Comprobar Solicitudes</a>
                 </div>
                 @break
                 @default
-                <div class="col-12 col-lg-6 h-auto row mt-3 ml-4 ml-lg-0 pl-5 float-end align-items-center justify-content-around">
-                    <a href="{{ route('solicitarObra') }}" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 mr-5 ml-sm-0 border-5 rounded d-flex align-items-center text-dark justify-content-center text-decoration-none text-center">Solicitar Obra</a>
-                    <a href="{{ route('contacto') }}" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 mr-5 border-2 rounded border-transparent d-flex align-items-center text-dark justify-content-center text-decoration-none text-center">Contacto</a>
+                <div class="col-12 col-lg-6 h-auto row mt-3 mt-lg-0 pe-0 align-items-center">
+                    <a href="{{ route('solicitarObra') }}" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 mr-5 ml-sm-0 border-5 rounded text-dark d-flex align-items-center justify-content-center text-decoration-none text-center">Solicitar Obra</a>
+                    <a href="{{ route('contacto') }}" class="h-25 text-white enlaceprin col-4 col-md-4 col-lg-5 py-4 border-2 rounded border-transparent text-dark d-flex align-items-center justify-content-center text-decoration-none text-center">Contacto</a>
                 </div>
                 @break
             @endswitch

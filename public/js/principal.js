@@ -5,6 +5,7 @@ $(document).ready(function () {
     propiedadesCssMenu(x);
     x.addListener(propiedadesCssMenu);
 });
+//Funcion para ocultar el menu cada vez que coincide con la distribucion de la pantalla
 function propiedadesCssMenu(ventana) {
     if (ventana.matches) {
         $("body").removeClass('sb-sidenav-toggled');
@@ -12,6 +13,7 @@ function propiedadesCssMenu(ventana) {
     else
         $("body").addClass('sb-sidenav-toggled');
 }
+//Funcion para saber si la sesion esta en modo oscuro o modo claro para cada pagina y para cuando cierre sesion
 function guardardato() {
     var localstorage = localStorage.getItem("modo");
     if (localstorage != null && localstorage === "oscuro") {
@@ -25,6 +27,7 @@ function guardardato() {
         modooscyclaro("img/principal/logo-claro.png", "claro");
     }
 }
+//Función que se utiliza para modificar el valor del boton y hacer el cambio de modo claro a modo oscuro y viceversa
 function botonmodoscyclaro() {
     var boton = document.querySelector('#switch');
     boton.addEventListener('click', function () {
@@ -37,10 +40,12 @@ function botonmodoscyclaro() {
             modooscyclaro("img/principal/logo-claro.png", "claro");
     });
 }
+//Modificar el logo dependiendo del color de la pagina
 function modooscyclaro(url, modo) {
     $(".logo").attr('src', url);
     localStorage.setItem("modo", modo);
 }
+//Función para quitar el estado de los filtros y hacer que se muestren todas las solicitudes
 $(".quitarestado").on('click', function (event) {
     event.preventDefault();
     $("#estado").val('quitar');

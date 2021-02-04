@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Session;
 use function Symfony\Component\Translation\t;
 class ControladorCrearUsuarios extends Controller
 {
-
     public function store(Request $request)
     {
         $dni = $request->get('dni');
@@ -18,12 +17,13 @@ class ControladorCrearUsuarios extends Controller
         $datosEmail = DB::select('select email from usuarios where email = ?', [$email]);
         $errores = '';
         if (count($datosDni) > 0) {
-            $errores = $errores . 'El DNI no es válido, ya existe un usuario con ese DNI. Borra primero el otro usuario.<br>';
+            $errores = $errores . 'Ya existe un usuario con ese DNI<br>';
         }
         if (count($datosEmail) > 0) {
-            $errores = $errores . 'El correo no es válido, ya existe un usuario con ese corro electrónico. Escribe otro correo diferente.';
+            $errores = $errores . 'Ya existe un usuario con ese corro electrónico';
         }
-        if (empty($errores)) {
+
+        if ($errores == '') {
             //utilizar este método para guardar la info recibida por parámetro
             if ($request->get('tipousuario')!=2){
                 DB::table('usuarios')->insert([
@@ -59,9 +59,10 @@ class ControladorCrearUsuarios extends Controller
                     'estado_tecnico' => 'alta'
                 ]);
             }
+            $this->contact($request);
+            return $this->show('Se ha creado el usuario correctamente');
         }
-        $this->contact($request);
-        return $this->show('Se ha introducido el usuario');
+        return view("principal.coordinador.creacionUsuarios")->with(['errores'=>$errores]);
     }
 
     public function show($hecho = '')

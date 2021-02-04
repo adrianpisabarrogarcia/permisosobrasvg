@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class ControladorGraficos extends Controller
 {
@@ -14,18 +15,11 @@ class ControladorGraficos extends Controller
      */
     public function index()
     {
+        if (!Session::exists('usuario') || Session::get('rol') != "1")
+        {
+            return redirect()->route('login.home');
+        }
         return view("principal.coordinador.graficos");
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**

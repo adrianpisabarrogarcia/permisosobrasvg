@@ -37,7 +37,7 @@
                         <td style="color: blue"><?php echo e(ucfirst($datos->estado)); ?></td>
                     <?php endif; ?>
                     <td><a href="/solicitud/<?php echo e(ucfirst($datos->id_obra)); ?>">
-                            <button type="button" class="btn btn-outline-primary">Abrir
+                            <button type="button" class="btn btn-outline-primary botontabla">Abrir
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                      class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"

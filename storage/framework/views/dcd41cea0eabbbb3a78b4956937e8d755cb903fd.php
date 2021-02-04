@@ -111,7 +111,7 @@
                                             </select>
                                             <div class="input-group-append">
                                                 <button
-                                                    class="btn btn-outline-secondary" type="submit"
+                                                    class="btn btn-outline-primary botontabla" type="submit"
                                                     id="boton">Cambiar
                                                 </button>
                                             </div>

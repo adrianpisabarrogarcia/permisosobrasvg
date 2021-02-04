@@ -7809,6 +7809,15 @@ body.dark .ap-suggestion em, body.dark span.ap-name, body.dark .ap-suggestion, b
 body.dark #temporada .apexcharts-bar-area {
   fill: #15838b !important;
 }
+body.dark .dataTables_wrapper .dataTables_paginate .paginate_button {
+  color: white !important;
+}
+body.dark .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+  color: black !important;
+}
+body.dark .form-label {
+  color: white !important;
+}
 
 .dropdown-item:active {
   background: none !important;
@@ -7954,9 +7963,21 @@ a.botonfile:hover {
   box-shadow: none !important;
 }
 
+.botontabla:focus {
+  background-color: #009C8C !important;
+  color: white !important;
+  border-color: #009C8C !important;
+  outline-width: 0 !important;
+  box-shadow: none !important;
+}
+
 @media (max-width: 393px) {
   .h-25.text-white {
     width: 100% !important;
+  }
+
+  .logo {
+    width: 75% !important;
   }
 }
 
