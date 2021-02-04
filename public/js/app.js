@@ -37797,14 +37797,13 @@ var render = function() {
   return _c(
     "footer",
     {
-      staticClass: "py-4 bg-primary mt-auto d-none d-md-block",
+      staticClass: "py-3 bg-primary mt-auto d-none d-md-block",
       staticStyle: {
-        "/*position": "-webkit-sticky",
         position: "fixed",
         bottom: "0",
         right: "0",
         left: "0",
-        "z-index": "999999*/"
+        "z-index": "999999"
       }
     },
     [

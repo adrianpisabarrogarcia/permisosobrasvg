@@ -170,8 +170,6 @@ class ControladorGraficos extends Controller
                 array_push($datos, $objetoOtrosTipos);
 
                 foreach ($obras as $obra) {
-
-
                     switch ($obra->id_tipo_obra){
                         case 1:
                             $datos[0]["cantidad"]++;
@@ -188,8 +186,6 @@ class ControladorGraficos extends Controller
                     }
                     else
                         $datos[2]["cantidad"]++;*/
-
-
                 }
                 for ($x = 0; $x < count($datos); $x++) {
                     $datos[$x]["porcentaje"] = $datos[$x]["cantidad"] * 100 / count($obras);

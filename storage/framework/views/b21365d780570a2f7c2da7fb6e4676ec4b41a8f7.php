@@ -18,6 +18,4 @@
             <?php endswitch; ?>
         </div>
     </div>
-    <?php echo $__env->make("principal.layouts.footerMenu", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-</nav>
 <?php /**PATH /home/vagrant/code/permisosobrasvg/resources/views/principal/layouts/menuDesplegable.blade.php ENDPATH**/ ?>

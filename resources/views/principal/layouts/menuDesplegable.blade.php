@@ -18,5 +18,3 @@
             @endswitch
         </div>
     </div>
-    @include("principal.layouts.footerMenu")
-</nav>

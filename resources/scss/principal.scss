@@ -152,12 +152,6 @@ body.dark{
         background-color: #15838b !important;
     }
 
-    .botoncoment:active{
-        background-color: #15838b !important;
-        outline-width: 0 !important;
-        box-shadow: none !important;
-    }
-
     .dropright{
         background-color: transparent !important;
         border: 1px solid $primary !important;
@@ -189,20 +183,15 @@ body.dark{
         border-color: $primary !important;
     }
 
-    .ap-suggestion em,span.ap-name,.ap-suggestion,.ap-cursor{
-        color: black !important;
+    .ap-suggestion em,span.ap-name,.ap-suggestion,.ap-cursor,a.botonfile,.datosusu.finalizarobra{
+        @include modoscla(black,null);
     }
 
-    a.botonfile{
-        color: black !important;
-    }
-
-    .apexcharts-bar-area{
-        fill: #15838b !important;
-    }
-
-    .datosusu.finalizarobra{
-        color: black !important;
+    #temporada
+    {
+        .apexcharts-bar-area{
+            fill: #15838b !important;
+        }
     }
 }
 
@@ -211,16 +200,12 @@ body.dark{
     color: black !important;
 }
 
-.nav-link:hover,.enlace:hover{
+.nav-link:hover,.enlace:hover,.enlace.active:hover{
     @include modoscla($primary,null);
 }
 
 .enlace.active{
     @include modoscla(black,underline);
-}
-
-.enlace.active:hover{
-    color: $primary !important;
 }
 
 .menusuario{
@@ -345,22 +330,14 @@ a.botonfile:hover{
     color: black !important;
 }
 
-#estado,#tipo{
+#estado,#tipo,#general{
     display: flex;
     justify-content: center;
     padding-bottom: 20px;
 }
 
-#selector:focus,#selector:active{
-    border-color: $primary !important;
-    outline-width: 0 !important;
-    box-shadow: none !important;
-}
-
-.datosusu.finalizarobra{
-    border-color: $primary !important;
-    outline-width: 0 !important;
-    box-shadow: none !important;
+.botoncoment:active,.datosusu.finalizarobra,#selector:focus,#selector:active,#tecnicos:focus,#tecnicos:active{
+   @include select();
 }
 
 @media (max-width: 393px) {

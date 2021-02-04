@@ -3,8 +3,6 @@ $(document).ready(function (){
     llamadaAjax(selector);
     $("#selector").on("change",function (){
         llamadaAjax($("#selector").val());
-
-
     })
 })
 
@@ -26,26 +24,26 @@ function  llamadaAjax(filtro){
                     chart.render();
                     $("#temporada").remove();
                     $("#tipo").remove();
-                    $("#carga").remove();
+                    $("#individual").remove();
+                    $("#general").remove();
 
                     break;
                 case "temporada":
                     tabla= temporadaGrafica(response);
                     $("#estado").remove();
                     $("#tipo").remove();
-                    $("#carga").remove();
-
+                    $("#individual").remove();
+                    $("#general").remove();
                     $("#graficos").append("<div id='temporada'></div>")
                     var chart = new ApexCharts(document.querySelector("#temporada"), tabla);
                     chart.render();
-
-
                     break;
                 case "tipo":
                     tabla= tipoGrafica(response);
                     $("#estado").remove();
                     $("#temporada").remove();
-                    $("#carga").remove();
+                    $("#individual").remove();
+                    $("#general").remove();
                     $("#graficos").append("<div id='tipo'></div>")
                     var chart = new ApexCharts(document.querySelector("#tipo"), tabla);
                     chart.render();
@@ -55,7 +53,6 @@ function  llamadaAjax(filtro){
                     $("#estado").remove();
                     $("#tipo").remove();
                     $("#temporada").remove();
-                    $("#graficos").append("<div id='carga'></div>")
                     creacionSelect(response);
                     cargaGeneral(response);
 
@@ -69,26 +66,20 @@ function  llamadaAjax(filtro){
                                     $("#general").remove();
                                     $("#individual").remove();
                                     cargaGeneral(response);
-
                                 }
                                 else{
                                     $("#individual").remove();
-                                    $("#carga").append("<div id='individual'></div>")
+                                    $("#graficos").append("<div id='individual'></div>")
                                     $("#general").remove();
 
                                     var chart = new ApexCharts(document.querySelector("#individual"), cargaEmpleado(response));
                                     chart.render();
                                 }
-
-
                             }
                         });
                     });
-
             }
-
         }
-
     });
 }
 
@@ -122,6 +113,7 @@ function temporadaGrafica(datos){
     $("#tecnicos").addClass("d-none");
 
     var graficaTemporada = {
+        colors:["#009C8C"],
         series: [{
             name: 'Cantidad',
             data: [datos[0]["cantidad"], datos[1]["cantidad"], datos[2]["cantidad"], datos[3]["cantidad"], datos[4]["cantidad"], datos[5]["cantidad"], datos[6]["cantidad"], datos[7]["cantidad"], datos[8]["cantidad"], datos[9]["cantidad"], datos[10]["cantidad"], datos[11]["cantidad"]]
@@ -187,7 +179,6 @@ function temporadaGrafica(datos){
                     return val;
                 }
             }
-
         },
         title: {
             text: 'Solicitudes de obras anuales',
@@ -200,19 +191,8 @@ function temporadaGrafica(datos){
         }
     };
     return graficaTemporada;
-
 }
-function porcentajeDeObras(datos){
 
-    let string= "[ ";
-    for (let x=0; x<datos.length; x++){
-        string= string + datos[x]["porcentaje"]+",";
-    }
-    alert(string);
-    let porcentajes= string.substr(0,string.length-1)+"]";
-    alert(porcentajes);
-    return porcentajes ;
-}
 function tipoDeObras(datos){
     $("#tecnicos").addClass("d-none");
 
@@ -229,8 +209,6 @@ function tipoDeObras(datos){
 
 function tipoGrafica(datos){
     $("#tecnicos").addClass("d-none");
-
-
 
     var graficaTipo = {
         series:[datos[0]["porcentaje"],datos[1]["porcentaje"],datos[2]["porcentaje"]],
@@ -254,7 +232,6 @@ function tipoGrafica(datos){
     return graficaTipo;
 }
 function cargaGrafica(datos){
-
     var graficaCarga = {
         series: [datos[0]["porcentaje"],datos[1]["porcentaje"]],
         chart: {
@@ -272,17 +249,19 @@ function cargaGrafica(datos){
                     position: 'bottom'
                 }
             }
-        }]
+        }],
+        fill: {
+            type: 'gradient',
+        },
     };
     return graficaCarga;
 }
 
-function creacionSelect(datos){
+function creacionSelect(datos):void{
 
-    $("#selects").append("<select class='ml-5' id='tecnicos'></select>");
+    $("#selects").append("<select class='ml-5 border m-2 border-primary p-0 pt-1 pb-1 card-footer rounded col-lg-2 col-md-3 col-sm-4 col-9' id='tecnicos' style='text-align-last: center'></select>");
 
     $("#tecnicos").append("<option class='usuariosTecnicos' value='general'>General</option>");
-
 
     datos["listaTecnicos"].forEach(function (tecnico){
         let nombre= tecnico["nombre"]+" "+tecnico["apellido"];
@@ -344,10 +323,9 @@ function cargaEmpleado(datos){
 
     return cargaEmple;
 }
-function cargaGeneral(response){
-    $("#carga").append("<div id='general'></div>")
+function cargaGeneral(response):void{
+    $("#graficos").append("<div id='general'></div>")
 
     var chart = new ApexCharts(document.querySelector("#general"), cargaGrafica(response));
     chart.render();
-
 }

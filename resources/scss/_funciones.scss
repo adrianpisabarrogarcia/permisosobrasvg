@@ -11,3 +11,9 @@
     color: $color !important;
     text-decoration: $decoracion !important;
 }
+
+@mixin select(){
+    border-color: $primary !important;
+    outline-width: 0 !important;
+    box-shadow: none !important;
+}
