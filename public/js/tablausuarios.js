@@ -12,7 +12,8 @@ function tablaTodos() {
 function mostrar(valor1, valor2, valor4, valor5, valor6) {
     $('.tablatecnicos').removeClass(valor1);
     $('.tablatecnicos').addClass(valor2);
-    $('.tablatodos').addClass('d-block');
+    $('.tablatodos').removeClass(valor2);
+    $('.tablatodos').addClass(valor1);
     $('#btntablastodos').removeClass(valor4);
     $('#btntablastodos').addClass(valor5);
     $('#btntablastecnicos').addClass(valor6);
