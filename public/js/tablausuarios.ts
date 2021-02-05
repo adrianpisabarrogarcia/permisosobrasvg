@@ -19,6 +19,7 @@ function mostrar(valor1,valor2,valor4,valor5,valor6):void{
     $('#btntablastodos').addClass(valor5);
     $('#btntablastecnicos').addClass(valor6);
 }
+}
 
 function prueba(event){
     //Funcion para saber si estas seguro de eliminar el usuario
