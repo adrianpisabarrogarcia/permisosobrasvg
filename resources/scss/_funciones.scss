@@ -1,0 +1,19 @@
+//Funciones para no copiar el codigo
+@mixin botonusua($fondo,$posicion,$disp,$sombra){
+    background: $fondo;
+    border-radius: 100px;
+    position: $posicion;
+    display: $disp;
+    box-shadow: $sombra !important;
+}
+
+@mixin modoscla($color,$decoracion){
+    color: $color !important;
+    text-decoration: $decoracion !important;
+}
+
+@mixin select(){
+    border-color: $primary !important;
+    outline-width: 0 !important;
+    box-shadow: none !important;
+}

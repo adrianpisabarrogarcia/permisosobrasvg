@@ -1,0 +1,53 @@
+$blue: #2e4b74;
+
+@import "../bootstrap-5.0/scss/bootstrap";
+@import "../bootstrap-5.0/scss/functions";
+@import "../bootstrap-5.0/scss/variables";
+@import "../bootstrap-5.0/scss/mixins";
+@import "../bootstrap-5.0/scss/utilities";
+@import "../bootstrap-5.0/scss/reboot";
+@import "../bootstrap-5.0/scss/grid";
+@import "../bootstrap-5.0/scss/root";
+@import "../bootstrap-5.0/scss/images";
+
+
+div {
+    input.form-control {
+        border-bottom: 1px solid black !important;
+        border-radius: 0;
+        background-color: transparent !important;
+    }
+
+    input.form-control:focus {
+        outline-width: 0;
+        box-shadow: none;
+    }
+
+    input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
+        transition: background-color 5000s ease-in-out 0s;
+    }
+}
+
+.carousel-body{
+    background-image: url("../img/login/fondologin.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.login{
+    width: 60%;
+}
+
+.login-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .login{
+        width: 75%;
+    }
+}
