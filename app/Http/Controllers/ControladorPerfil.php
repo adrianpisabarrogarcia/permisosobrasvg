@@ -8,12 +8,14 @@ use Mail;
 
 class ControladorPerfil extends Controller
 {
+    //mostrar el usuario
     public function usuarioSesion(){
         $dni= Session::get("usuario");
         $usuario= DB::select("select * from usuarios where dni= ?", [$dni]);
         return $usuario;
     }
 
+    //mostrar la pagina
     public function show()
     {
         if (!Session::exists('usuario')) {
@@ -25,6 +27,7 @@ class ControladorPerfil extends Controller
         }
     }
 
+    //actualizar datos del usuario
     public function updateDatos(Request $request)
     {
         $verificarCorreo=DB::select("select email from usuarios where email=? and dni!= ? ", [$request->email, $request->dni]);
@@ -39,12 +42,14 @@ class ControladorPerfil extends Controller
         return redirect()->route("perfil");
     }
 
+    //actualizar contraseña
     public function updatePassword(Request $request){
         DB::update("update usuarios set password = ?  where dni= ?",[Hash::make($request->contra), Session::get("usuario")]);
         $this->contactousuario($request);
         return redirect("perfil");
     }
 
+    //envio de email
     public function contactousuario($request){
         $usuario = DB::select('select email from usuarios where id_usu = ?',[Session::get('id')]);
         $subject = "Restablecer contraseña";
@@ -56,6 +61,7 @@ class ControladorPerfil extends Controller
         });
     }
 
+    //eliminar la cuenta
     public function destroy()
     {
         DB::delete("delete from usuarios where dni= ?",[Session::get("usuario")]);

@@ -8,9 +8,11 @@ class ControladorSolicitudesSinAsignar extends Controller
 {
     public function show()
     {
+        //solo si eres coordiandor
         if (!Session::exists('usuario') || Session::get('rol') != "1"){
             return redirect()->route('login.home');
         }
+        //asignamos directamente la solicitud
         $datosSolicitudes = DB::table('obras')
             ->join('usuarios', 'obras.id_usuario', '=', 'usuarios.id_usu')
             ->join('tipo_edificio', 'obras.id_tipo_edificio', '=', 'tipo_edificio.id')

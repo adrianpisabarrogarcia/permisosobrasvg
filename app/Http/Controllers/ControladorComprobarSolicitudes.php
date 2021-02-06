@@ -8,15 +8,18 @@ class ControladorComprobarSolicitudes extends Controller
 {
     public function show()
     {
+        //voy a comprobar la solicitud si soy coordinador y técnico
         if (!Session::exists('usuario') || Session::get('rol') == "3"){
             return redirect()->route('login.home');
         }
+        //muestro las obras en la tabla
         $datosSolicitudes = DB::table('obras')
             ->join('usuarios', 'obras.id_usuario', '=', 'usuarios.id_usu')
             ->join('tipo_edificio', 'obras.id_tipo_edificio', '=', 'tipo_edificio.id')
             ->join('tipo_obra', 'obras.id_tipo_obra', '=', 'tipo_obra.id_tipobra')
             ->select('obras.*', 'usuarios.nombre', 'usuarios.apellido', 'tipo_edificio.tipo as tipoedificio', 'tipo_obra.tipo')
             ->get();
+        //también neceito los diferentes técnicos
         $tecnicos = [];
         foreach($datosSolicitudes as $datos){
             $tecnico = DB::select("select * from usuarios where id_usu = ?",[$datos->id_tecnico]);
@@ -26,6 +29,7 @@ class ControladorComprobarSolicitudes extends Controller
                 array_push($tecnicos, "-");
             }
         }
+        //devuelvo la vista
         return view("principal.comprobarSolicitudes")->with([
             "datosSolicitudes" => $datosSolicitudes,
             "tecnicos" => $tecnicos]);

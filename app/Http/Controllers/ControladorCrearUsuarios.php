@@ -11,6 +11,8 @@ class ControladorCrearUsuarios extends Controller
 {
     public function store(Request $request)
     {
+        //comprueblo si existe el dni y el email del usuario que quiero añadir si sale voy a generar un
+        //error
         $dni = $request->get('dni');
         $email = $request->get('email');
         $datosDni = DB::select('select dni from usuarios where dni = ?', [$dni]);
@@ -26,6 +28,7 @@ class ControladorCrearUsuarios extends Controller
         if ($errores == '') {
             //utilizar este método para guardar la info recibida por parámetro
             if ($request->get('tipousuario')!=2){
+                //si soy coordinador y usuario solicitante
                 DB::table('usuarios')->insert([
                     'nombre' => $request->get('nombre'),
                     'apellido' => $request->get('apellidos'),
@@ -43,6 +46,7 @@ class ControladorCrearUsuarios extends Controller
                 ]);
             }else{
                 DB::table('usuarios')->insert([
+                    //si soy un técnico, porque necesito guardar el estado del técnico
                     'nombre' => $request->get('nombre'),
                     'apellido' => $request->get('apellidos'),
                     'dni' => $request->get('dni'),
@@ -60,21 +64,27 @@ class ControladorCrearUsuarios extends Controller
                 ]);
             }
             $this->contact($request);
+            //devuelvo la vista con el mensaje de creado
             return $this->show('Se ha creado el usuario correctamente');
         }
+        //si tengo algún error, muestro los errores
         return view("principal.coordinador.creacionUsuarios")->with(['errores'=>$errores]);
     }
 
     public function show($hecho = '')
     {
+        //no voy a mostrar la página si no soy coordiandor
         if (!Session::exists('usuario') || Session::get('rol') != "1"){
             return redirect()->route('login.home');
         }
+        //si soy coordiandor la muestro
         return view("principal.coordinador.creacionUsuarios")->with(['hecho'=>$hecho]);
     }
 
     public function contact(Request $request)
     {
+        // envío un mensaje si todo ha ido correctamente
+
         $subject = "Bienvenido/a " . $request['nombre']; //asunto
         $for = $request['email']; //a quien se lo voy a enviar
         //vista          //le paso los datos del request

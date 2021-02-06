@@ -14,10 +14,12 @@ class ControladorContacto extends Controller
      */
     public function index()
     {
+        //solo lo mostraré si soy un usuario solicitante
         if (!Session::exists('usuario') || Session::get('rol') != "3")
             return redirect()->route('login.home');
         else
         {
+            //muestro los datos del usuario conectado
             $dni = Session::get('usuario');
             $datos = DB::select('select * from usuarios where dni = ?',[$dni]);
             $nombre = $datos[0]->nombre;
@@ -44,11 +46,13 @@ class ControladorContacto extends Controller
      */
     public function show(Request $request)
     {
+        //muestro la vista
         $this->correoUsuario($request);
         $this->correoAdmin($request);
         return redirect()->route("portal.index");
     }
 
+    //envío el correo electrónico al usuario
     public function correoUsuario($request){
         $subject="Permisos y Obras VG";
         $for= $request->email;
@@ -58,6 +62,7 @@ class ControladorContacto extends Controller
             $msj->to($for);
         });
     }
+    //envío el correo electrónico al administrador
     public function correoAdmin($request){
         $subject="Permisos y Obras VG";
         $for= "developersweapp@gmail.com";

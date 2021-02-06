@@ -19,10 +19,12 @@ class ControladorLogin extends Controller
     //Metodo que se utiliza para retornar la vista del registro del login
     public function registro()
     {
+        //mostrar vista de registro
         return view('login.registro');
     }
 
     public function restablecer(){
+        //mostrar vista de reestablecer la contraseña
         return view('login.restablecercontra');
     }
 
@@ -51,7 +53,7 @@ class ControladorLogin extends Controller
         ]);
 
     }
-
+    //autentical el email
     public function authemail(Request $request){
         $usuario = DB::select('select * from usuarios where email = ?',[$request->correo]);
         if ($usuario == null){
@@ -59,6 +61,7 @@ class ControladorLogin extends Controller
         }
         else
         {
+            //envio de correo
             $this->correo($request);
             return view('login.codigo');
         }
@@ -94,6 +97,7 @@ class ControladorLogin extends Controller
             return view('login.contraseña');
     }
 
+    //metodo para modificar la contraseña
     public function modificarcontra(Request $request){
         DB::update('update usuarios set password = ? where email = ?',[Hash::make($request->passnew),Session::get('email')]);
         $this->modcontra($request);

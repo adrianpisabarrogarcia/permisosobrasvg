@@ -15,6 +15,7 @@ class ControladorGraficos extends Controller
      */
     public function index()
     {
+        //compruebo si soy coordianador
         if (!Session::exists('usuario') || Session::get('rol') != "1")
         {
             return redirect()->route('login.home');
@@ -30,6 +31,7 @@ class ControladorGraficos extends Controller
      */
     public function show($filtro, Request $request)
     {
+        //segun el filtro voy a recoger los datos
         $obras = DB::select("select id_obra, id_tipo_obra, estado, fecha_creacion from obras");
 
         switch ($filtro) {

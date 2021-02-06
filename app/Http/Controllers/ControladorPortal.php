@@ -8,11 +8,12 @@ use Illuminate\Support\Facades\Session;
 
 class ControladorPortal extends Controller
 {
+    //si no existe una sesión enviarlo al inicio
     public function index(){
         if (!Session::exists('usuario')){
             return redirect()->route('login.home');
         }
-
+        //muestro las solicitudes dependiendo de que rol soy e imprimo las solicitudes con toda la información
         switch (Session::get('rol'))
         {
             case "1":
@@ -42,12 +43,14 @@ class ControladorPortal extends Controller
         ]);
     }
 
+    //al cerrar sesión
     public function logout(){
         Session::remove('usuario');
 
         return redirect()->route('login.home');
     }
 
+    //lo que me solicitan por ajax lo hago
     public function ajax(Request $request){
         switch (Session::get('rol'))
         {

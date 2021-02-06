@@ -29,6 +29,7 @@ class ControladorRegistro extends Controller
      */
     public function store(Request $request)
     {
+        //guardo lo datos del registro
         $dni = $request->get('dni');
         $email = $request->get('email');
         $datosDni = DB::select('select dni from usuarios where dni = ?',[$dni]);
@@ -102,7 +103,7 @@ class ControladorRegistro extends Controller
     {
         //
     }
-
+                //envio un correo cuando haga el registro
     public function contact(Request $request){
         $subject = "Bienvenido/a ". $request['nombre']; //asunto
         $for = $request['email']; //a quien se lo voy a enviar
