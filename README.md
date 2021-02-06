@@ -19,7 +19,7 @@ Foro desarrollado por [WeApp](https://twitter.com/weappdev) para la empresa Aerg
 ### Tecnologías:     
 
 * PHP 8
-* Lavavel Framework
+* Laravel Framework
 * JS
 * TypeScript
 * Vue
