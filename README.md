@@ -1,62 +1,65 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Permisos y Obras para el Ayuntamiento de Vitoria-Gasteiz
+## Introuducción
+Foro desarrollado por [WeApp](https://twitter.com/weappdev) para la empresa Aergibide S.L.   
+### Funcionalidades:      
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+*  Registro/Login.
+*  Gestión de cuentas, Perfil
+*  Subida de planos
+*  Subida de comentarios de Técnico
+*  Solicitar una obra o reforma
+*  Añadir o eliminar tipo de obra y edificio
+*  Visualización como técnico y gestión de usuarios, así como eliminación de cuentas por parte del coordinador
+*  Gestión de alta o baja de técnicos
+*  Asignación de solicitudes coordinador a técnico 
+*  Gráficos
+*  Visualización de mapas
+*  Sistema de notificaciones al solicitante de la obra cada vez que se cambia de estado y se registra en la aplicación
 
-## About Laravel
+### Tecnologías:     
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+* PHP 8
+* Lavavel Framework
+* JS
+* TypeScript
+* Vue
+* JQuery
+* HTML5
+* CSS3
+* SASS
+* Bootstrap
+* Heroku
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Demo 
+Se puede probar la demo en el siguiente enlace: [http://permisosobrasvg.test/](http://permisosobrasvg.test/) 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+*DNI/password*
+ 
+**Usuarios coordinadores**
 
-## Learning Laravel
+* 12345678A     12345Abcde
+ 
+**Usuarios técnicos**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* 36869742Y     josecrack1
+* 74750646W    jimenez123
+* 07463933L     sancho321
+ 
+**Usuarios normales**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+* 17909716F     osopardo56
+* 36874210N     maripe77
+* 55972960E     guerrillera22
+* 97979671Q     isamor123
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+## Documentación
+*   [Manual de Usuario](https://drive.google.com/file/d/1CP4r8aVmTcF2zIXy2dBIgVooc_gkQKdp/view?usp=sharing).  
+*   [Documentación general](https://drive.google.com/file/d/1z5PKU7qkAN7tg9w9ZLiNnKrAaz_b-yx5/view?usp=sharing)
+*   [Guía de Estilo (Plantilla Bootstrap, Colores, Fuentes, etc.)]()
+*   [Presentación Permisos y Obras VG by WeApp](https://drive.google.com/file/d/1yKs6hElUgbTizD8uGsclnwg5eS9NAbux/view?usp=sharing)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Desarollador por
+Desarrollado por WeApp: [Adrián](https://github.com/adrianpisabarrogarcia), [Mario](https://github.com/mariozaton01), [Tania](https://github.com/TaniaGarciaOlarte).
