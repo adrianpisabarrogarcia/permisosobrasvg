@@ -31,7 +31,7 @@ Foro desarrollado por [WeApp](https://twitter.com/weappdev) para la empresa Aerg
 * Heroku
 
 ## Demo 
-Se puede probar la demo en el siguiente enlace: [http://permisosobrasvg.test/](http://permisosobrasvg.test/) 
+Se puede probar la demo en el siguiente enlace: [http://permisosobrasvg.herokuapp.com/](http://permisosobrasvg.herokuapp.com/) 
 
 *DNI/password*
  
