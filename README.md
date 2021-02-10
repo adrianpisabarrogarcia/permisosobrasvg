@@ -1,5 +1,5 @@
 # Permisos y Obras para el Ayuntamiento de Vitoria-Gasteiz
-## Introuducción
+## Introducción
 Foro desarrollado por [WeApp](https://twitter.com/weappdev) para la empresa Aergibide S.L.   
 ### Funcionalidades:      
 
