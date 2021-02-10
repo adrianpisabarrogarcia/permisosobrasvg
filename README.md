@@ -1,6 +1,6 @@
 # Permisos y Obras para el Ayuntamiento de Vitoria-Gasteiz
 ## Introducción
-Foro desarrollado por [WeApp](https://twitter.com/weappdev) para la empresa Aergibide S.L.   
+Aplicación desarrollada por [WeApp](https://twitter.com/weappdev) (Mario, Tania y Adrián) para el Ayuntamiento de Vitoria-Gasteiz.   
 ### Funcionalidades:      
 
 *  Registro/Login.
